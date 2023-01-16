@@ -76,7 +76,7 @@ const Sidebar = () => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h3" color={colors.grey[100]}>
+                <Typography variant="h2" color={colors.grey[100]} fontWeight="bold">
                   Yocast
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
@@ -99,15 +99,15 @@ const Sidebar = () => {
               </Box>
               <Box textAlign="center">
                 <Typography
-                  variant="h2"
+                  variant="h3"
                   color={colors.grey[100]}
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Jackson
+                  Emmanuel NT
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Dev 
+                  Super Admin 
                 </Typography>
               </Box>
             </Box>

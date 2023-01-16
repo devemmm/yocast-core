@@ -109,6 +109,54 @@ export const mockPodcast = [
   }
 ]
 
+export const mockUsers = [
+  {
+    "id": 1,
+    "email": "djntivuguruzwaemmanuel@gmail.com",
+    "names": "Emmanuel NTIVUGURUZWA",
+    "country": "Canada",
+    "phone": "+250 788 596 281",
+    "type": "user",
+    "status": "active",
+    "avatar": "https://yocast.rw/images/avatar/default-avatar.jpg",
+    "password": "$2b$08$np/w5TSJddDi2UG9DNv7Ie4U/oLY0Ossdiv6BkQanyEbqQux2o6Yu",
+    "otpCode": null,
+    "otpLink": null,
+    "createdAt": "2023-02-13T14:30:47.000Z",
+    "updatedAt": "2023-01-13T14:30:47.000Z"
+  },
+  {
+    "id": 2,
+    "email": "djntivuguruzwaemmanuel@gmail.com",
+    "names": "Emmanuel NTIVUGURUZWA",
+    "country": "Zimbabwe",
+    "phone": "+1260 788 596 281",
+    "type": "admin",
+    "status": "active",
+    "avatar": "https://yocast.rw/images/avatar/default-avatar.jpg",
+    "password": "$2b$08$np/w5TSJddDi2UG9DNv7Ie4U/oLY0Ossdiv6BkQanyEbqQux2o6Yu",
+    "otpCode": null,
+    "otpLink": null,
+    "createdAt": "2023-01-13T14:30:47.000Z",
+    "updatedAt": "2023-01-13T14:30:47.000Z"
+  },
+  {
+    "id": 3,
+    "email": "djntivuguruzwaemmanuel@gmail.com",
+    "names": "Emmanuel NTIVUGURUZWA",
+    "country": "USA",
+    "phone": "+250 788 596 281",
+    "type": "admin",
+    "status": "active",
+    "avatar": "https://yocast.rw/images/avatar/default-avatar.jpg",
+    "password": "$2b$08$np/w5TSJddDi2UG9DNv7Ie4U/oLY0Ossdiv6BkQanyEbqQux2o6Yu",
+    "otpCode": null,
+    "otpLink": null,
+    "createdAt": "2023-01-13T14:30:47.000Z",
+    "updatedAt": "2023-01-13T14:30:47.000Z"
+  }
+]
+
 export const mockDataUSER = [
   {
     id: 1,
