@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard";
-import USER from "./scenes/team";
+import USER from "./scenes/user";
 import Bar from "./scenes/bar";
 import Line from "./scenes/line";
 import Pie from "./scenes/pie";
@@ -33,6 +33,7 @@ function App() {
               <Route path="/line" element={<Line />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/podcast" element={<Podcast />} />
+
               <Route path="/geography" element={<Geography />} />
             </Routes>
           </main>

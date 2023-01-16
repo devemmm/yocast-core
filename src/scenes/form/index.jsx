@@ -31,6 +31,7 @@ const Form = ({
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const formdata = new FormData();
   const handleFormSubmit = async (e) => {
+    console.log(values);
     formdata.append("podcast", values.podcast);
     formdata.append("name", values.title);
     formdata.append("description", values.description);
@@ -73,7 +74,7 @@ const Form = ({
             <TextField
               fullWidth
               variant="filled"
-              type="number"
+              type="text"
               value={values.title}
               onChange={(e) => {
                 setValues({ ...values, title: e.target.value });
@@ -97,11 +98,11 @@ const Form = ({
             <TextField
               fullWidth
               variant="filled"
-              type="text"
+              type="number"
               label="Price"
               name="Price"
               values={values.price}
-              onChange={(e) => setValues({ ...values, price: e.target.price })}
+              onChange={(e) => setValues({ ...values, price: e.target.value })}
               sx={{ gridColumn: "span 4" }}
             />
             <Box className="flex flex-col gap-5">
@@ -141,7 +142,6 @@ const Form = ({
                       setValues({ ...values, coverPhoto: e.target.files[0] });
                     }}
                   />
-
                   <CloudUpload />
                   <Typography>Upload cover photo</Typography>
                 </FormLabel>
