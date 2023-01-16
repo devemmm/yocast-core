@@ -11,6 +11,8 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import WaterDamageIcon from '@mui/icons-material/WaterDamage';
+import PodcastsIcon from '@mui/icons-material/Podcasts';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -127,9 +129,17 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Create Podcast"
+              title="Podcast"
               to="/podcast"
-              icon={<PeopleOutlinedIcon />}
+              icon={<PodcastsIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <Item
+              title="Subscription"
+              to="/subscription"
+              icon={<WaterDamageIcon />}
               selected={selected}
               setSelected={setSelected}
             />

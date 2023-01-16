@@ -9,6 +9,7 @@ import Line from "./scenes/line";
 import Pie from "./scenes/pie";
 import FAQ from "./scenes/faq";
 import Podcast from "./scenes/podcast"
+import Subscription from "./scenes/subscription"
 import LoginActivity from "./scenes/login";
 import Geography from "./scenes/geography";
 import { CssBaseline, ThemeProvider } from "@mui/material";
@@ -37,6 +38,7 @@ function App() {
               <Route path="/line" element={<Line />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/podcast" element={<Podcast />} />
+              <Route path="/subscription" element={<Subscription />} />
         
               <Route path="/geography" element={<Geography />} />
             </Routes>
