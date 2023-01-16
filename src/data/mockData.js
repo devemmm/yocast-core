@@ -1,18 +1,17 @@
 import { tokens } from "../theme";
-import {useEffect,useState} from 'react'
- export let mocDataU="hello";
+export let mocDataU = "hello";
 
- export const mockSubscription = [
+export const mockSubscription = [
   {
-      "id": 1,
-      "owner": "emmanuel@gmail.com",
-      "transactionId": "efwbfuekwjnbg.weklngwelrkg97665567788",
-      "paymentMode": "BK-ACC",
-      "type": "monthly",
-      "price": 5000,
-      "currency": "Rwf",
-      "desactivationDate": "2022-02-12T18:46:06.000Z",
-      "createdAt": "2022-01-13T18:46:06.000Z",
+    "id": 1,
+    "owner": "emmanuel@gmail.com",
+    "transactionId": "efwbfuekwjnbg.weklngwelrkg97665567788",
+    "paymentMode": "BK-ACC",
+    "type": "monthly",
+    "price": 5000,
+    "currency": "Rwf",
+    "desactivationDate": "2022-02-12T18:46:06.000Z",
+    "createdAt": "2022-01-13T18:46:06.000Z",
   },
   {
     "id": 2,
@@ -24,10 +23,91 @@ import {useEffect,useState} from 'react'
     "currency": "Rwf",
     "desactivationDate": "2023-02-12T18:46:06.000Z",
     "createdAt": "2023-01-13T18:46:06.000Z",
-}
+  }
 ];
 
-
+export const mockPodcast = [
+  {
+    "id": 17,
+    "owner": "uwavalens2003@gmail.com",
+    "ownerName": "Valens Niyodusenga",
+    "name": "sfsaasdfsafd",
+    "url": "https://yocast.rw/podcasts/2023-01-15T13:37:06.385Zfifth_harmony_don_t_say_you_love_me_mp3_25325.mp3",
+    "cover": "https://yocast.rw/podcasts/2023-01-15T13:37:06.401Zimages.jpeg",
+    "category": "Geographical",
+    "description": "ese birashoboka ko isi yaba igeze kumusozo kurikira iki kiganiro umenye byinshi kuriyo",
+    "price": 343434,
+    "likes": 0,
+    "views": 0,
+    "isFree": 0,
+    "createdAt": "2023-01-15T13:37:06.000Z",
+    "updatedAt": "2023-01-15T13:37:06.000Z"
+  },
+  {
+    "id": 16,
+    "owner": "uwavalens2003@gmail.com",
+    "ownerName": "Valens Niyodusenga",
+    "name": "sfsaasdfsafd",
+    "url": "https://yocast.rw/podcasts/2023-01-15T13:36:02.209Zfifth_harmony_don_t_say_you_love_me_mp3_25325.mp3",
+    "cover": "https://yocast.rw/podcasts/2023-01-15T13:36:02.344Zimages.jpeg",
+    "category": "Geographical",
+    "description": "ese birashoboka ko isi yaba igeze kumusozo kurikira iki kiganiro umenye byinshi kuriyo",
+    "price": 343434,
+    "likes": 0,
+    "views": 0,
+    "isFree": 0,
+    "createdAt": "2023-01-15T13:36:02.000Z",
+    "updatedAt": "2023-01-15T13:36:02.000Z"
+  },
+  {
+    "id": 7,
+    "owner": "uwavalens2003@gmail.com",
+    "ownerName": "Valens Niyodusenga",
+    "name": "HALERUYA",
+    "url": "https://yocast.rw/podcasts/2023-01-14T17:12:31.331Zfifth_harmony_don_t_say_you_love_me_mp3_25325.mp3",
+    "cover": "https://yocast.rw/podcasts/2023-01-14T17:12:31.418ZAgasobanuye Hanna by junior giti.mp4",
+    "category": "Political",
+    "description": "ese birashoboka ko isi yaba igeze kumusozo kurikira iki kiganiro umenye byinshi kuriyo",
+    "price": 343434,
+    "likes": 0,
+    "views": 0,
+    "isFree": 0,
+    "createdAt": "2023-01-14T17:12:31.000Z",
+    "updatedAt": "2023-01-14T17:12:31.000Z"
+  },
+  {
+    "id": 6,
+    "owner": "uwavalens2003@gmail.com",
+    "ownerName": "Valens Niyodusenga",
+    "name": "HALERUYA",
+    "url": "https://yocast.rw/podcasts/2023-01-14T17:12:18.866Zfifth_harmony_don_t_say_you_love_me_mp3_25325.mp3",
+    "cover": "https://yocast.rw/podcasts/2023-01-14T17:12:19.060ZAgasobanuye Hanna by junior giti.mp4",
+    "category": "Political",
+    "description": "ese birashoboka ko isi yaba igeze kumusozo kurikira iki kiganiro umenye byinshi kuriyo",
+    "price": 343434,
+    "likes": 0,
+    "views": 0,
+    "isFree": 0,
+    "createdAt": "2023-01-14T17:12:19.000Z",
+    "updatedAt": "2023-01-14T17:12:19.000Z"
+  },
+  {
+    "id": 5,
+    "owner": "uwavalens2003@gmail.com",
+    "ownerName": "Valens Niyodusenga",
+    "name": "sdfssdfsdfsdsdf",
+    "url": "https://yocast.rw/podcasts/2023-01-13T19:28:39.248ZAgasobanuye Hanna by junior giti.mp4",
+    "cover": "https://yocast.rw/podcasts/2023-01-13T19:28:39.254Zgetback.jpeg",
+    "category": "Geographical",
+    "description": "ese birashoboka ko isi yaba igeze kumusozo kurikira iki kiganiro umenye byinshi kuriyo",
+    "price": 343434,
+    "likes": 0,
+    "views": 0,
+    "isFree": 0,
+    "createdAt": "2023-01-13T19:28:39.000Z",
+    "updatedAt": "2023-01-13T19:28:39.000Z"
+  }
+]
 
 export const mockDataUSER = [
   {
@@ -196,8 +276,8 @@ export const mockDataInvoices = [
     phone: "(421)314-2288",
     date: "06/15/2021",
   },
-  
-    
+
+
 ];
 
 export const mockTransactions = [
