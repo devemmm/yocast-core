@@ -1,14 +1,14 @@
 import { Box } from "@mui/material";
 import Header from "../../components/Header";
 import BarChart from "../../components/BarChart";
+import Form from "../form";
 
 const Bar = () => {
 
 
   return (
     <Box m="20px">
-      <Header title="RAIN DATA" subtitle="Rainfall visualisation" />
-    
+      <Header   title="RAIN DATA" subtitle="Rainfall visualisation" />
       <Box height="75vh">
         <BarChart />
       </Box>

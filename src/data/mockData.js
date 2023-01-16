@@ -2,17 +2,10 @@ import { tokens } from "../theme";
 import {useEffect,useState} from 'react'
  export let mocDataU="hello";
 
-
-
-
-
-
-
-
 export const mockDataUSER = [
   {
     id: 1,
-    name: "Jackson Ngabonziza",
+    name: "Master M",
     email: "jackson@gmail.com",
 
     phone: "+250788445849",
@@ -22,7 +15,6 @@ export const mockDataUSER = [
     id: 2,
     name: "Uwitonze Claudette",
     email: "Claudette@gmail.com",
-
     phone: "+25078855563",
     access: "manager",
   },

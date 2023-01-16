@@ -2,42 +2,37 @@ import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-import {useEffect,useState} from 'react'
+import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import LineChart from "../../components/LineChart";
-
-
+import AddIcon from "@mui/icons-material/Add";
 import StatBox from "../../components/StatBox";
 import React from "preact/compat";
-
-
+import { stats } from "../../data/stats";
 const Dashboard = () => {
-  const [statistics, setStatics] = useState({temperature:0,humidity:0,soilmoisture:0})
+  const [statistics, setStatics] = useState({
+    temperature: 0,
+    humidity: 0,
+    soilmoisture: 0,
+  });
   useEffect(() => {
     fetch("http://10.10.109.85:5000/api/v1/latest")
-    .then(response => response.json())
-    .then(result => {
-      // console.log(result["temperature"]) 
-    console.log(result);
-    console.log()
-    setStatics({...result})
-
-    }
-      )
-
-  }, [])
- 
+      .then((response) => response.json())
+      .then((result) => {
+        // console.log(result["temperature"])
+        console.log(result);
+        console.log();
+        setStatics({ ...result });
+      });
+  }, []);
 
   useEffect(() => {
     // console.log("@£$%^&*********************")
-    console.log(statistics)
-
-     
-
-  }, [statistics])
+    console.log(statistics);
+  }, [statistics]);
 
   // {"jan":"23.40","feb":"70.30","marc":"5"}
- 
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -45,7 +40,10 @@ const Dashboard = () => {
     <Box m="20px">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="Yocast" subtitle="Welcome to Harvest Prediction Dashboard" />
+        <Header
+          title="Yocast"
+          subtitle="Welcome to Harvest Prediction Dashboard"
+        />
 
         <Box>
           <Button
@@ -57,8 +55,8 @@ const Dashboard = () => {
               padding: "10px 20px",
             }}
           >
-            <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-            Download Reports
+            <AddIcon sx={{ mr: "10px" }} />
+            Add podcast
           </Button>
         </Box>
       </Box>
@@ -70,68 +68,23 @@ const Dashboard = () => {
         gridAutoRows="140px"
         gap="20px"
       >
-        {/* ROW 1 */}
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <StatBox
-            title={statistics.temperature+"°C"}
-            subtitle="Temperature"
-            progress="0.75"
-            increase="+1.5%"
-        
-          />
-        </Box>
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <StatBox
-            title={statistics.humidity+" %RH"}
-            subtitle="Humidity"
-            progress="0.50"
-            increase="+21%"
-            
-          />
-        </Box>
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <StatBox
-            title="10mm"
-            subtitle="RainFall"
-            progress="0.30"
-            increase="+5%"
-           
-          />
-        </Box>
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <StatBox
-            title={statistics.soilmoisture+"%"}
-            subtitle="Soil moisture"
-            progress="0.80"
-            increase="-3%"
-           
-          />
-        </Box>
-
+        {stats.map((stat, index) => (
+          <Box
+            key={index}
+            gridColumn="span 3"
+            backgroundColor={colors.primary[400]}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <StatBox
+              // title={statistics.temperature + "°C"}
+              subtitle={stat.title}
+              progress={stat.progress}
+              increase={stat.increase}
+            />
+          </Box>
+        ))}
         {/* ROW 2 */}
         <Box
           gridColumn="span 8"
@@ -152,14 +105,14 @@ const Dashboard = () => {
                 fontWeight="600"
                 color={colors.grey[100]}
               >
-                Current Harvest prediction
+                Current Subscriptions visualalization
               </Typography>
               <Typography
                 variant="h3"
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-               103135 tons
+                103135 tons
               </Typography>
             </Box>
             <Box>
@@ -179,8 +132,7 @@ const Dashboard = () => {
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           overflow="auto"
-          
-          >
+        >
           <Box
             display="flex"
             justifyContent="space-between"
@@ -227,9 +179,6 @@ const Dashboard = () => {
         </Box>
 
         {/* ROW 3 */}
-       
-        
-        
       </Box>
     </Box>
   );

@@ -11,6 +11,7 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import links from "../../data/stats";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -102,10 +103,10 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Jackson
+                  Gedeo
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Dev 
+                  Owner
                 </Typography>
               </Box>
             </Box>
@@ -127,13 +128,19 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
+              title="Manage Podcasts"
+              to="/USER"
+              // icon={<BiHeadphone />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
               title="Create Podcast"
               to="/podcast"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-           
 
             <Typography
               variant="h6"
