@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Topbar from "./scenes/global/Topbar";
-import Sidebar from "./scenes/global/Sidebar";
-import Dashboard from "./scenes/dashboard";
-import USER from "./scenes/user";
-import Bar from "./scenes/bar";
-import Line from "./scenes/line";
-import Pie from "./scenes/pie";
-import FAQ from "./scenes/faq";
-import Podcast from "./scenes/podcast"
-import Subscription from "./scenes/subscription"
-import LoginActivity from "./scenes/login";
-import Geography from "./scenes/geography";
+import Topbar from "./screen/global/Topbar";
+import Sidebar from "./screen/global/Sidebar";
+import Dashboard from "./screen/dashboard";
+import USER from "./screen/user";
+import Bar from "./screen/bar";
+import Line from "./screen/line";
+import Pie from "./screen/pie";
+import FAQ from "./screen/faq";
+import Podcast from "./screen/podcast"
+import Subscription from "./screen/subscription"
+import LoginActivity from "./screen/login";
+import Geography from "./screen/geography";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Create from "./scenes/create";
