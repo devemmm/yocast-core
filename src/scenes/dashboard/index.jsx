@@ -5,8 +5,6 @@ import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import {useEffect,useState} from 'react'
 import Header from "../../components/Header";
 import LineChart from "../../components/LineChart";
-
-
 import StatBox from "../../components/StatBox";
 import React from "preact/compat";
 
@@ -46,7 +44,6 @@ const Dashboard = () => {
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="Yocast" subtitle="Welcome to Harvest Prediction Dashboard" />
-
         <Box>
           <Button
             sx={{

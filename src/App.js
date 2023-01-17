@@ -14,6 +14,7 @@ import LoginActivity from "./scenes/login";
 import Geography from "./scenes/geography";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
+import Create from "./scenes/create";
 
 
 function App() {
@@ -37,9 +38,9 @@ function App() {
               <Route path="/pie" element={<Pie />} />
               <Route path="/line" element={<Line />} />
               <Route path="/faq" element={<FAQ />} />
+              <Route path="/create" element={<Create />} />
               <Route path="/podcast" element={<Podcast />} />
               <Route path="/subscription" element={<Subscription />} />
-        
               <Route path="/geography" element={<Geography />} />
             </Routes>
           </main>
