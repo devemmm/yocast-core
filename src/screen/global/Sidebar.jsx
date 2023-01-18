@@ -11,8 +11,8 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-import WaterDamageIcon from '@mui/icons-material/WaterDamage';
-import PodcastsIcon from '@mui/icons-material/Podcasts';
+import WaterDamageIcon from "@mui/icons-material/WaterDamage";
+import PodcastsIcon from "@mui/icons-material/Podcasts";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -76,7 +76,11 @@ const Sidebar = () => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h2" color={colors.grey[100]} fontWeight="bold">
+                <Typography
+                  variant="h2"
+                  color={colors.grey[100]}
+                  fontWeight="bold"
+                >
                   Yocast
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
@@ -107,7 +111,7 @@ const Sidebar = () => {
                   Emmanuel NT
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Super Admin 
+                  Super Admin
                 </Typography>
               </Box>
             </Box>
@@ -129,21 +133,26 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Podcast"
-              to="/podcast"
-              icon={<PodcastsIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-
-            <Item
               title="Subscription"
               to="/subscription"
               icon={<WaterDamageIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-           
+            <Item
+              title="Podcast"
+              to="/podcast"
+              icon={<PodcastsIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Create Podcast"
+              to="/create"
+              icon={<PodcastsIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
 
             <Typography
               variant="h6"
