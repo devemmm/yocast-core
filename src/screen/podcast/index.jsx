@@ -22,7 +22,6 @@ const USER = () => {
     })
       .then((response) => {
         setPodcasts(response.data.podcast);
-        console.log(response);
         setLoading(false);
       })
       .catch((error) => {

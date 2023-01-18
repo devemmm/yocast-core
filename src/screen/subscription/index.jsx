@@ -19,12 +19,11 @@ const USER = () => {
   useEffect(() => {
     axios({
       method: "GET",
-      url: baseUrl + "/subscription?type=last",
+      url: baseUrl + "/user/subscription?type=last",
       headers: headers,
     })
       .then((response) => {
         setSubscriptions(response.data.subscription);
-        console.log(response);
         setLoading(false);
       })
       .catch((error) => {
