@@ -109,7 +109,6 @@ const Create = () => {
         setTimeout(() => {
           navigate("/podcast");
         }, 20);
-      
       })
       .catch((error) => {
         console.log(error);
@@ -197,7 +196,7 @@ const Create = () => {
                             setValues({ ...values, category: e.target.value })
                           }
                           className="w-[90%]  border mx-auto"
-                          value={1}
+                          value={values.category}
                         >
                           {field.options.map((option, index) => (
                             <MenuItem
@@ -222,7 +221,7 @@ const Create = () => {
                 <Box className="w-[80%] mx-auto flex justify-end">
                   <button
                     onClick={submit}
-                    className="flooat-left bg-[#4CCEAC] h-[5vh] rounded font-bold  w-[30%]"
+                    className="flooat-left flex items-center justify-center  bg-[#4CCEAC] h-[5vh] rounded font-bold  w-[30%]"
                   >
                     {isLoading ? <Loader /> : "Create Podcast"}
                   </button>
