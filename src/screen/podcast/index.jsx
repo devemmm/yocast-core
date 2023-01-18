@@ -3,12 +3,17 @@ import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockPodcast } from "../../data/mockData";
 import Header from "../../components/Header";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { baseUrl, headers } from "../../data/authData";
 
 const USER = () => {
   const theme = useTheme();
+  const [podcasts, setPodcasts] = useState([]);
+  const [loading, setLoading] = useState(false);
   const colors = tokens(theme.palette.mode);
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.2, },
+    { field: "id", headerName: "ID", flex: 0.2 },
     {
       field: "ownerName",
       headerName: "Owner",
@@ -56,8 +61,23 @@ const USER = () => {
       headerName: "Date uploaded",
       flex: 0.4,
       cellClassName: "name-column--cell",
-    }
+    },
   ];
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: baseUrl + "/podcasts",
+      headers: headers,
+    })
+      .then((response) => {
+        setPodcasts(response.data.Podcast);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
 
   return (
     <Box m="20px">
