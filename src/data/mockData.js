@@ -1,6 +1,52 @@
 import { tokens } from "../theme";
 export let mocDataU = "hello";
 
+export const subscriptionColumns = [
+  { field: "id", headerName: "ID", flex: 0.2 },
+  {
+    field: "owner",
+    headerName: "Email",
+    flex: 1,
+  },
+  {
+    field: "transactionId",
+    headerName: "Transaction Id",
+    flex: 1,
+    cellClassName: "name-column--cell",
+  },
+  {
+    field: "paymentMode",
+    headerName: "Payment Mode",
+    flex: 0.5,
+    cellClassName: "name-column--cell",
+  },
+
+  {
+    field: "type",
+    headerName: "Type",
+    flex: 0.3,
+  },
+  {
+    field: "price",
+    headerName: "Price",
+    flex: 0.3,
+  },
+  {
+    field: "currency",
+    headerName: "Currency",
+    flex: 0.3,
+  },
+  {
+    field: "createdAt",
+    headerName: "ActivationDate",
+    flex: 0.5,
+  },
+  {
+    field: "desactivationDate",
+    headerName: "DesactivationDate",
+    flex: 0.5,
+  },
+];
 export const columns = [
   { field: "id", headerName: "ID", flex: 0.2 },
   {

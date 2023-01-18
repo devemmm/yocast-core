@@ -8,58 +8,14 @@ import { headers } from "../../data/authData";
 import { baseUrl } from "../../data/authData";
 import axios from "axios";
 import { useState } from "react";
+import { subscriptionColumns } from "../../data/mockData";
 
 const USER = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [subscriptions, setSubscriptions] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const columns = [
-    { field: "id", headerName: "ID", flex: 0.2 },
-    {
-      field: "owner",
-      headerName: "Email",
-      flex: 1,
-    },
-    {
-      field: "transactionId",
-      headerName: "Transaction Id",
-      flex: 1,
-      cellClassName: "name-column--cell",
-    },
-    {
-      field: "paymentMode",
-      headerName: "Payment Mode",
-      flex: 0.5,
-      cellClassName: "name-column--cell",
-    },
 
-    {
-      field: "type",
-      headerName: "Type",
-      flex: 0.3,
-    },
-    {
-      field: "price",
-      headerName: "Price",
-      flex: 0.3,
-    },
-    {
-      field: "currency",
-      headerName: "Currency",
-      flex: 0.3,
-    },
-    {
-      field: "createdAt",
-      headerName: "ActivationDate",
-      flex: 0.5,
-    },
-    {
-      field: "desactivationDate",
-      headerName: "DesactivationDate",
-      flex: 0.5,
-    },
-  ];
   useEffect(() => {
     axios({
       method: "GET",
@@ -116,7 +72,7 @@ const USER = () => {
           checkboxSelection
           loading={isLoading}
           rows={subscriptions}
-          columns={columns}
+          columns={subscriptionColumns}
         />
       </Box>
     </Box>
