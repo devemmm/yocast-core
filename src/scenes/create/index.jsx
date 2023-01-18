@@ -22,6 +22,11 @@ import { headers } from "../../data/authData";
 import axios from "axios";
 const Create = () => {
   const [coverPreview, setCoverPreview] = useState("");
+  const [isLoading, setLoading] = useState(false);
+  const [alertStatus, setAlertStatus] = useState("success");
+  const [message, setMessage] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const [previewCoverImage, setPreviewCoverImage] = useState();
   const [values, setValues] = useState({
     title: "",
     description: "",
@@ -32,6 +37,29 @@ const Create = () => {
   });
 
   const submit = () => {
+    if (values.cover == null) {
+      setMessage("Cover photo for the podcast is required");
+      setShowAlert(true);
+      setAlertStatus("error");
+      return;
+    }
+    if (values.podcast == null) {
+      setMessage(".mp3 file for the podcast is required");
+      setShowAlert(true);
+      setAlertStatus("error");
+      return;
+    }
+    if (
+      values.title === "" ||
+      values.description === "" ||
+      values.category === ""
+    ) {
+      setMessage("Invalid inputs please fillout all the fields are required");
+      setShowAlert(true);
+      setAlertStatus("error");
+      return;
+    }
+    setLoading(true);
     const formData = new FormData();
     formData.append("name", values.name);
     formData.append("podcast", values.podcast);
@@ -39,7 +67,6 @@ const Create = () => {
     formData.append("description", values.description);
     formData.append("category", values.category);
     formData.append("price", values.price);
-
     axios({
       method: "POST",
       url: baseUrl + "/admin/podcast",
@@ -47,10 +74,28 @@ const Create = () => {
       headers: headers,
     })
       .then((response) => {
+        console.log(response.data);
+        if (
+          response.data.statusCode === 200 ||
+          response.data.statusCode == 201
+        ) {
+          setAlertStatus("success");
+          setMessage("Podcast created successfully");
+          setShowAlert(true);
+          setTimeout(() => {
+            setShowAlert(false);
+          }, 3000);
+          return;
+        }
         console.log(response);
+        setLoading(false);
+        setShowAlert(true);
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
+        setAlertStatus("error");
+        setShowAlert(true);
       });
   };
   const setValue = (value, index) => {
@@ -69,9 +114,9 @@ const Create = () => {
           title={"Create Podcast"}
           subtitle="Create podcsts for your users"
         />
+        {showAlert ? <Alert severity={alertStatus}>{message}</Alert> : null}
       </Box>
       <Container className="items-center  flex h-[80%]">
-        <Alert severity="error">This is an error alert — check it out!</Alert>
         <Box className="h-[70%] shadow-3xl border border-x-0 border-b-0 p-2 ">
           <Typography className="text-center  h-[10%] p-4">
             create your podcast
@@ -114,9 +159,9 @@ const Create = () => {
                     <CloudUploadIcon className="text-center " />
                   </Box>
                 </Box>
-                <Box className="p-4">
+                {/* <Box className="p-4">
                   <p>sdfsdf</p>
-                </Box>
+                </Box> */}
               </Box>
               <Box className="w-[50%] flex flex-col space-y-4 h-[100%]">
                 {podcastFields.map((field, index) => (
@@ -128,13 +173,12 @@ const Create = () => {
                             setValues({ ...values, category: e.target.value })
                           }
                           className="w-[90%]  border mx-auto"
-                          value="Rwanda"
+                          value={1}
                         >
                           {field.options.map((option, index) => (
                             <MenuItem
                               value={option}
                               className="bg-black w-[100%]"
-                              key={index}
                             >
                               {option}
                             </MenuItem>
