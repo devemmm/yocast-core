@@ -9,8 +9,26 @@ import { baseUrl, headers } from "../../data/authData";
 
 const USER = () => {
   const theme = useTheme();
-  const [podcasts, setPodcasts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [podcasts, setPodcasts] = useState([
+    {
+      id: 16,
+      owner: "uwavalens2003@gmail.com",
+      ownerName: "Valens Niyodusenga",
+      name: "sfsaasdfsafd",
+      url: "https://yocast.rw/podcasts/2023-01-15T13:36:02.209Zfifth_harmony_don_t_say_you_love_me_mp3_25325.mp3",
+      cover: "https://yocast.rw/podcasts/2023-01-15T13:36:02.344Zimages.jpeg",
+      category: "Geographical",
+      description:
+        "ese birashoboka ko isi yaba igeze kumusozo kurikira iki kiganiro umenye byinshi kuriyo",
+      price: 343434,
+      likes: 0,
+      views: 0,
+      isFree: 0,
+      createdAt: "2023-01-15T13:36:02.000Z",
+      updatedAt: "2023-01-15T13:36:02.000Z",
+    },
+  ]);
+  const [isLoading, setLoading] = useState(false);
   const colors = tokens(theme.palette.mode);
   const columns = [
     { field: "id", headerName: "ID", flex: 0.2 },
@@ -71,14 +89,15 @@ const USER = () => {
       headers: headers,
     })
       .then((response) => {
-        setPodcasts(response.data.Podcast);
+        setPodcasts(response.data.podcast);
         console.log(response);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
       });
-  });
-
+  }, [podcasts]);
   return (
     <Box m="20px">
       <Header title="Podcast" subtitle="Manage all yocast podcast here ..." />
@@ -111,7 +130,12 @@ const USER = () => {
           },
         }}
       >
-        <DataGrid checkboxSelection rows={mockPodcast} columns={columns} />
+        <DataGrid
+          loading={isLoading}
+          checkboxSelection
+          rows={podcasts}
+          columns={columns}
+        />
       </Box>
     </Box>
   );

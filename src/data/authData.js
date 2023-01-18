@@ -1,7 +1,7 @@
-export const baseUrl = "http://localhost:5000";
+export const baseUrl = "https://yocast.rw";
 
 export const headers = {
-  Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbGVuc0BnbWFpbC5jb20iLCJpYXQiOjE2NzQwNDE4MTF9.0Fw3T9dtuYOaQ0KmknLFuzUZLv_W7st3vZ4moydQs9s`,
+  Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InV3YXZhbGVuczIwMDNAZ21haWwuY29tIiwiaWF0IjoxNjc0MDYwNjc1fQ.zNr6QlEC_93Elx5t1yVDmwCW8tBj85jMVFUU5HD-Pus`,
   "Content-Type": "multipart/form-data",
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",

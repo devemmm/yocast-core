@@ -20,10 +20,8 @@ import { baseUrl } from "../../data/authData";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { headers } from "../../data/authData";
 import Loader from "../../components/Loader";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const Create = () => {
-  const navigate = useNavigate();
   const [coverPreview, setCoverPreview] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [alertStatus, setAlertStatus] = useState("success");
@@ -97,18 +95,11 @@ const Create = () => {
           setTimeout(() => {
             setShowAlert(false);
           }, 3000);
-          setLoading(false);
-          setTimeout(() => {
-            navigate("/podcast");
-          }, 20);
           return;
         }
-
+        console.log(response);
         setLoading(false);
         setShowAlert(true);
-        setTimeout(() => {
-          navigate("/podcast");
-        }, 20);
       })
       .catch((error) => {
         console.log(error);
@@ -192,11 +183,11 @@ const Create = () => {
                     {field.name === "Category" ? (
                       <Box>
                         <Select
+                          value={values.category}
                           onChange={(e) =>
                             setValues({ ...values, category: e.target.value })
                           }
                           className="w-[90%]  border mx-auto"
-                          value={values.category}
                         >
                           {field.options.map((option, index) => (
                             <MenuItem
@@ -221,7 +212,7 @@ const Create = () => {
                 <Box className="w-[80%] mx-auto flex justify-end">
                   <button
                     onClick={submit}
-                    className="flooat-left flex items-center justify-center  bg-[#4CCEAC] h-[5vh] rounded font-bold  w-[30%]"
+                    className="flooat-left bg-[#4CCEAC] h-[5vh] rounded font-bold  w-[30%]"
                   >
                     {isLoading ? <Loader /> : "Create Podcast"}
                   </button>
