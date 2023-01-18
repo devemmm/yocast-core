@@ -1,161 +1,220 @@
 import { tokens } from "../theme";
 export let mocDataU = "hello";
 
-export const mockSubscription = [
+export const columns = [
+  { field: "id", headerName: "ID", flex: 0.2 },
   {
-    "id": 1,
-    "owner": "emmanuel@gmail.com",
-    "transactionId": "efwbfuekwjnbg.weklngwelrkg97665567788",
-    "paymentMode": "BK-ACC",
-    "type": "monthly",
-    "price": 5000,
-    "currency": "Rwf",
-    "desactivationDate": "2022-02-12T18:46:06.000Z",
-    "createdAt": "2022-01-13T18:46:06.000Z",
+    field: "ownerName",
+    headerName: "Owner",
+    flex: 0.5,
+    cellClassName: "name-column--cell",
   },
   {
-    "id": 2,
-    "owner": "djntivuguruzwaemmanuel@gmail.com",
-    "transactionId": "uowbfuekwjnbg.weklngwelrkg97665567788",
-    "paymentMode": "mobile money",
-    "type": "monthly",
-    "price": 5000,
-    "currency": "Rwf",
-    "desactivationDate": "2023-02-12T18:46:06.000Z",
-    "createdAt": "2023-01-13T18:46:06.000Z",
-  }
+    field: "name",
+    headerName: "name",
+    flex: 0.5,
+    cellClassName: "name-column--cell",
+  },
+  {
+    field: "url",
+    headerName: "url",
+    flex: 1,
+    cellClassName: "name-column--cell",
+  },
+  {
+    field: "category",
+    headerName: "category",
+    flex: 0.5,
+    cellClassName: "name-column--cell",
+  },
+  {
+    field: "description",
+    headerName: "description",
+    flex: 1,
+    cellClassName: "name-column--cell",
+  },
+  {
+    field: "likes",
+    headerName: "likes",
+    flex: 0.2,
+    cellClassName: "name-column--cell",
+  },
+  {
+    field: "isFree",
+    headerName: "isFree",
+    flex: 0.1,
+    cellClassName: "name-column--cell",
+  },
+  {
+    field: "createdAt",
+    headerName: "Date uploaded",
+    flex: 0.4,
+    cellClassName: "name-column--cell",
+  },
+];
+
+export const mockSubscription = [
+  {
+    id: 1,
+    owner: "emmanuel@gmail.com",
+    transactionId: "efwbfuekwjnbg.weklngwelrkg97665567788",
+    paymentMode: "BK-ACC",
+    type: "monthly",
+    price: 5000,
+    currency: "Rwf",
+    desactivationDate: "2022-02-12T18:46:06.000Z",
+    createdAt: "2022-01-13T18:46:06.000Z",
+  },
+  {
+    id: 2,
+    owner: "djntivuguruzwaemmanuel@gmail.com",
+    transactionId: "uowbfuekwjnbg.weklngwelrkg97665567788",
+    paymentMode: "mobile money",
+    type: "monthly",
+    price: 5000,
+    currency: "Rwf",
+    desactivationDate: "2023-02-12T18:46:06.000Z",
+    createdAt: "2023-01-13T18:46:06.000Z",
+  },
 ];
 
 export const mockPodcast = [
   {
-    "id": 17,
-    "owner": "uwavalens2003@gmail.com",
-    "ownerName": "Valens Niyodusenga",
-    "name": "sfsaasdfsafd",
-    "url": "https://yocast.rw/podcasts/2023-01-15T13:37:06.385Zfifth_harmony_don_t_say_you_love_me_mp3_25325.mp3",
-    "cover": "https://yocast.rw/podcasts/2023-01-15T13:37:06.401Zimages.jpeg",
-    "category": "Geographical",
-    "description": "ese birashoboka ko isi yaba igeze kumusozo kurikira iki kiganiro umenye byinshi kuriyo",
-    "price": 343434,
-    "likes": 0,
-    "views": 0,
-    "isFree": 0,
-    "createdAt": "2023-01-15T13:37:06.000Z",
-    "updatedAt": "2023-01-15T13:37:06.000Z"
+    id: 17,
+    owner: "uwavalens2003@gmail.com",
+    ownerName: "Valens Niyodusenga",
+    name: "sfsaasdfsafd",
+    url: "https://yocast.rw/podcasts/2023-01-15T13:37:06.385Zfifth_harmony_don_t_say_you_love_me_mp3_25325.mp3",
+    cover: "https://yocast.rw/podcasts/2023-01-15T13:37:06.401Zimages.jpeg",
+    category: "Geographical",
+    description:
+      "ese birashoboka ko isi yaba igeze kumusozo kurikira iki kiganiro umenye byinshi kuriyo",
+    price: 343434,
+    likes: 0,
+    views: 0,
+    isFree: 0,
+    createdAt: "2023-01-15T13:37:06.000Z",
+    updatedAt: "2023-01-15T13:37:06.000Z",
   },
   {
-    "id": 16,
-    "owner": "uwavalens2003@gmail.com",
-    "ownerName": "Valens Niyodusenga",
-    "name": "sfsaasdfsafd",
-    "url": "https://yocast.rw/podcasts/2023-01-15T13:36:02.209Zfifth_harmony_don_t_say_you_love_me_mp3_25325.mp3",
-    "cover": "https://yocast.rw/podcasts/2023-01-15T13:36:02.344Zimages.jpeg",
-    "category": "Geographical",
-    "description": "ese birashoboka ko isi yaba igeze kumusozo kurikira iki kiganiro umenye byinshi kuriyo",
-    "price": 343434,
-    "likes": 0,
-    "views": 0,
-    "isFree": 0,
-    "createdAt": "2023-01-15T13:36:02.000Z",
-    "updatedAt": "2023-01-15T13:36:02.000Z"
+    id: 16,
+    owner: "uwavalens2003@gmail.com",
+    ownerName: "Valens Niyodusenga",
+    name: "sfsaasdfsafd",
+    url: "https://yocast.rw/podcasts/2023-01-15T13:36:02.209Zfifth_harmony_don_t_say_you_love_me_mp3_25325.mp3",
+    cover: "https://yocast.rw/podcasts/2023-01-15T13:36:02.344Zimages.jpeg",
+    category: "Geographical",
+    description:
+      "ese birashoboka ko isi yaba igeze kumusozo kurikira iki kiganiro umenye byinshi kuriyo",
+    price: 343434,
+    likes: 0,
+    views: 0,
+    isFree: 0,
+    createdAt: "2023-01-15T13:36:02.000Z",
+    updatedAt: "2023-01-15T13:36:02.000Z",
   },
   {
-    "id": 7,
-    "owner": "uwavalens2003@gmail.com",
-    "ownerName": "Valens Niyodusenga",
-    "name": "HALERUYA",
-    "url": "https://yocast.rw/podcasts/2023-01-14T17:12:31.331Zfifth_harmony_don_t_say_you_love_me_mp3_25325.mp3",
-    "cover": "https://yocast.rw/podcasts/2023-01-14T17:12:31.418ZAgasobanuye Hanna by junior giti.mp4",
-    "category": "Political",
-    "description": "ese birashoboka ko isi yaba igeze kumusozo kurikira iki kiganiro umenye byinshi kuriyo",
-    "price": 343434,
-    "likes": 0,
-    "views": 0,
-    "isFree": 0,
-    "createdAt": "2023-01-14T17:12:31.000Z",
-    "updatedAt": "2023-01-14T17:12:31.000Z"
+    id: 7,
+    owner: "uwavalens2003@gmail.com",
+    ownerName: "Valens Niyodusenga",
+    name: "HALERUYA",
+    url: "https://yocast.rw/podcasts/2023-01-14T17:12:31.331Zfifth_harmony_don_t_say_you_love_me_mp3_25325.mp3",
+    cover:
+      "https://yocast.rw/podcasts/2023-01-14T17:12:31.418ZAgasobanuye Hanna by junior giti.mp4",
+    category: "Political",
+    description:
+      "ese birashoboka ko isi yaba igeze kumusozo kurikira iki kiganiro umenye byinshi kuriyo",
+    price: 343434,
+    likes: 0,
+    views: 0,
+    isFree: 0,
+    createdAt: "2023-01-14T17:12:31.000Z",
+    updatedAt: "2023-01-14T17:12:31.000Z",
   },
   {
-    "id": 6,
-    "owner": "uwavalens2003@gmail.com",
-    "ownerName": "Valens Niyodusenga",
-    "name": "HALERUYA",
-    "url": "https://yocast.rw/podcasts/2023-01-14T17:12:18.866Zfifth_harmony_don_t_say_you_love_me_mp3_25325.mp3",
-    "cover": "https://yocast.rw/podcasts/2023-01-14T17:12:19.060ZAgasobanuye Hanna by junior giti.mp4",
-    "category": "Political",
-    "description": "ese birashoboka ko isi yaba igeze kumusozo kurikira iki kiganiro umenye byinshi kuriyo",
-    "price": 343434,
-    "likes": 0,
-    "views": 0,
-    "isFree": 0,
-    "createdAt": "2023-01-14T17:12:19.000Z",
-    "updatedAt": "2023-01-14T17:12:19.000Z"
+    id: 6,
+    owner: "uwavalens2003@gmail.com",
+    ownerName: "Valens Niyodusenga",
+    name: "HALERUYA",
+    url: "https://yocast.rw/podcasts/2023-01-14T17:12:18.866Zfifth_harmony_don_t_say_you_love_me_mp3_25325.mp3",
+    cover:
+      "https://yocast.rw/podcasts/2023-01-14T17:12:19.060ZAgasobanuye Hanna by junior giti.mp4",
+    category: "Political",
+    description:
+      "ese birashoboka ko isi yaba igeze kumusozo kurikira iki kiganiro umenye byinshi kuriyo",
+    price: 343434,
+    likes: 0,
+    views: 0,
+    isFree: 0,
+    createdAt: "2023-01-14T17:12:19.000Z",
+    updatedAt: "2023-01-14T17:12:19.000Z",
   },
   {
-    "id": 5,
-    "owner": "uwavalens2003@gmail.com",
-    "ownerName": "Valens Niyodusenga",
-    "name": "sdfssdfsdfsdsdf",
-    "url": "https://yocast.rw/podcasts/2023-01-13T19:28:39.248ZAgasobanuye Hanna by junior giti.mp4",
-    "cover": "https://yocast.rw/podcasts/2023-01-13T19:28:39.254Zgetback.jpeg",
-    "category": "Geographical",
-    "description": "ese birashoboka ko isi yaba igeze kumusozo kurikira iki kiganiro umenye byinshi kuriyo",
-    "price": 343434,
-    "likes": 0,
-    "views": 0,
-    "isFree": 0,
-    "createdAt": "2023-01-13T19:28:39.000Z",
-    "updatedAt": "2023-01-13T19:28:39.000Z"
-  }
-]
+    id: 5,
+    owner: "uwavalens2003@gmail.com",
+    ownerName: "Valens Niyodusenga",
+    name: "sdfssdfsdfsdsdf",
+    url: "https://yocast.rw/podcasts/2023-01-13T19:28:39.248ZAgasobanuye Hanna by junior giti.mp4",
+    cover: "https://yocast.rw/podcasts/2023-01-13T19:28:39.254Zgetback.jpeg",
+    category: "Geographical",
+    description:
+      "ese birashoboka ko isi yaba igeze kumusozo kurikira iki kiganiro umenye byinshi kuriyo",
+    price: 343434,
+    likes: 0,
+    views: 0,
+    isFree: 0,
+    createdAt: "2023-01-13T19:28:39.000Z",
+    updatedAt: "2023-01-13T19:28:39.000Z",
+  },
+];
 
 export const mockUsers = [
   {
-    "id": 1,
-    "email": "djntivuguruzwaemmanuel@gmail.com",
-    "names": "Emmanuel NTIVUGURUZWA",
-    "country": "Canada",
-    "phone": "+250 788 596 281",
-    "type": "user",
-    "status": "active",
-    "avatar": "https://yocast.rw/images/avatar/default-avatar.jpg",
-    "password": "$2b$08$np/w5TSJddDi2UG9DNv7Ie4U/oLY0Ossdiv6BkQanyEbqQux2o6Yu",
-    "otpCode": null,
-    "otpLink": null,
-    "createdAt": "2023-02-13T14:30:47.000Z",
-    "updatedAt": "2023-01-13T14:30:47.000Z"
+    id: 1,
+    email: "djntivuguruzwaemmanuel@gmail.com",
+    names: "Emmanuel NTIVUGURUZWA",
+    country: "Canada",
+    phone: "+250 788 596 281",
+    type: "user",
+    status: "active",
+    avatar: "https://yocast.rw/images/avatar/default-avatar.jpg",
+    password: "$2b$08$np/w5TSJddDi2UG9DNv7Ie4U/oLY0Ossdiv6BkQanyEbqQux2o6Yu",
+    otpCode: null,
+    otpLink: null,
+    createdAt: "2023-02-13T14:30:47.000Z",
+    updatedAt: "2023-01-13T14:30:47.000Z",
   },
   {
-    "id": 2,
-    "email": "djntivuguruzwaemmanuel@gmail.com",
-    "names": "Emmanuel NTIVUGURUZWA",
-    "country": "Zimbabwe",
-    "phone": "+1260 788 596 281",
-    "type": "admin",
-    "status": "active",
-    "avatar": "https://yocast.rw/images/avatar/default-avatar.jpg",
-    "password": "$2b$08$np/w5TSJddDi2UG9DNv7Ie4U/oLY0Ossdiv6BkQanyEbqQux2o6Yu",
-    "otpCode": null,
-    "otpLink": null,
-    "createdAt": "2023-01-13T14:30:47.000Z",
-    "updatedAt": "2023-01-13T14:30:47.000Z"
+    id: 2,
+    email: "djntivuguruzwaemmanuel@gmail.com",
+    names: "Emmanuel NTIVUGURUZWA",
+    country: "Zimbabwe",
+    phone: "+1260 788 596 281",
+    type: "admin",
+    status: "active",
+    avatar: "https://yocast.rw/images/avatar/default-avatar.jpg",
+    password: "$2b$08$np/w5TSJddDi2UG9DNv7Ie4U/oLY0Ossdiv6BkQanyEbqQux2o6Yu",
+    otpCode: null,
+    otpLink: null,
+    createdAt: "2023-01-13T14:30:47.000Z",
+    updatedAt: "2023-01-13T14:30:47.000Z",
   },
   {
-    "id": 3,
-    "email": "djntivuguruzwaemmanuel@gmail.com",
-    "names": "Emmanuel NTIVUGURUZWA",
-    "country": "USA",
-    "phone": "+250 788 596 281",
-    "type": "admin",
-    "status": "active",
-    "avatar": "https://yocast.rw/images/avatar/default-avatar.jpg",
-    "password": "$2b$08$np/w5TSJddDi2UG9DNv7Ie4U/oLY0Ossdiv6BkQanyEbqQux2o6Yu",
-    "otpCode": null,
-    "otpLink": null,
-    "createdAt": "2023-01-13T14:30:47.000Z",
-    "updatedAt": "2023-01-13T14:30:47.000Z"
-  }
-]
+    id: 3,
+    email: "djntivuguruzwaemmanuel@gmail.com",
+    names: "Emmanuel NTIVUGURUZWA",
+    country: "USA",
+    phone: "+250 788 596 281",
+    type: "admin",
+    status: "active",
+    avatar: "https://yocast.rw/images/avatar/default-avatar.jpg",
+    password: "$2b$08$np/w5TSJddDi2UG9DNv7Ie4U/oLY0Ossdiv6BkQanyEbqQux2o6Yu",
+    otpCode: null,
+    otpLink: null,
+    createdAt: "2023-01-13T14:30:47.000Z",
+    updatedAt: "2023-01-13T14:30:47.000Z",
+  },
+];
 
 export const mockDataUSER = [
   {
@@ -180,7 +239,7 @@ export const mockDataUSER = [
     email: "Angel@gmail.com",
     phone: "+2507883553636",
     access: "user",
-  }
+  },
 ];
 
 export const mockDataContacts = [
@@ -324,8 +383,6 @@ export const mockDataInvoices = [
     phone: "(421)314-2288",
     date: "06/15/2021",
   },
-
-
 ];
 
 export const mockTransactions = [
@@ -347,10 +404,7 @@ export const mockTransactions = [
     date: "2023-05-01",
     cost: "27% RH",
   },
-
 ];
-
-
 
 // "11": "185.382",
 //     "1": "72.76",
@@ -365,7 +419,6 @@ export const mockTransactions = [
 //     "9": "185.705",
 //     "10": "220.644"
 
-
 // fetch("http://sensordatacenter.herokuapp.com/api/v1/rainyear/2019")
 //   .then(response => response.json())
 //   .then(result => {
@@ -375,7 +428,7 @@ export const mockTransactions = [
 export const mockBarData = [
   {
     country: "JAN",
-    "JAN": 72.76,
+    JAN: 72.76,
     "hot dogColor": "hsl(229, 70%, 50%)",
     Cyuve: 96,
     Gacaca: "hsl(296, 70%, 50%)",
@@ -386,7 +439,7 @@ export const mockBarData = [
   },
   {
     country: "FEB",
-    "JAN": 56.331,
+    JAN: 56.331,
     "hot dogColor": "hsl(307, 70%, 50%)",
     Cyuve: 28,
     Gacaca: "hsl(111, 70%, 50%)",
@@ -397,7 +450,7 @@ export const mockBarData = [
   },
   {
     country: "MARCH",
-    "JAN": 106.231,
+    JAN: 106.231,
     "hot dogColor": "hsl(72, 70%, 50%)",
     Cyuve: 23,
     Gacaca: "hsl(96, 70%, 50%)",
@@ -408,7 +461,7 @@ export const mockBarData = [
   },
   {
     country: "APRIL",
-    "JAN": 131.148,
+    JAN: 131.148,
     "hot dogColor": "hsl(257, 70%, 50%)",
     Cyuve: 52,
     Gacaca: "hsl(326, 70%, 50%)",
@@ -419,7 +472,7 @@ export const mockBarData = [
   },
   {
     country: "MAY",
-    "JAN": 112.081,
+    JAN: 112.081,
     "hot dogColor": "hsl(190, 70%, 50%)",
     Cyuve: 80,
     CyuveColor: "hsl(325, 70%, 50%)",
@@ -430,7 +483,7 @@ export const mockBarData = [
   },
   {
     country: "JUN",
-    "JAN": 124.595,
+    JAN: 124.595,
     "hot dogColor": "hsl(208, 70%, 50%)",
     Cyuve: 111,
     CyuveColor: "hsl(334, 70%, 50%)",
@@ -441,7 +494,7 @@ export const mockBarData = [
   },
   {
     country: "JULY",
-    "JAN": 93.574,
+    JAN: 93.574,
     "hot dogColor": "hsl(87, 70%, 50%)",
     Cyuve: 47,
     CyuveColor: "hsl(141, 70%, 50%)",
@@ -453,7 +506,7 @@ export const mockBarData = [
 
   {
     country: "AUG",
-    "JAN": 37.661,
+    JAN: 37.661,
     "hot dogColor": "hsl(87, 70%, 50%)",
     Cyuve: 47,
     CyuveColor: "hsl(141, 70%, 50%)",
@@ -465,7 +518,7 @@ export const mockBarData = [
 
   {
     country: "SEPT",
-    "JAN": 185.705,
+    JAN: 185.705,
     "hot dogColor": "hsl(87, 70%, 50%)",
     Cyuve: 47,
     CyuveColor: "hsl(141, 70%, 50%)",
@@ -476,7 +529,7 @@ export const mockBarData = [
   },
   {
     country: "OCT",
-    "JAN": 220.644,
+    JAN: 220.644,
     "hot dogColor": "hsl(87, 70%, 50%)",
     Cyuve: 47,
     CyuveColor: "hsl(141, 70%, 50%)",
@@ -488,7 +541,7 @@ export const mockBarData = [
 
   {
     country: "NOV",
-    "JAN": 185.382,
+    JAN: 185.382,
     "hot dogColor": "hsl(87, 70%, 50%)",
     Cyuve: 47,
     CyuveColor: "hsl(141, 70%, 50%)",
@@ -500,7 +553,7 @@ export const mockBarData = [
 
   {
     country: "DEC",
-    "JAN": 185.382,
+    JAN: 185.382,
     "hot dogColor": "hsl(87, 70%, 50%)",
     Cyuve: 47,
     CyuveColor: "hsl(141, 70%, 50%)",
@@ -511,12 +564,10 @@ export const mockBarData = [
   },
 ];
 
-
-
 export const mockharvestData = [
   {
     country: "2005",
-    "JAN": 23787,
+    JAN: 23787,
     "hot dogColor": "hsl(229, 70%, 50%)",
     Cyuve: 23787,
     Gacaca: "hsl(296, 70%, 50%)",
@@ -527,7 +578,7 @@ export const mockharvestData = [
   },
   {
     country: "2006",
-    "JAN": 21863,
+    JAN: 21863,
     "hot dogColor": "hsl(307, 70%, 50%)",
     Cyuve: 28,
     Gacaca: "hsl(111, 70%, 50%)",
@@ -538,7 +589,7 @@ export const mockharvestData = [
   },
   {
     country: "2007",
-    "JAN": 22896,
+    JAN: 22896,
     "hot dogColor": "hsl(72, 70%, 50%)",
     Cyuve: 23,
     Gacaca: "hsl(96, 70%, 50%)",
@@ -549,7 +600,7 @@ export const mockharvestData = [
   },
   {
     country: "2008",
-    "JAN": 20387,
+    JAN: 20387,
     "hot dogColor": "hsl(257, 70%, 50%)",
     Cyuve: 52,
     Gacaca: "hsl(326, 70%, 50%)",
@@ -560,7 +611,7 @@ export const mockharvestData = [
   },
   {
     country: "2009",
-    "JAN": 21393,
+    JAN: 21393,
     "hot dogColor": "hsl(190, 70%, 50%)",
     Cyuve: 80,
     CyuveColor: "hsl(325, 70%, 50%)",
@@ -571,7 +622,7 @@ export const mockharvestData = [
   },
   {
     country: "2010",
-    "JAN": 25371,
+    JAN: 25371,
     "hot dogColor": "hsl(208, 70%, 50%)",
     Cyuve: 111,
     CyuveColor: "hsl(334, 70%, 50%)",
@@ -582,7 +633,7 @@ export const mockharvestData = [
   },
   {
     country: "2011",
-    "JAN": 21981,
+    JAN: 21981,
     "hot dogColor": "hsl(87, 70%, 50%)",
     Cyuve: 47,
     CyuveColor: "hsl(141, 70%, 50%)",
@@ -594,7 +645,7 @@ export const mockharvestData = [
 
   {
     country: "2012",
-    "JAN": 19732,
+    JAN: 19732,
     "hot dogColor": "hsl(87, 70%, 50%)",
     Cyuve: 47,
     CyuveColor: "hsl(141, 70%, 50%)",
@@ -606,7 +657,7 @@ export const mockharvestData = [
 
   {
     country: "2013",
-    "JAN": 21669,
+    JAN: 21669,
     "hot dogColor": "hsl(87, 70%, 50%)",
     Cyuve: 47,
     CyuveColor: "hsl(141, 70%, 50%)",
@@ -617,7 +668,7 @@ export const mockharvestData = [
   },
   {
     country: "2014",
-    "JAN": 20644,
+    JAN: 20644,
     "hot dogColor": "hsl(87, 70%, 50%)",
     Cyuve: 47,
     CyuveColor: "hsl(141, 70%, 50%)",
@@ -629,7 +680,7 @@ export const mockharvestData = [
 
   {
     country: "2015",
-    "JAN": 22860,
+    JAN: 22860,
     "hot dogColor": "hsl(87, 70%, 50%)",
     Cyuve: 47,
     CyuveColor: "hsl(141, 70%, 50%)",
@@ -641,7 +692,7 @@ export const mockharvestData = [
 
   {
     country: "2016",
-    "JAN": 23366,
+    JAN: 23366,
     "hot dogColor": "hsl(87, 70%, 50%)",
     Cyuve: 47,
     CyuveColor: "hsl(141, 70%, 50%)",
@@ -684,17 +735,6 @@ export const mockharvestData = [
   //   GashakiColor: "hsl(274, 70%, 50%)",
   // },
 ];
-
-
-
-
-
-
-
-
-
-
-
 
 export const mockPieData = [
   {
@@ -784,7 +824,6 @@ export const mockLineData = [
       },
     ],
   },
-
 
   {
     id: "Temperature",
