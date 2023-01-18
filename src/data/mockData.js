@@ -1,30 +1,30 @@
 import { tokens } from "../theme";
 export let mocDataU = "hello";
 
-export const mockSubscription = [
-  {
-    "id": 1,
-    "owner": "emmanuel@gmail.com",
-    "transactionId": "efwbfuekwjnbg.weklngwelrkg97665567788",
-    "paymentMode": "BK-ACC",
-    "type": "monthly",
-    "price": 5000,
-    "currency": "Rwf",
-    "desactivationDate": "2022-02-12T18:46:06.000Z",
-    "createdAt": "2022-01-13T18:46:06.000Z",
-  },
-  {
-    "id": 2,
-    "owner": "djntivuguruzwaemmanuel@gmail.com",
-    "transactionId": "uowbfuekwjnbg.weklngwelrkg97665567788",
-    "paymentMode": "mobile money",
-    "type": "monthly",
-    "price": 5000,
-    "currency": "Rwf",
-    "desactivationDate": "2023-02-12T18:46:06.000Z",
-    "createdAt": "2023-01-13T18:46:06.000Z",
-  }
-];
+// export const mockSubscription = [
+//   {
+//     "id": 1,
+//     "owner": "emmanuel@gmail.com",
+//     "transactionId": "efwbfuekwjnbg.weklngwelrkg97665567788",
+//     "paymentMode": "BK-ACC",
+//     "type": "monthly",
+//     "price": 5000,
+//     "currency": "Rwf",
+//     "desactivationDate": "2022-02-12T18:46:06.000Z",
+//     "createdAt": "2022-01-13T18:46:06.000Z",
+//   },
+//   {
+//     "id": 2,
+//     "owner": "djntivuguruzwaemmanuel@gmail.com",
+//     "transactionId": "uowbfuekwjnbg.weklngwelrkg97665567788",
+//     "paymentMode": "mobile money",
+//     "type": "monthly",
+//     "price": 5000,
+//     "currency": "Rwf",
+//     "desactivationDate": "2023-02-12T18:46:06.000Z",
+//     "createdAt": "2023-01-13T18:46:06.000Z",
+//   }
+// ];
 
 export const mockPodcast = [
   {
