@@ -19,8 +19,11 @@ import { useState } from "react";
 import { baseUrl } from "../../data/authData";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { headers } from "../../data/authData";
+import Loader from "../../components/Loader";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const Create = () => {
+  const navigate = useNavigate();
   const [coverPreview, setCoverPreview] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [alertStatus, setAlertStatus] = useState("success");
@@ -41,12 +44,18 @@ const Create = () => {
       setMessage("Cover photo for the podcast is required");
       setShowAlert(true);
       setAlertStatus("error");
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 3000);
       return;
     }
     if (values.podcast == null) {
       setMessage(".mp3 file for the podcast is required");
       setShowAlert(true);
       setAlertStatus("error");
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 3000);
       return;
     }
     if (
@@ -57,6 +66,9 @@ const Create = () => {
       setMessage("Invalid inputs please fillout all the fields are required");
       setShowAlert(true);
       setAlertStatus("error");
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 3000);
       return;
     }
     setLoading(true);
@@ -85,17 +97,29 @@ const Create = () => {
           setTimeout(() => {
             setShowAlert(false);
           }, 3000);
+          setLoading(false);
+          setTimeout(() => {
+            navigate("/podcast");
+          }, 20);
           return;
         }
-        console.log(response);
+
         setLoading(false);
         setShowAlert(true);
+        setTimeout(() => {
+          navigate("/podcast");
+        }, 20);
+      
       })
       .catch((error) => {
         console.log(error);
         setLoading(false);
+        setMessage("Some thing went wrong please try again");
         setAlertStatus("error");
         setShowAlert(true);
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 3000);
       });
   };
   const setValue = (value, index) => {
@@ -200,7 +224,7 @@ const Create = () => {
                     onClick={submit}
                     className="flooat-left bg-[#4CCEAC] h-[5vh] rounded font-bold  w-[30%]"
                   >
-                    Create Podcast
+                    {isLoading ? <Loader /> : "Create Podcast"}
                   </button>
                 </Box>
               </Box>
