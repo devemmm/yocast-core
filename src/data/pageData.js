@@ -2,9 +2,37 @@ import slidderImage from "../asstes/images/slider-img.png";
 import scretary from "../asstes/images/s-1.jpg";
 import m1 from "../asstes/images/s-2.jpg";
 import sec2 from "../asstes/images/s-3.jpg";
+import monitor from "../asstes/images/monitor.png";
+import simile from "../asstes/images/smiley.png";
+import house from "../asstes/images/multiple-users-silhouette.png";
+import chart from "../asstes/images/bar-chart.png";
 
 // export const rightAndBackButtons =
 
+
+
+export const statistics = [
+  {
+    number: 99,
+    title: "SATISFIED CLIENTS",
+    image: simile,
+  },
+  {
+    number: 99,
+    title: "SATISFIED CLIENTS",
+    image: monitor,
+  },
+  {
+    number: 99,
+    title: "SATISFIED CLIENTS",
+    image: house,
+  },
+  {
+    number: 99,
+    title: "SATISFIED CLIENTS",
+    image: chart,
+  },
+];
 export const services = [
   {
     title: "Business consultant",
