@@ -1,7 +1,30 @@
 import slidderImage from "../asstes/images/slider-img.png";
+import scretary from "../asstes/images/s-1.jpg";
+import m1 from "../asstes/images/s-2.jpg";
+import sec2 from "../asstes/images/s-3.jpg";
 
+// export const rightAndBackButtons =
 
-// export const rightAndBackButtons = 
+export const services = [
+  {
+    title: "Business consultant",
+    description:
+      "have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are",
+    image: scretary,
+  },
+  {
+    title: "Business consultant",
+    description:
+      "have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are",
+    image: m1,
+  },
+  {
+    title: "Business consultant",
+    description:
+      "have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are",
+    image: sec2,
+  },
+];
 export const sliddingDivs = [
   {
     image: slidderImage,

@@ -70,7 +70,7 @@ body,
   right: 0;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 990px) {
   .custom_nav-container .nav_search-btn {
     background-position: center;
   }
@@ -87,27 +87,14 @@ body,
     display: none;
   }
 
-  /* .slider_img-box img {
+  .slider-img-box img {
     z-index: 1;
     position: relative;
-  } */
+  }
 
   /* .slider_img-box {
     position: relative;
   } */
-
-  .slider_img-box::before {
-    background-image: url(./asstes/images//hero-bg.png);
-    width: 100%;
-    height: 100%;
-    content: "";
-    position: absolute;
-    background-size: cover;
-    z-index: 0;
-    left: 0;
-    top: 0;
-    transform: scale(1.7);
-  }
 
   .hero_area {
     height: auto;
@@ -117,7 +104,7 @@ body,
     margin-top: 35px;
     margin-bottom: 45px;
   }
-/* 
+  /* 
   .slider_img-box {
     margin-bottom: 75px;
   } */
@@ -125,6 +112,78 @@ body,
   .slider_section .carousel_btn-container {
     display: none;
   }
+}
+
+.service_section {
+  text-align: center;
+  color: #f9fcfb;
+  background-image: url(./asstes/images/service-bg.png);
+  background-size: 100% 100%;
+  padding-top: 275px;
+  padding-bottom: 125px;
+  background-repeat: no-repeat;
+  margin-top: -150px;
+}
+
+.service_section .custom_heading-container h2 {
+  border-color: #f9fcfb;
+}
+
+.service_section .service_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.service_section .service_container .service_box {
+  width: 30%;
+  min-width: 300px;
+  margin: 35px 15px;
+}
+
+.service_section .service_container .service_box .img-box {
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.service_section .service_container .service_box .img-box img {
+  width: 100%;
+}
+
+.service_section .service_container .service_box .detail-box {
+  margin-top: 30px;
+}
+
+.service_section .service_container .service_box .detail-box h4 {
+  font-weight: bold;
+}
+
+.service_section a {
+  display: inline-block;
+  padding: 12px 40px;
+  background-color: #feb543;
+  color: #f9fcfb;
+  border-radius: 25px;
+  -webkit-box-shadow: 0px 2px 7px 0px rgba(32, 50, 117, 0.26);
+  box-shadow: 0px 2px 7px 0px rgba(32, 50, 117, 0.26);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: none;
+}
+
+.service_section a:hover {
+  -webkit-transform: translateY(-7px);
+  transform: translateY(-7px);
+}
+
+.sub_page .service_section {
+  margin-top: 00px;
+  margin-bottom: 150px;
 }
 
 @tailwind base;
