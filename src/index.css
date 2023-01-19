@@ -1,4 +1,3 @@
-
 html,
 body,
 #root,
@@ -11,7 +10,7 @@ body,
 
 .app {
   display: flex;
-  
+
   position: relative;
 }
 
@@ -33,14 +32,102 @@ body,
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-.test1{
-
-width: 100%;
-height: 100%;
-
+.test1 {
+  width: 100%;
+  height: 100%;
+}
+.service {
+  background-image: url("./asstes//images/service-bg.png");
+}
+.main {
+  /* background-image: url("./asstes//images/bghil.png"); */
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: top;
+  margin-top: -160px;
+  margin-left: -30px;
+}
+.header {
+  /* position: relative; */
+  background-color: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#864ddf),
+    to(#203376)
+  );
+  background: linear-gradient(to right, #864ddf, #203376);
+}
+.header::before {
+  content: "";
+  position: absolute;
+  width: 58%;
+  height: 86%;
+  background-image: url(./asstes/images//hero-bg.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  top: 25px;
+  right: 0;
 }
 
-  @tailwind base;
+@media (max-width: 992px) {
+  .custom_nav-container .nav_search-btn {
+    background-position: center;
+  }
+
+  .header::before {
+    display: none;
+  }
+
+  .service_section {
+    background-size: cover;
+  }
+
+  .slider_section ol.carousel-indicators {
+    display: none;
+  }
+
+  /* .slider_img-box img {
+    z-index: 1;
+    position: relative;
+  } */
+
+  /* .slider_img-box {
+    position: relative;
+  } */
+
+  .slider_img-box::before {
+    background-image: url(./asstes/images//hero-bg.png);
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    background-size: cover;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    transform: scale(1.7);
+  }
+
+  .hero_area {
+    height: auto;
+  }
+
+  .slider_detail-box {
+    margin-top: 35px;
+    margin-bottom: 45px;
+  }
+/* 
+  .slider_img-box {
+    margin-bottom: 75px;
+  } */
+
+  .slider_section .carousel_btn-container {
+    display: none;
+  }
+}
+
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
