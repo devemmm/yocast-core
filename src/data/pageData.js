@@ -7,9 +7,132 @@ import simile from "../asstes/images/smiley.png";
 import house from "../asstes/images/multiple-users-silhouette.png";
 import chart from "../asstes/images/bar-chart.png";
 
-// export const rightAndBackButtons =
+export const constacts = [
+  {
+    name: "Name",
+    type: "text",
+  },
+  {
+    name: "Phone number",
+    type: "text",
+  },
+  {
+    name: "Message",
+    type: "text",
+  },
+  {
+    name: "Email",
+    type: "email",
+  },
+  {
+    name: "Select service",
+    type: "select",
+  },
+];
+export const rightAndBackButtons = [
+  {
+    title: "Useful Link",
+    links: [
+      {
+        name: "About Us",
+        link: "/aboutus",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+    ],
+  },
+  {
+    title: "The Services",
+    links: [
+      {
+        name: "About Us",
+        link: "/aboutus",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+    ],
+  },
 
+  {
+    title: "Contact Us",
+    links: [
+      {
+        name: "About Us",
+        link: "/aboutus",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+    ],
+  },
 
+  {
+    title: "Contact Us",
+    links: [
+      {
+        name: "About Us",
+        link: "/aboutus",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+    ],
+  },
+];
 
 export const statistics = [
   {
