@@ -31,7 +31,7 @@ function Slidding() {
             {sliddingDivs[0].subtitle}
           </Typography>
           <Box className=" flex  sm:w-[] justify-center md:justify-start w-[100%]  h-[20%]">
-            <button className="bg-[#FEB543] w-[50%]  font-poppins font-sans  font-bold rounded-full p-3">
+            <button className="bg-[#FEB543] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] w-[50%]  font-poppins font-sans  font-bold rounded-full p-3">
               Read More
             </button>
           </Box>

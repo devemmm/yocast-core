@@ -56,14 +56,14 @@ const Home = () => {
             </Typography> */}
           </Box>
           <Box className="w-[100%] flex justify-center items-center ">
-            <button className="bg-[#FEB543] w-[50%] md:w-[20%]  text-white font-poppins font-sans  font-bold rounded-full p-3">
+            <button className="bg-[#FEB543] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%]   w-[50%] md:w-[20%]  text-white font-poppins font-sans  font-bold rounded-full p-3">
               Read More
             </button>
           </Box>
         </Box>
       </Box>
       {/* services */}
-      <Box className="w-[100%]  service_section ">
+      <Box className="w-[100%]  md:h-[120vh] service_section ">
         <Box className="w-[100%]  h-[100%] space-y-10 flex-col text-center flex justify-center">
           <Typography
             variant="h4"
@@ -91,6 +91,11 @@ const Home = () => {
               </Box>
             ))}
           </Box>
+          <Box className="w-[100%] flex justify-center items-center ">
+            <button className="bg-[#FEB543] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] w-[50%] md:w-[12%]  text-white font-poppins font-sans  font-bold rounded-full p-3">
+              Read More
+            </button>
+          </Box>
         </Box>
       </Box>
       {/* business problem */}
@@ -115,7 +120,7 @@ const Home = () => {
           </Typography>
         </Box>
         <Box className="w-[100%] flex justify-center items-center ">
-          <button className="bg-[#FEB543] w-[50%] md:w-[20%]  text-white font-poppins font-sans  font-bold rounded-full p-3">
+          <button className="bg-[#FEB543] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] w-[50%] md:w-[20%]  text-white font-poppins font-sans  font-bold rounded-full p-3">
             Read More
           </button>
         </Box>
@@ -261,8 +266,8 @@ const Home = () => {
                     rows="7"
                   ></textarea>
                   <Box className="flex items-center justify-center">
-                    <button className="bg-[#a053f9] w-[50%] md:w-[12%]  mt-5 text-white font-poppins font-sans  font-bold rounded p-3">
-                      Read More
+                    <button className="bg-[#a053f9] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] w-[50%] md:w-[12%]  mt-5 text-white font-poppins font-sans  font-bold rounded p-3">
+                      Send
                     </button>
                   </Box>
                 </Box>
@@ -272,7 +277,7 @@ const Home = () => {
           {/* footer */}
         </Box>
       </Box>
-      <Box className=" mt-24 md:h-[80vh] text-[0.90rem] w-full">
+      <Box className=" mt-24 md:h-[68vh] text-[0.80rem] w-full">
         <Footer />
       </Box>
     </Box>

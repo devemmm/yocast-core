@@ -27,7 +27,7 @@ function Footer() {
         >
           YOCAST
         </Typography>
-        <Box className="flex md:flex-row justify-center md:justify-start flex-wrap  space-x-[10%]">
+        <Box className="flex md:flex-row justify-center md:justify-start flex-wrap  space-x-[7%]">
           {rightAndBackButtons.map((btn, index) => (
             <Box className="flex flex-col md:my-2 my-8 space-y-5">
               <Typography
