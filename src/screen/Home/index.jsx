@@ -189,7 +189,7 @@ const Home = () => {
       <Box className=" flex-col flex items-center ">
         <Box className="h-[80%] flex justify-between flex-col space-y-10 ">
           {/* cleints reviews */}
-          <Box className=" w-[40%] h-[40%]   mx-auto justify-between flex flex-col my-24">
+          <Box className=" w-[90%] md:w-[40%] h-[20%] md:h-[40%]   mx-auto justify-between flex flex-col my-24">
             <Typography
               variant="h5"
               sx={{
@@ -212,8 +212,7 @@ const Home = () => {
                 />
                 <Typography sx={{ font: "poppins", font: "sans" }}>
                   psum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                  enim ad minim veniam, quis nostrud exercitation ullamco
+                  
                   laboris nisi ut aliquip ex ea commodo consequat. Duis aute
                   irure dolor in reprehenderit in voluptate velit esse cillum
                 </Typography>

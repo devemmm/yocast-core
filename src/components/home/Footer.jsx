@@ -22,7 +22,7 @@ function Footer() {
       <Box className=" flex flex-col space-y-20 md:w-[70%]  w-[95%] mx-auto ">
         <Typography
           sx={{ fontWeight: "bold" }}
-          className="text-white "
+          className="text-white text-[#FEB543] md:text-white  "
           variant="h4"
         >
           YOCAST
@@ -50,20 +50,20 @@ function Footer() {
             </Box>
           ))}
         </Box>
-        <Box className="flex justify-between items-center h-11">
+        <Box className="flex md:flex-row  w-[100%] sm:flex-row flex-col md:justify-between items-center  md:space-y-0 space-y-10   h-40 md:h-11">
           <Box className="flex space-x-3 items-center flex-row md:w-[40%]">
             {images.map((image, index) => (
               <img className="md:w-[7%]" src={image} alt="image" />
             ))}
           </Box>
-          <Box className="md:w-[60%]  flex items-center h-[100%] flex-row  space-x-4">
+          <Box className="md:w-[60%] md:flex-row flex-col w-[90%] space-y-4  md:space-y-0 flex items-center h-[100%] flex-row  space-x-4">
             <Typography>NEWSLETTER</Typography>
             <input
               type="text"
-              className="w-[40%] pl-2 h-[100%]"
+              className="md:w-[40%] w-[100%] focus:outline-0 pl-2 md:h-[100%] h-[8vh]"
               placeholder="Enter  Your email"
             />
-            <button className="bg-[#FEB543] h-[100%] w-[20%]  font-poppins font-sans  font-bold rounded p-3">
+            <button className="bg-[#FEB543] h-[50%] md:h-[100%] md:w-[20%]  w-[100%] font-poppins font-sans  font-bold rounded p-3">
               Read More
             </button>
           </Box>
