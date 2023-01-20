@@ -16,6 +16,7 @@ import linkedin from "../../asstes/images/linkedin1.png";
 import twiter from "../../asstes/images/twitter.png";
 import facebook from "../../asstes/images/fb.png";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
+import Navbar from "../../components/global/Navbar";
 
 const navlinks = ["Home", "About", "SERVICES", "CONTACT", "LOGIN"];
 const Home = () => {
@@ -26,28 +27,7 @@ const Home = () => {
       <Box className="h-[100vh]">
         <Box className="h-[95%] header">
           {/* Navigation bar */}
-          <Box className="flex justify-between w-[95%] mx-auto h-[9%] items-center ">
-            <Box className="text-white flex items-center  flex-row space-x-6">
-              <Typography
-                sx={{ font: "bold", fontWeight: "bold" }}
-                className="text-white font-bold"
-                variant="h5"
-              >
-                YOCAST
-              </Typography>
-              <ul className="flex flex-row  md:flex hidden space-x-10 items-center ">
-                {navlinks.map((link, index) => (
-                  <li className="hover:cursor-pointer" key={index}>
-                    {link}
-                  </li>
-                ))}
-              </ul>
-              <SearchIcon />
-            </Box>
-            <Box className="md:hidden ">
-              <MenuIcon className="text-white hidden  font-bold text-3xl" />
-            </Box>
-          </Box>
+          <Navbar />
           {/* slidding component */}
           <Slidding />
           {/* wellcome screen */}
@@ -212,7 +192,6 @@ const Home = () => {
                 />
                 <Typography sx={{ font: "poppins", font: "sans" }}>
                   psum dolor sit amet, consectetur adipiscing elit, sed do
-                  
                   laboris nisi ut aliquip ex ea commodo consequat. Duis aute
                   irure dolor in reprehenderit in voluptate velit esse cillum
                 </Typography>
@@ -293,7 +272,7 @@ const Home = () => {
           {/* footer */}
         </Box>
       </Box>
-      <Box className=" mt-24 md:h-[68vh] w-full">
+      <Box className=" mt-24 md:h-[64vh] text-[0.90rem] w-full">
         <Footer />
       </Box>
     </Box>

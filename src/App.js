@@ -19,9 +19,8 @@ import { Provider } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Store } from "./store";
-// import Login from "./auth/Login";
-// import Signup from "./auth/Signup";
-
+import Login from "./screen/auth/Login";
+import Signup from "./screen/auth/Signup";
 function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
@@ -32,10 +31,10 @@ function App() {
   });
   return (
     <Provider store={Store}>
-      {route === "/login" || route === "/signup" || route === "/" ? (
+      {route === "/auth/login" || route === "/auth/signup" || route === "/" ? (
         <Routes>
-          {/* <Route path="/login" element={<Login />} /> */}
-          {/* <Route path="/signup" element={<Signup />} /> */}
+          <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/signup" element={<Signup />} />
           <Route path="/" element={<Home />} />
         </Routes>
       ) : (

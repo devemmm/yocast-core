@@ -63,7 +63,7 @@ function Footer() {
               className="md:w-[40%] w-[100%] focus:outline-0 pl-2 md:h-[100%] h-[8vh]"
               placeholder="Enter  Your email"
             />
-            <button className="bg-[#FEB543] h-[50%] md:h-[100%] md:w-[20%]  w-[100%] font-poppins font-sans  font-bold rounded p-3">
+            <button className="bg-[#FEB543] h-[30%] md:h-[100%] md:w-[20%]  w-[100%] font-poppins font-sans  font-bold rounded p-3">
               Read More
             </button>
           </Box>
