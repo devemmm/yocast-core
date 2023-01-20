@@ -291,6 +291,31 @@ export const rightAndBackButtons = [
     ],
   },
   {
+    title: "Useful Link",
+    links: [
+      {
+        name: "About Us",
+        link: "/aboutus",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+      {
+        name: "About services",
+        link: "/services",
+      },
+    ],
+  },
+  {
     title: "The Services",
     links: [
       {

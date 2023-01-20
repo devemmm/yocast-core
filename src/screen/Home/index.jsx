@@ -272,7 +272,7 @@ const Home = () => {
           {/* footer */}
         </Box>
       </Box>
-      <Box className=" mt-24 md:h-[64vh] text-[0.90rem] w-full">
+      <Box className=" mt-24 md:h-[80vh] text-[0.90rem] w-full">
         <Footer />
       </Box>
     </Box>
