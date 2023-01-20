@@ -5,64 +5,14 @@ import { mockPodcast } from "../../data/mockData";
 import Header from "../../components/Header";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { columns } from "../../data/mockData";
 import { baseUrl, headers } from "../../data/authData";
 
 const USER = () => {
   const theme = useTheme();
   const [podcasts, setPodcasts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const colors = tokens(theme.palette.mode);
-  const columns = [
-    { field: "id", headerName: "ID", flex: 0.2 },
-    {
-      field: "ownerName",
-      headerName: "Owner",
-      flex: 0.5,
-      cellClassName: "name-column--cell",
-    },
-    {
-      field: "name",
-      headerName: "name",
-      flex: 0.5,
-      cellClassName: "name-column--cell",
-    },
-    {
-      field: "url",
-      headerName: "url",
-      flex: 1,
-      cellClassName: "name-column--cell",
-    },
-    {
-      field: "category",
-      headerName: "category",
-      flex: 0.5,
-      cellClassName: "name-column--cell",
-    },
-    {
-      field: "description",
-      headerName: "description",
-      flex: 1,
-      cellClassName: "name-column--cell",
-    },
-    {
-      field: "likes",
-      headerName: "likes",
-      flex: 0.2,
-      cellClassName: "name-column--cell",
-    },
-    {
-      field: "isFree",
-      headerName: "isFree",
-      flex: 0.1,
-      cellClassName: "name-column--cell",
-    },
-    {
-      field: "createdAt",
-      headerName: "Date uploaded",
-      flex: 0.4,
-      cellClassName: "name-column--cell",
-    },
-  ];
 
   useEffect(() => {
     axios({
@@ -71,14 +21,14 @@ const USER = () => {
       headers: headers,
     })
       .then((response) => {
-        setPodcasts(response.data.Podcast);
-        console.log(response);
+        setPodcasts(response.data.podcast);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
       });
-  });
-
+  }, [podcasts]);
   return (
     <Box m="20px">
       <Header title="Podcast" subtitle="Manage all yocast podcast here ..." />
@@ -111,7 +61,12 @@ const USER = () => {
           },
         }}
       >
-        <DataGrid checkboxSelection rows={mockPodcast} columns={columns} />
+        <DataGrid
+          loading={isLoading}
+          checkboxSelection
+          rows={podcasts}
+          columns={columns}
+        />
       </Box>
     </Box>
   );

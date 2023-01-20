@@ -20,10 +20,8 @@ import { baseUrl } from "../../data/authData";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { headers } from "../../data/authData";
 import Loader from "../../components/Loader";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const Create = () => {
-  const navigate = useNavigate();
   const [coverPreview, setCoverPreview] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [alertStatus, setAlertStatus] = useState("success");
@@ -40,7 +38,7 @@ const Create = () => {
   });
 
   const submit = () => {
-    if (values.cover == null) {
+    if (values.cover === null) {
       setMessage("Cover photo for the podcast is required");
       setShowAlert(true);
       setAlertStatus("error");
@@ -49,7 +47,7 @@ const Create = () => {
       }, 3000);
       return;
     }
-    if (values.podcast == null) {
+    if (values.podcast === null) {
       setMessage(".mp3 file for the podcast is required");
       setShowAlert(true);
       setAlertStatus("error");
@@ -89,7 +87,7 @@ const Create = () => {
         console.log(response.data);
         if (
           response.data.statusCode === 200 ||
-          response.data.statusCode == 201
+          response.data.statusCode === 201
         ) {
           setAlertStatus("success");
           setMessage("Podcast created successfully");
@@ -97,19 +95,11 @@ const Create = () => {
           setTimeout(() => {
             setShowAlert(false);
           }, 3000);
-          setLoading(false);
-          setTimeout(() => {
-            navigate("/podcast");
-          }, 20);
           return;
         }
-
+        console.log(response);
         setLoading(false);
         setShowAlert(true);
-        setTimeout(() => {
-          navigate("/podcast");
-        }, 20);
-      
       })
       .catch((error) => {
         console.log(error);
@@ -123,11 +113,11 @@ const Create = () => {
       });
   };
   const setValue = (value, index) => {
-    if (index == 0) {
+    if (index === 0) {
       setValues({ ...values, title: value });
-    } else if (index == 1) {
+    } else if (index === 1) {
       setValues({ ...values, price: value });
-    } else if (index == 2) {
+    } else if (index === 2) {
       setValues({ ...values, description: value });
     }
   };
@@ -193,11 +183,11 @@ const Create = () => {
                     {field.name === "Category" ? (
                       <Box>
                         <Select
+                          value={values.category}
                           onChange={(e) =>
                             setValues({ ...values, category: e.target.value })
                           }
                           className="w-[90%]  border mx-auto"
-                          value={1}
                         >
                           {field.options.map((option, index) => (
                             <MenuItem
