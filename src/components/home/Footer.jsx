@@ -18,8 +18,8 @@ function Footer() {
   const year = new Date().getFullYear();
   const images = [facebook, twiter, linkedin, instagram];
   return (
-    <Box className="footer text-white flex items-center justify-center ">
-      <Box className="h-[78%] flex flex-col space-y-20   bottom-0 absolute w-[70%] mx-auto ">
+    <Box className="text-white footer flex items-center h-[100%] w-full pt-[190px] md:pt-[24px] justify-center ">
+      <Box className=" flex flex-col space-y-20 md:w-[70%]  w-[95%] mx-auto ">
         <Typography
           sx={{ fontWeight: "bold" }}
           className="text-white "
@@ -29,15 +29,15 @@ function Footer() {
         </Typography>
         <Box className="flex md:flex-row flex-col  space-x-[10%]">
           {rightAndBackButtons.map((btn, index) => (
-            <Box className="flex flex-col space-y-5">
+            <Box className="flex flex-col md:my-2 my-8 space-y-5">
               <Typography
-                className="hover:border hover:border-t-0 hover:border-[#feb543]  hover:cursor-pointer hover:border-x-0"
+                className="hover:border text-center md:text-start  hover:border-t-0 hover:border-[#feb543]  hover:cursor-pointer hover:border-x-0"
                 variant="h6"
                 sx={{ font: "poppins", fontWeight: "bold" }}
               >
                 {btn.title}
               </Typography>
-              <ul className="font-poppins flex flex-col space-y-2 font-sans">
+              <ul className="font-poppins text-center md:text-start flex flex-col space-y-2 font-sans">
                 {btn.links.map((link, index) => (
                   <li
                     className="hover:cursor-pointer hover:underline hover:scale-100"
@@ -50,20 +50,20 @@ function Footer() {
             </Box>
           ))}
         </Box>
-        <Box className="flex justify-between items-center">
-          <Box className="flex space-x-3 items-center flex-row w-[40%]">
+        <Box className="flex justify-between items-center h-11">
+          <Box className="flex space-x-3 items-center flex-row md:w-[40%]">
             {images.map((image, index) => (
-              <img className="w-[7%]" src={image} alt="image" />
+              <img className="md:w-[7%]" src={image} alt="image" />
             ))}
           </Box>
-          <Box className="w-[60%] flex items-center h-[100%] flex-row justify-between">
+          <Box className="md:w-[60%]  flex items-center h-[100%] flex-row  space-x-4">
             <Typography>NEWSLETTER</Typography>
             <input
               type="text"
               className="w-[40%] pl-2 h-[100%]"
               placeholder="Enter  Your email"
             />
-            <button className="bg-[#FEB543] h-[100%] w-[40%]  font-poppins font-sans  font-bold rounded p-3">
+            <button className="bg-[#FEB543] h-[100%] w-[20%]  font-poppins font-sans  font-bold rounded p-3">
               Read More
             </button>
           </Box>

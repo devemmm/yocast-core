@@ -38,7 +38,7 @@ const Create = () => {
   });
 
   const submit = () => {
-    if (values.cover == null) {
+    if (values.cover === null) {
       setMessage("Cover photo for the podcast is required");
       setShowAlert(true);
       setAlertStatus("error");
@@ -47,7 +47,7 @@ const Create = () => {
       }, 3000);
       return;
     }
-    if (values.podcast == null) {
+    if (values.podcast === null) {
       setMessage(".mp3 file for the podcast is required");
       setShowAlert(true);
       setAlertStatus("error");
@@ -87,7 +87,7 @@ const Create = () => {
         console.log(response.data);
         if (
           response.data.statusCode === 200 ||
-          response.data.statusCode == 201
+          response.data.statusCode === 201
         ) {
           setAlertStatus("success");
           setMessage("Podcast created successfully");
@@ -113,11 +113,11 @@ const Create = () => {
       });
   };
   const setValue = (value, index) => {
-    if (index == 0) {
+    if (index === 0) {
       setValues({ ...values, title: value });
-    } else if (index == 1) {
+    } else if (index === 1) {
       setValues({ ...values, price: value });
-    } else if (index == 2) {
+    } else if (index === 2) {
       setValues({ ...values, description: value });
     }
   };

@@ -1,29 +1,11 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  IconButton,
-  Typography,
-  useTheme,
-  Alert,
-  Container,
-} from "@mui/material";
-import TextField from "@mui/material/TextField";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { Box, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-import bghil from "../../asstes/images/bghil.png";
-
 import problem from "../../asstes/images/problem.jpg";
 import { statistics } from "../../data/pageData";
-import { padding } from "@mui/system";
 import Footer from "../../components/home/Footer";
 import Slidding from "../../components/home/Slidding";
-import Wellcome from "../../components/home/Wellcome";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { constacts } from "../../data/pageData";
@@ -33,7 +15,8 @@ import instagram from "../../asstes/images/instagram1.png";
 import linkedin from "../../asstes/images/linkedin1.png";
 import twiter from "../../asstes/images/twitter.png";
 import facebook from "../../asstes/images/fb.png";
-import { rightAndBackButtons } from "../../data/pageData";
+import { ArrowBack, ArrowForward } from "@mui/icons-material";
+
 const navlinks = ["Home", "About", "SERVICES", "CONTACT", "LOGIN"];
 const Home = () => {
   const year = new Date().getFullYear();
@@ -159,12 +142,12 @@ const Home = () => {
       </Box>
 
       {/* choose us */}
-      <Box className="w-[100%] flex mt-10 why_section  p-4 md:h-[18%]">
-        <Box className="h-[96%] md:h-[80%] justify-center flex flex-col space-y-8 w-[100%]">
+      <Box className="w-[100%] py-20 flex mt-10 why_section  p-4 md:h-[18%]">
+        <Box className="h-[96%] md:h-[80%] justify-center items-center flex flex-col space-y-8 w-[100%]">
           <Typography
-            variant="h4"
-            className="text-white  underline h-[10%] mx-auto "
             sx={{ textAlign: "center" }}
+            variant="h4"
+            className="text-white  border w-fit text-center mx-auto border-x-0 border-t-0 h-[10%] mx-auto "
           >
             Why choose us
           </Typography>
@@ -177,7 +160,7 @@ const Home = () => {
                 aliqua. Ut enim ad minim veniam, quis aliqua. Ut enim ad minim
                 veniam, quis
               </p>
-              <Box className="w-[80%]  flex  flex-wrap justify-between items-center  mx-auto">
+              <Box className="w-[90%]   space-x-3 flex  flex-wrap justify-between items-center  mx-auto">
                 {statistics.map((stat, index) => (
                   <Box className="flex flex-row space-x-2 items-center">
                     <Box>
@@ -192,7 +175,7 @@ const Home = () => {
                           fontSize: "2em",
                         }}
                       >
-                        {index == 0 ? stat.number + "%" : stat.number + "+"}
+                        {index === 0 ? stat.number + "%" : stat.number + "+"}
                       </Typography>
                       <Typography className="text-3xl">{stat.title}</Typography>
                     </Box>
@@ -203,10 +186,10 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
-      <Box className="h-[100vh] flex-col flex items-center ">
+      <Box className=" flex-col flex items-center ">
         <Box className="h-[80%] flex justify-between flex-col space-y-10 ">
           {/* cleints reviews */}
-          <Box className=" w-[50%] h-[40%]  mx-auto justify-between flex flex-col space-y-4">
+          <Box className=" w-[40%] h-[40%]   mx-auto justify-between flex flex-col my-24">
             <Typography
               variant="h5"
               sx={{
@@ -219,9 +202,14 @@ const Home = () => {
             </Typography>
             <Box className="flex h-[80%] items-center justify-between flex-row items-center">
               <Box className="w-[8%] rounded flex items-center justify-center text-white  hover:bg-[#FEB545] bg-[#383a90] h-[25%]">
-                <ArrowForwardIcon sx={{ font: "bold" }} className="font-bold" />
+                <ArrowBack className="rounded-full" />
               </Box>
-              <Box className="w-[80%]  flex items-center justify-center p-3 h-[100%] border">
+              <Box className="w-[80%]  flex items-center flex-col justify-center p-3 h-[100%] border">
+                <img
+                  className="w-24 h-24 rounded-full mb-4"
+                  src={problem}
+                  alt=""
+                />
                 <Typography sx={{ font: "poppins", font: "sans" }}>
                   psum dolor sit amet, consectetur adipiscing elit, sed do
                   eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -230,8 +218,11 @@ const Home = () => {
                   irure dolor in reprehenderit in voluptate velit esse cillum
                 </Typography>
               </Box>
-              <Box className="w-[8%] rounded flex items-center justify-center text-white font-bold text-4xl hover:bg-[#FEB545] bg-[#383a90] h-[25%]">
-                <ArrowBackIcon />
+              <Box className="w-[8%] rounded flex items-center justify-center text-white font-bold text-4xl hover:bg-[#FEB545] bg-[#383a90] h-[50%]">
+                <ArrowForward
+                  className="rounded-full h-[100%]"
+                  sx={{ font: "bold" }}
+                />
               </Box>
             </Box>
           </Box>
@@ -254,26 +245,26 @@ const Home = () => {
             </p>
             <Box className="w-[70%]  h-[90%]  mx-auto">
               <form className="flex w-[100%] flex-col h-[100%]">
-                <Box className="flex  h-[100%] w-[100%] items-center justify-between flex-row">
-                  <Box className="w-[48%] flex flex-col space-y-2  h-[100%]">
+                <Box className="flex  h-[100%] w-[100%] items-center justify-between flex-col md:flex-row">
+                  <Box className="w-full md:w-[48%] flex flex-col space-y-2  h-[100%]">
                     {constacts.slice(0, 2).map((contact, index) => (
-                      <Box className="flex  h-[40%] flex-col space-y-3">
+                      <Box className="flex w-full h-[40%] flex-col space-y-3">
                         <label htmlFor={contact.name}>{contact.name}</label>
                         <input
                           placeholder={contact.name}
-                          className="h-[80%] pl-3 focus:outline-0 bg-[#f2f3f4]"
+                          className="h-12 pl-3 focus:outline-0 bg-[#f2f3f4]"
                           id={contact.name}
                           type={contact.type}
                         />
                       </Box>
                     ))}
                   </Box>
-                  <Box className="w-[50%] flex flex-col space-y-2  h-[100%]">
+                  <Box className="w-full md:w-[50%] flex flex-col space-y-2  h-[100%]">
                     {constacts.slice(2, 4).map((contact, index) => (
                       <Box className="flex  h-[40%] flex-col space-y-3">
                         <label htmlFor={contact.name}>{contact.name}</label>
                         <input
-                          className="h-[80%] pl-3 focus:outline-0 bg-[#f2f3f4]"
+                          className="h-12 pl-3 focus:outline-0 bg-[#f2f3f4]"
                           placeholder={contact.name}
                           id={contact.name}
                           type={contact.type}
@@ -282,10 +273,10 @@ const Home = () => {
                     ))}
                   </Box>
                 </Box>
-                <Box className="w-[100%] flex flex-col space-y-2  h-[41%]">
+                <Box className="w-[100%] flex flex-col space-y-2 mt-4 h-[41%]">
                   <textarea
                     placeholder="Enter the message here"
-                    className="bg-[#f2f3f4]  p-2 focus:outline-0"
+                    className="bg-[#f2f3f4] docus:outline-0  p-2 focus:outline-0"
                     name=""
                     id=""
                     cols="30"
@@ -302,6 +293,9 @@ const Home = () => {
           </Box>
           {/* footer */}
         </Box>
+      </Box>
+      <Box className=" mt-24 md:h-[68vh] w-full">
+        <Footer />
       </Box>
     </Box>
   );

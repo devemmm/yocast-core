@@ -122,7 +122,7 @@ const Home = () => {
                                 fontSize: "2em",
                               }}
                             >
-                              {index == 0
+                              {index === 0
                                 ? stat.number + "%"
                                 : stat.number + "+"}
                             </Typography>

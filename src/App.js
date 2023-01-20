@@ -19,6 +19,8 @@ import { Provider } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Store } from "./store";
+// import Login from "./auth/Login";
+// import Signup from "./auth/Signup";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -30,12 +32,11 @@ function App() {
   });
   return (
     <Provider store={Store}>
-      {route == "/login" || route == "/signup" || route === "/" ? (
+      {route === "/login" || route === "/signup" || route === "/" ? (
         <Routes>
-          <Route path="/login" element={<LoginActivity />} />
-          <Route  path="/signup" element={<LoginActivity />}/>
+          {/* <Route path="/login" element={<Login />} /> */}
+          {/* <Route path="/signup" element={<Signup />} /> */}
           <Route path="/" element={<Home />} />
-
         </Routes>
       ) : (
         <ColorModeContext.Provider value={colorMode}>

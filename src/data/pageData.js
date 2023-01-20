@@ -106,32 +106,6 @@ export const rightAndBackButtons = [
       },
     ],
   },
-
-  {
-    title: "Contact Us",
-    links: [
-      {
-        name: "About Us",
-        link: "/aboutus",
-      },
-      {
-        name: "About services",
-        link: "/services",
-      },
-      {
-        name: "About services",
-        link: "/services",
-      },
-      {
-        name: "About services",
-        link: "/services",
-      },
-      {
-        name: "About services",
-        link: "/services",
-      },
-    ],
-  },
 ];
 
 export const statistics = [
