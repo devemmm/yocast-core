@@ -27,17 +27,17 @@ function Footer() {
         >
           YOCAST
         </Typography>
-        <Box className="flex md:flex-row flex-col  space-x-[10%]">
+        <Box className="flex md:flex-row justify-center md:justify-start flex-wrap  space-x-[10%]">
           {rightAndBackButtons.map((btn, index) => (
             <Box className="flex flex-col md:my-2 my-8 space-y-5">
               <Typography
-                className="hover:border text-center md:text-start  hover:border-t-0 hover:border-[#feb543]  hover:cursor-pointer hover:border-x-0"
+                className="hover:border   hover:border-t-0 hover:border-[#feb543]  hover:cursor-pointer hover:border-x-0"
                 variant="h6"
                 sx={{ font: "poppins", fontWeight: "bold" }}
               >
                 {btn.title}
               </Typography>
-              <ul className="font-poppins text-center md:text-start flex flex-col space-y-2 font-sans">
+              <ul className="font-poppins  flex flex-col space-y-2 font-sans">
                 {btn.links.map((link, index) => (
                   <li
                     className="hover:cursor-pointer hover:underline hover:scale-100"
