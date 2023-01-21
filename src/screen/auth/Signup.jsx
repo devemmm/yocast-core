@@ -18,7 +18,12 @@ import { BsFacebook } from "react-icons/bs";
 import Navbar from "../../components/global/Navbar";
 import Form from "../../components/aut/Form";
 
+
+
 function Signup() {
+
+
+  
   return (
     <Box className="h-screen">
       <Box className="h-[7%] flex items-center w-[100%] nav">
@@ -50,7 +55,7 @@ function Signup() {
                     </p>
                   </Box>
                   <Box className="w-[100%] flex justify-center items-center ">
-                    <button className="bg-[#FEB543] w-[50%] md:w-[50%]   text-white font-poppins font-sans  font-bold rounded-full p-3">
+                    <button className="bg-[#FEB543] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%]   w-[50%] md:w-[50%]   text-white font-poppins font-sans  font-bold rounded-full p-3">
                       Read More
                     </button>
                   </Box>

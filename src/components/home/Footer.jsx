@@ -29,7 +29,7 @@ function Footer() {
         </Typography>
         <Box className="flex md:flex-row justify-center md:justify-start flex-wrap  space-x-[7%]">
           {rightAndBackButtons.map((btn, index) => (
-            <Box className="flex flex-col md:my-2 my-8 space-y-5">
+            <Box key={index} className="flex flex-col md:my-2 my-8 space-y-5">
               <Typography
                 className="hover:border   hover:border-t-0 hover:border-[#feb543]  hover:cursor-pointer hover:border-x-0"
                 variant="h6"
@@ -53,7 +53,7 @@ function Footer() {
         <Box className="flex md:flex-row  w-[100%] sm:flex-row flex-col md:justify-between items-center  md:space-y-0 space-y-10   h-40 md:h-11">
           <Box className="flex space-x-3 items-center flex-row md:w-[40%]">
             {images.map((image, index) => (
-              <img className="md:w-[7%]" src={image} alt="image" />
+              <img key={index} className="md:w-[7%]" src={image} alt="image" />
             ))}
           </Box>
           <Box className="md:w-[60%] md:flex-row flex-col w-[90%] space-y-4  md:space-y-0 flex items-center h-[100%] flex-row  space-x-4">

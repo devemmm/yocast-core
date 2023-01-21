@@ -25,7 +25,11 @@ function Navbar() {
         </Typography>
         <ul className="flex flex-row  md:flex hidden space-x-10 items-center ">
           {navlinks.map((link, index) => (
-            <Link to={`${link.link}`} className="hover:cursor-pointer">
+            <Link
+              key={index}
+              to={`${link.link}`}
+              className="hover:cursor-pointer"
+            >
               <li className="hover:cursor-pointer" key={index}>
                 {link.name}
               </li>

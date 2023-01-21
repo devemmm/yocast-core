@@ -56,7 +56,7 @@ const Home = () => {
             </Typography> */}
           </Box>
           <Box className="w-[100%] flex justify-center items-center ">
-            <button className="bg-[#FEB543] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%]   w-[50%] md:w-[20%]  text-white font-poppins font-sans  font-bold rounded-full p-3">
+            <button className="bg-[#FEB543] max-[234px]:w-[100%] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%]   w-[50%] md:w-[20%]  text-white font-poppins font-sans  font-bold rounded-full p-3">
               Read More
             </button>
           </Box>
@@ -65,14 +65,16 @@ const Home = () => {
       {/* services */}
       <Box className="w-[100%]  md:h-[120vh] service_section ">
         <Box className="w-[100%]  h-[100%] space-y-10 flex-col text-center flex justify-center">
-          <Typography
-            variant="h4"
-            className=" underline h-[10%] mx-auto "
-            sx={{ fontWeight: "bold", textAlign: "center" }}
-          >
-            Our Services
-          </Typography>
-          <Box className="flex  h-[70%] justify-between  flex-col space-y-4 md:space-y-0  md:flex-row md:w-[67%] w-[95%]  mx-auto">
+          <Box className="flex w-[100%] items-end text-[#FBB543] md:text-white sm:text-white lg:text-white xl:text-white justify-end sm:justify-center sm:items-center">
+            <Typography
+              variant="h4"
+              className="  underline h-[10%] mx-auto "
+              sx={{ fontWeight: "bold", textAlign: "center" }}
+            >
+              Our Services
+            </Typography>
+          </Box>
+          <Box className="flex  sm:space-x-5 h-[70%]   justify-center items-center sm:justify-between   flex-col space-y-4 md:space-y-0  md:flex-row md:w-[67%] sm:w-[100%] w-[95%]  mx-auto">
             {services.map((service, index) => (
               <Box className="">
                 <img className="rounded-xl" src={service.image} />
@@ -92,7 +94,7 @@ const Home = () => {
             ))}
           </Box>
           <Box className="w-[100%] flex justify-center items-center ">
-            <button className="bg-[#FEB543] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] w-[50%] md:w-[12%]  text-white font-poppins font-sans  font-bold rounded-full p-3">
+            <button className="bg-[#FEB543] max-[234px]:w-[90%] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] md:w-[25%]  sm:w-[30%] w-[50%] lg:w-[12%]   text-white font-poppins font-sans  font-bold rounded-full p-3">
               Read More
             </button>
           </Box>
@@ -120,7 +122,7 @@ const Home = () => {
           </Typography>
         </Box>
         <Box className="w-[100%] flex justify-center items-center ">
-          <button className="bg-[#FEB543] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] w-[50%] md:w-[20%]  text-white font-poppins font-sans  font-bold rounded-full p-3">
+          <button className="bg-[#FEB543] max-[234px]:w-[90%] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] md:w-[40%]  sm:w-[30%] w-[50%] lg:w-[24%]  text-white font-poppins font-sans  font-bold rounded-full p-3">
             Read More
           </button>
         </Box>

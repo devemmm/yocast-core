@@ -20,7 +20,7 @@ import LoginForm from "../../components/aut/LoginForm";
 function Login() {
   return (
     <Box className="h-screen">
-      <Box className="h-[7%] flex items-center w-[100%] nav">
+      <Box className="h-[7%]   flex items-center w-[100%] nav">
         <Navbar />
       </Box>
       <Box className="h-[80%]  flex items-center flex-col justify-center ">
@@ -49,7 +49,7 @@ function Login() {
                     </p>
                   </Box>
                   <Box className="w-[100%] flex justify-center items-center ">
-                    <button className="bg-[#FEB543] w-[50%] md:w-[50%]   text-white font-poppins font-sans  font-bold rounded-full p-3">
+                    <button className="bg-[#FEB543]   transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%]  w-[50%] md:w-[50%]   text-white font-poppins font-sans  font-bold rounded-full p-3">
                       Read More
                     </button>
                   </Box>

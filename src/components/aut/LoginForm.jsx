@@ -20,16 +20,105 @@ import ios from "../../asstes/images/android.png";
 import android from "../../asstes/images/ios.png";
 import { loginInputs } from "../../data/pageData";
 import { Link } from "react-router-dom";
+import { baseUrl, headers } from "../../data/authData";
+import axios from "axios";
+import ErrorAlert from "../helpers/ErrorAlert";
+import SuccessAlert from "../helpers/SuccessAlert";
+import { useSelector } from "react-redux";
+import { setShowAlert } from "../../features/pageSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 function LoginForm() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [loggedInSuccessfully, setLoggedInSuccessfully] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState(false);
+
   const [values, setValues] = useState({
     email: "",
     password: "",
-    country: "",
   });
+
+  const showAlerts = useSelector((store) => store.page.showAlert);
+  const login = (e) => {
+    e.preventDefault();
+    if (values.email == "") {
+      setMessage("Email is required");
+      dispatch(setShowAlert(true));
+      setLoggedInSuccessfully(true);
+      setTimeout(() => {
+        dispatch(setShowAlert(false));
+      }, 100);
+    } else if (values.password == "") {
+      setMessage("Password is required");
+      dispatch(setShowAlert(true));
+      setLoggedInSuccessfully(true);
+      setTimeout(() => {
+        dispatch(setShowAlert(false));
+      }, 100);
+    } else {
+      axios({
+        method: "POST",
+        url: baseUrl + "/signin",
+        data: {
+          email: values.email,
+          password: values.password,
+        },
+      })
+        .then((response) => {
+          console.log(response.data);
+          localStorage.setItem(
+            "loggedInUser",
+            JSON.stringify(response.data.user)
+          );
+          if (response.data.statusCode == 200) {
+            setMessage("You loggedIn successfully");
+            dispatch(setShowAlert(true));
+            setLoggedInSuccessfully(true);
+            setTimeout(() => {
+              dispatch(setShowAlert(false));
+            }, 500);
+            navigate("/dashboard");
+            return;
+          }
+          setMessage("Some thing went wrong");
+          dispatch(setShowAlert(true));
+          setLoggedInSuccessfully(true);
+          setTimeout(() => {
+            dispatch(setShowAlert(false));
+          }, 500);
+        })
+        .catch((error) => {
+          console.log(error.response.data.error);
+          if (error.response.data.error === 500) {
+            setMessage("Some thing went wrong! try again please");
+            dispatch(setShowAlert(true));
+            setTimeout(() => {
+              dispatch(setShowAlert(false));
+            }, 100);
+            return;
+          }
+          setMessage("Invalid email or password");
+          dispatch(setShowAlert(true));
+          setTimeout(() => {
+            dispatch(setShowAlert(false));
+          }, 100);
+        });
+    }
+  };
+
+  const initializeValues = (index, value) => {
+    if (index == 0) {
+      setValues({ ...values, email: value });
+    } else {
+      setValues({ ...values, password: value });
+    }
+  };
   return (
-    <Box className="md:w-[60%]  md:border-0  bg-white border border-x-0 border-b-0  w-[97%] flex items-center  h-[100%]   ">
+    <Box className="md:w-[60%]  md:border-0  bg-white border border-x-0 border-b-0   w-[97%] flex items-center  h-[100%]   ">
       <Box className="h-[90%] pt-4 w-[100%] md:w-[80%] mx-auto  shadow-2xl">
-        <Box className="w-[100%] h-[18%] flex flex-col justfy-center items-center">
+        <Box className="w-[100%]  h-[18%] flex flex-col justfy-center items-center">
           <Typography
             variant="h6"
             className="text-[0.80rem] font-poppins"
@@ -42,15 +131,35 @@ function LoginForm() {
             YOCAST
           </Typography>
           <Typography>Wellcome back!</Typography>
-          <p className="text-[0.80rem] font-poppins font-sans">
-            Sign in to your account and manage your podcasts
-          </p>
+          {!showAlerts ? (
+            <p className="text-[0.80rem] font-poppins font-sans">
+              Sign in to your account and manage your podcasts
+            </p>
+          ) : loggedInSuccessfully ? (
+            <SuccessAlert
+              sx={{ width: "w-[100%]" }}
+              className="w-[100%]"
+              message={message}
+              status={"success"}
+            />
+          ) : (
+            <ErrorAlert
+              sx={{ width: "w-[100%]" }}
+              className="w-[100%]"
+              message={message}
+              status={"error"}
+            />
+          )}
         </Box>
         <Box className="h-[98%] flex flex-col ">
-          <form className="w-[90%] flex flex-col space-y-3 mx-auto">
+          <form
+            onSubmit={login}
+            className="w-[90%] flex flex-col space-y-3 mx-auto"
+          >
             {loginInputs.map((input, index) => (
-              <Box className="w-[100%] ">
+              <Box key={index} className="w-[100%] ">
                 <TextField
+                  onChange={(e) => initializeValues(index, e.target.value)}
                   type={input.type}
                   className="w-[100%]"
                   variant="outlined"
@@ -59,22 +168,15 @@ function LoginForm() {
                 />
               </Box>
             ))}
-            <Box className="h-[5vh]">
-              <Button
-                className="text-center"
-                sx={{
-                  textAlign: "center",
-                  width: "100%",
-                  backgroundColor: "#1F60F0",
-                  color: "white",
-                  height: "100%",
-                  font: "bold",
-                }}
+            <Box className="h-[5vh] ">
+              <button
+                type="submit"
+                className="text-center hover:bg-[#1F60F0]  w-[100%] bg-[#1F60F0] h-[100%] font-bold font-poppins text-white rounded font-sans"
               >
                 Login
-              </Button>
+              </button>
             </Box>
-            <Box className="w-[100%] mt-4 items-center text-center  flex space-y-4">
+            <Box className="w-[100%]   mt-4 items-center text-center  flex space-y-4">
               <Box className="w-[40%] translate-y-2 md:block hidden   border border-x-0 border-t-0 "></Box>
               <Box className=" w-[100%] md:w-[20%]">
                 <Typography variant="p">Login with</Typography>
