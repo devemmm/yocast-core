@@ -130,18 +130,18 @@ const Create = () => {
         />
         {showAlert ? <Alert severity={alertStatus}>{message}</Alert> : null}
       </Box>
-      <Container className="items-center  flex h-[80%]">
-        <Box className="h-[70%] shadow-3xl border border-x-0 border-b-0 p-2 ">
+      <Container className="items-center  md:flex-row flex-col flex h-[80%]">
+        <Box className="h-[100%] shadow-3xl border border-x-0 border-b-0 p-2 ">
           <Typography className="text-center  h-[10%] p-4">
             create your podcast
           </Typography>
           <FormControl
             onSubmit={(e) => e.preventDefault()}
-            className="w-[95%]  mx-auto  h-[90%]"
+            className="w-[95%]  mx-auto  h-[100%]"
           >
-            <Box className="w-[100%]  h-[100%] flex flex-row justify-between ">
-              <Box classNAme="w-[50%] flex flex-col h-[100%]">
-                <Box className="w-[24vw] border-[3.6px] border-[#212529]  border-dashed border h-[32%] flex items-center justify-center mx-auto">
+            <Box className="w-[100%]  h-[100%] md:max-[1074px]:flex-col flex-col md:space-y-0 space-y-5 flex md:flex-row justify-between ">
+              <Box classNAme="md:w-[50%]  w-[95%] flex flex-col h-[100%]">
+                <Box className="md:w-[24vw] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh] w-[100%] border-[3.6px] border-[#212529]  border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto">
                   <input
                     onChange={(e) =>
                       setValues({ ...values, podcast: e.target.files[0] })
@@ -157,7 +157,7 @@ const Create = () => {
                     <CloudUploadIcon className="text-center " />
                   </Box>
                 </Box>
-                <Box className="w-[24vw] mt-5 border-[3.6px] border-[#212529] border-dashed border h-[32%] flex items-center justify-center mx-auto">
+                <Box className=" w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[3.6px] border-[#212529] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto">
                   <input
                     onChange={(e) =>
                       setValues({ ...values, cover: e.target.files[0] })
@@ -177,7 +177,7 @@ const Create = () => {
                   <p>sdfsdf</p>
                 </Box> */}
               </Box>
-              <Box className="w-[50%] flex flex-col space-y-4 h-[100%]">
+              <Box className=" md:max-[1074px]:w-[70%]  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[50%] flex mx-auto flex-col space-y-4 h-[100%]">
                 {podcastFields.map((field, index) => (
                   <Box key={index}>
                     {field.name === "Category" ? (
@@ -187,7 +187,7 @@ const Create = () => {
                           onChange={(e) =>
                             setValues({ ...values, category: e.target.value })
                           }
-                          className="w-[90%]  border mx-auto"
+                          className="md:w-[90%] md:max-[1074px]:w-[100%] w-[99.5%]  border mx-auto"
                         >
                           {field.options.map((option, index) => (
                             <MenuItem
@@ -203,16 +203,16 @@ const Create = () => {
                       <TextField
                         onChange={(e) => setValue(e.target.value, index)}
                         variant="outlined"
-                        className="border w-[90%] mx-auto bg-[#1F2A40]"
+                        className="border  md:max-[1074px]:w-[100%]  w-[100%] md:w-[90%] mx-auto bg-[#1F2A40]"
                         label={field.name}
                       />
                     )}
                   </Box>
                 ))}
-                <Box className="w-[80%] mx-auto flex justify-end">
+                <Box className="md:w-[80%]  md:max-[1074px]:w-[100%] md:max-[1074px]:w-[99.5%] w-[99.5%] mx-auto flex justify-end">
                   <button
                     onClick={submit}
-                    className="flooat-left bg-[#4CCEAC] h-[5vh] rounded font-bold  w-[30%]"
+                    className="float-left   bg-[#4CCEAC] h-[5vh] rounded font-bold  md:max-[1074px]:w-[100%]  w-[100%] md:w-[30%]"
                   >
                     {isLoading ? <Loader /> : "Create Podcast"}
                   </button>

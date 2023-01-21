@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockPodcast } from "../../data/mockData";
@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { columns } from "../../data/mockData";
 import { baseUrl, headers } from "../../data/authData";
+import { BsEarbuds, BsTrash } from "react-icons/bs";
+import { BiPencil } from "react-icons/bi";
 
 const USER = () => {
   const theme = useTheme();
@@ -29,9 +31,17 @@ const USER = () => {
         setLoading(false);
       });
   }, [podcasts]);
+
+  const clicked = () => {
+    console.log(clicked);
+  };
   return (
     <Box m="20px">
-      <Header title="Podcast" subtitle="Manage all yocast podcast here ..." />
+      <Header
+        podcast={false}
+        title="Podcast"
+        subtitle="Manage all yocast podcast here ..."
+      />
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -62,6 +72,9 @@ const USER = () => {
         }}
       >
         <DataGrid
+          onRowClick={(rows) => {
+            console.log(rows.row.url);
+          }}
           loading={isLoading}
           checkboxSelection
           rows={podcasts}
