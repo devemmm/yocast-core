@@ -1,4 +1,4 @@
-export const baseUrl = "https://yocast.rw";
+export const baseUrl = "https://api.yocast.rw";
 const user = JSON.parse(localStorage.getItem("loggedInUser"));
 export const headers = {
   Authorization: `Bearer ${user.token.token}`,
