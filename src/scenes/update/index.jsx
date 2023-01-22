@@ -21,12 +21,20 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { headers } from "../../data/authData";
 import Loader from "../../components/Loader";
 import axios from "axios";
-const Create = () => {
-  const [coverPreview, setCoverPreview] = useState("");
-  const [isLoading, setLoading] = useState(false);
-  const [alertStatus, setAlertStatus] = useState("success");
-  const [message, setMessage] = useState("");
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+const UpdateForm = () => {
+  const theme = useTheme();
+  const dispatch = useDispatch();
   const [showAlert, setShowAlert] = useState(false);
+  const [status, setStatus] = useState("error");
+  const [message, setMessage] = useState("");
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  const [showBackdrop, setShowBackkDrop] = useState(false);
+  const [podcasts, setPodcasts] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+
+  const [coverPreview, setCoverPreview] = useState("");
   const [previewCoverImage, setPreviewCoverImage] = useState();
   const [values, setValues] = useState({
     title: "",
@@ -37,11 +45,13 @@ const Create = () => {
     podcast: null,
   });
 
+  const selectedPodcast = useSelector((store) => store.podcast.selectedPodcast);
+  console.log(selectedPodcast);
   const submit = () => {
     if (values.cover === null) {
       setMessage("Cover photo for the podcast is required");
       setShowAlert(true);
-      setAlertStatus("error");
+      setStatus("error");
       setTimeout(() => {
         setShowAlert(false);
       }, 3000);
@@ -50,10 +60,11 @@ const Create = () => {
     if (values.podcast === null) {
       setMessage(".mp3 file for the podcast is required");
       setShowAlert(true);
-      setAlertStatus("error");
+      setStatus("error");
       setTimeout(() => {
         setShowAlert(false);
       }, 3000);
+
       return;
     }
     if (
@@ -63,7 +74,7 @@ const Create = () => {
     ) {
       setMessage("Invalid inputs please fillout all the fields are required");
       setShowAlert(true);
-      setAlertStatus("error");
+      setStatus("error");
       setTimeout(() => {
         setShowAlert(false);
       }, 3000);
@@ -77,9 +88,10 @@ const Create = () => {
     formData.append("description", values.description);
     formData.append("category", values.category);
     formData.append("price", values.price);
+
     axios({
-      method: "POST",
-      url: baseUrl + "/admin/podcast",
+      method: "PATCH",
+      url: baseUrl + `/admin/podcast/${selectedPodcast.id}`,
       data: formData,
       headers: headers,
     })
@@ -89,12 +101,13 @@ const Create = () => {
           response.data.statusCode === 200 ||
           response.data.statusCode === 201
         ) {
-          setAlertStatus("success");
-          setMessage("Podcast created successfully");
+          setStatus("success");
+          setMessage("Podcast updated successfully");
           setShowAlert(true);
           setTimeout(() => {
             setShowAlert(false);
           }, 3000);
+          setLoading(false);
           return;
         }
         console.log(response);
@@ -105,11 +118,12 @@ const Create = () => {
         console.log(error);
         setLoading(false);
         setMessage("Some thing went wrong please try again");
-        setAlertStatus("error");
+        setStatus("error");
         setShowAlert(true);
         setTimeout(() => {
           setShowAlert(false);
         }, 3000);
+        
       });
   };
   const setValue = (value, index) => {
@@ -121,19 +135,35 @@ const Create = () => {
       setValues({ ...values, description: value });
     }
   };
+
+  const getValue = (index) => {
+    if (index === 0) {
+      return selectedPodcast.name;
+    } else if (index === 1) {
+      return selectedPodcast.price;
+    } else if (index === 2) {
+      return selectedPodcast.description;
+    } else {
+      return 4;
+    }
+  };
   return (
     <Box className="h-[93%]">
       <Box className="flex h-[20%] justify-between w-[90%] mx-auto items-center">
         <Header
-          title={"Create Podcast"}
-          subtitle="Create podcsts for your users"
+          title={"Update Podcast"}
+          subtitle="Update Podcast  for your users"
         />
-        {showAlert ? <Alert severity={alertStatus}>{message}</Alert> : null}
+        {showAlert ? (
+          <Alert className="w-[60%] mx-auto" severity={status}>
+            {message}
+          </Alert>
+        ) : null}
       </Box>
       <Container className="items-center  md:flex-row flex-col flex h-[80%]">
         <Box className="h-[100%] shadow-3xl border border-x-0 border-b-0 p-2 ">
           <Typography className="text-center  h-[10%] p-4">
-            create your podcast
+            Update your podcast
           </Typography>
           <FormControl
             onSubmit={(e) => e.preventDefault()}
@@ -183,6 +213,7 @@ const Create = () => {
                     {field.name === "Category" ? (
                       <Box>
                         <Select
+                          defaultValue={selectedPodcast.category}
                           value={values.category}
                           onChange={(e) =>
                             setValues({ ...values, category: e.target.value })
@@ -201,6 +232,8 @@ const Create = () => {
                       </Box>
                     ) : (
                       <TextField
+                        key={index}
+                        defaultValue={getValue(index)}
                         onChange={(e) => setValue(e.target.value, index)}
                         variant="outlined"
                         className="border  md:max-[1074px]:w-[100%]  w-[100%] md:w-[90%] mx-auto bg-[#1F2A40]"
@@ -214,7 +247,7 @@ const Create = () => {
                     onClick={submit}
                     className="float-left   bg-[#4CCEAC] h-[5vh] rounded font-bold  md:max-[1074px]:w-[100%]  w-[100%] md:w-[30%]"
                   >
-                    {isLoading ? <Loader /> : "Create Podcast"}
+                    {isLoading ? <Loader /> : "Update Podcast"}
                   </button>
                 </Box>
               </Box>
@@ -225,4 +258,4 @@ const Create = () => {
     </Box>
   );
 };
-export default Create;
+export default UpdateForm;

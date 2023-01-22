@@ -21,6 +21,7 @@ import { useEffect, useState } from "react";
 import { Store } from "./store";
 import Login from "./screen/auth/Login";
 import Signup from "./screen/auth/Signup";
+import UpdateForm from "./scenes/update";
 function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
@@ -46,6 +47,7 @@ function App() {
               <main className="content">
                 <Topbar setIsSidebar={setIsSidebar} />
                 <Routes>
+                  
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/USER" element={<USER />} />
                   <Route path="/USER" element={<USER />} />
@@ -57,6 +59,7 @@ function App() {
                   <Route path="/podcast" element={<Podcast />} />
                   <Route path="/subscription" element={<Subscription />} />
                   <Route path="/geography" element={<Geography />} />
+                  <Route  path="/update/" element={<UpdateForm />}/>
                 </Routes>
               </main>
             </div>

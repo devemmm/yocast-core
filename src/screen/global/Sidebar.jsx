@@ -40,6 +40,7 @@ const Sidebar = () => {
 
   return (
     <Box
+      className="hidden md:block  bottom-0"
       sx={{
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,

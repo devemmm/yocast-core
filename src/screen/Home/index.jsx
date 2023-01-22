@@ -18,21 +18,35 @@ import facebook from "../../asstes/images/fb.png";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import Navbar from "../../components/global/Navbar";
 
+
 const navlinks = ["Home", "About", "SERVICES", "CONTACT", "LOGIN"];
 const Home = () => {
   const year = new Date().getFullYear();
   const images = [facebook, twiter, linkedin, instagram];
+
+  const next = () => {
+    const slidder = document.getElementById("hello").offsetWidth;
+    console.log(slidder);
+    document
+      .getElementById("main")
+      .classList.add("translate-x-[" + slidder + "px]");
+    // .classList.add("translate-x-[" + slidder.offsetWidth + "px]");
+  };
   return (
     <Box>
       <Box className="h-[100vh]">
         <Box className="h-[95%] header">
           {/* Navigation bar */}
+          <Box>
           <Navbar />
+
+          </Box>
           {/* slidding component */}
           <Slidding />
           {/* wellcome screen */}
         </Box>
       </Box>
+
       {/* wellcome  */}
       <Box className="h-[70vh]">
         <Box className=" items-center mt-6 flex flex-col space-y-10 w-[90%] md:w-[50%] mx-auto ">
@@ -56,23 +70,25 @@ const Home = () => {
             </Typography> */}
           </Box>
           <Box className="w-[100%] flex justify-center items-center ">
-            <button className="bg-[#FEB543] w-[50%] md:w-[20%]  text-white font-poppins font-sans  font-bold rounded-full p-3">
+            <button className="bg-[#FEB543] max-[234px]:w-[100%] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%]   w-[50%] md:w-[20%]  text-white font-poppins font-sans  font-bold rounded-full p-3">
               Read More
             </button>
           </Box>
         </Box>
       </Box>
       {/* services */}
-      <Box className="w-[100%]  service_section ">
-        <Box className="w-[100%]  h-[100%] space-y-10 flex-col text-center flex justify-center">
-          <Typography
-            variant="h4"
-            className=" underline h-[10%] mx-auto "
-            sx={{ fontWeight: "bold", textAlign: "center" }}
-          >
-            Our Services
-          </Typography>
-          <Box className="flex  h-[70%] justify-between  flex-col space-y-4 md:space-y-0  md:flex-row md:w-[67%] w-[95%]  mx-auto">
+      <Box className="w-[100%]  md:h-[120vh] service_section ">
+        <Box className="w-[100%]  h-[100%] space-y-20 flex-col text-center flex justify-center">
+          <Box className="flex w-[100%] items-end text-[#FBB543] md:text-white sm:text-white lg:text-white xl:text-white justify-end sm:justify-center sm:items-center">
+            <Typography
+              variant="h4"
+              className="  underline  mx-auto "
+              sx={{ fontWeight: "bold", textAlign: "center" }}
+            >
+              Our Services
+            </Typography>
+          </Box>
+          <Box className="flex  sm:space-x-5 h-[70%]   justify-center items-center sm:justify-between   flex-col space-y-4 md:space-y-0  md:flex-row md:w-[67%] sm:w-[100%] w-[95%]  mx-auto">
             {services.map((service, index) => (
               <Box className="">
                 <img className="rounded-xl" src={service.image} />
@@ -90,6 +106,11 @@ const Home = () => {
                 </Box>
               </Box>
             ))}
+          </Box>
+          <Box className="w-[100%] flex justify-center items-center ">
+            <button className="bg-[#FEB543] max-[234px]:w-[90%] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] md:w-[25%]  sm:w-[30%] w-[50%] lg:w-[12%]   text-white font-poppins font-sans  font-bold rounded-full p-3">
+              Read More
+            </button>
           </Box>
         </Box>
       </Box>
@@ -115,7 +136,7 @@ const Home = () => {
           </Typography>
         </Box>
         <Box className="w-[100%] flex justify-center items-center ">
-          <button className="bg-[#FEB543] w-[50%] md:w-[20%]  text-white font-poppins font-sans  font-bold rounded-full p-3">
+          <button className="bg-[#FEB543] max-[234px]:w-[90%] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] md:w-[40%]  sm:w-[30%] w-[50%] lg:w-[24%]  text-white font-poppins font-sans  font-bold rounded-full p-3">
             Read More
           </button>
         </Box>
@@ -131,8 +152,8 @@ const Home = () => {
           >
             Why choose us
           </Typography>
-          <Box className="flex flex-col  pace-y-8">
-            <Box className="w-[60%] mt-9 flex flex-col space-y-5  mx-auto">
+          <Box className="flex flex-col  pace-y-4">
+            <Box className="w-[60%] mt-3 flex flex-col space-y-3  mx-auto">
               <p className="text-center font-poppins font-sans   mx-auto font-poppins">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -140,7 +161,7 @@ const Home = () => {
                 aliqua. Ut enim ad minim veniam, quis aliqua. Ut enim ad minim
                 veniam, quis
               </p>
-              <Box className="w-[90%]   space-x-3 flex  flex-wrap justify-between items-center  mx-auto">
+              <Box className="w-[90%]   md:flex-nowrap space-x-3 flex  flex-wrap justify-between items-center  mx-auto">
                 {statistics.map((stat, index) => (
                   <Box className="flex flex-row space-x-2 items-center">
                     <Box>
@@ -180,8 +201,13 @@ const Home = () => {
             >
               What Our Clients Says
             </Typography>
+
             <Box className="flex h-[80%] items-center justify-between flex-row items-center">
-              <Box className="w-[8%] rounded flex items-center justify-center text-white  hover:bg-[#FEB545] bg-[#383a90] h-[25%]">
+              <Box
+                id="hello"
+                onClick={next}
+                className="w-[8%] rounded flex items-center justify-center text-white  hover:bg-[#FEB545] bg-[#383a90] h-[25%]"
+              >
                 <ArrowBack className="rounded-full" />
               </Box>
               <Box className="w-[80%]  flex items-center flex-col justify-center p-3 h-[100%] border">
@@ -261,8 +287,8 @@ const Home = () => {
                     rows="7"
                   ></textarea>
                   <Box className="flex items-center justify-center">
-                    <button className="bg-[#a053f9] w-[50%] md:w-[12%]  mt-5 text-white font-poppins font-sans  font-bold rounded p-3">
-                      Read More
+                    <button className="bg-[#a053f9] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] w-[50%] md:w-[12%]  mt-5 text-white font-poppins font-sans  font-bold rounded p-3">
+                      Send
                     </button>
                   </Box>
                 </Box>
@@ -272,7 +298,7 @@ const Home = () => {
           {/* footer */}
         </Box>
       </Box>
-      <Box className=" mt-24 md:h-[80vh] text-[0.90rem] w-full">
+      <Box className=" mt-24 md:h-[75vh] text-[0.70rem] w-full">
         <Footer />
       </Box>
     </Box>
