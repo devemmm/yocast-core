@@ -125,7 +125,7 @@ function Form() {
     }
   };
   return (
-    <Box className="md:w-[60%] bg-white border border-x-0 border-b-0  w-[97%] flex items-center  h-[100%]   ">
+    <Box className="md:w-[45%] bg-white border border-x-0 border-b-0  w-[97%] flex items-center  h-[100%]   ">
       <Box className="h-[96%] pt-4 w-[100%] md:w-[80%] mx-auto  shadow-2xl">
         <Box className="w-[100%] h-[18%] flex flex-col justfy-center items-center">
           <Typography
@@ -209,11 +209,13 @@ function Form() {
               </button>
             </Box>
             <Box className="w-[100%] mt-4 items-center text-center  flex space-y-4">
-              <Box className="w-[40%] translate-y-2 md:block hidden   border border-x-0 border-t-0 "></Box>
-              <Box className=" w-[100%] md:w-[20%]">
-                <Typography variant="p">Signup with</Typography>
+              <Box className="w-[38%] translate-y-2 md:block hidden   border border-x-0 border-t-0 "></Box>
+              <Box className=" w-[100%] md:w-[30%]">
+                <p className="w-[100%] font-poppins font-sans text-[0.80rem]">
+                  Signup with
+                </p>
               </Box>
-              <Box className="border w-[40%]  md:block hidden  border-x-0 border-t-0"></Box>
+              <Box className="border w-[38%]  md:block hidden  border-x-0 border-t-0"></Box>
             </Box>
             <Box className="w-[100%]  items-center  flex flex-row justify-between">
               <Button

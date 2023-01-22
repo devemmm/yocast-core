@@ -60,7 +60,7 @@ function Login() {
           </Box>
         </Box>
       </Box>
-      <Box className=" mt-24 md:h-[68vh] text-[0.80rem] w-full">
+      <Box className=" mt-24 md:h-[75vh] text-[0.70rem]  w-full">
         <Footer />
       </Box>
     </Box>

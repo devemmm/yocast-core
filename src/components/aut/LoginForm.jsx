@@ -117,7 +117,7 @@ function LoginForm() {
   };
   return (
     <Box className="md:w-[60%]  md:border-0  bg-white border border-x-0 border-b-0   w-[97%] flex items-center  h-[100%]   ">
-      <Box className="h-[90%] pt-4 w-[100%] md:w-[80%] mx-auto  shadow-2xl">
+      <Box className="h-[100%] pt-4 w-[100%] md:w-[80%] mx-auto  shadow-2xl">
         <Box className="w-[100%]  h-[18%] flex flex-col justfy-center items-center">
           <Typography
             variant="h6"
@@ -177,11 +177,11 @@ function LoginForm() {
               </button>
             </Box>
             <Box className="w-[100%]   mt-4 items-center text-center  flex space-y-4">
-              <Box className="w-[40%] translate-y-2 md:block hidden   border border-x-0 border-t-0 "></Box>
-              <Box className=" w-[100%] md:w-[20%]">
+              <Box className="w-[38%] translate-y-2 md:block hidden   border border-x-0 border-t-0 "></Box>
+              <Box className=" w-[100%] md:w-[30%]">
                 <Typography variant="p">Login with</Typography>
               </Box>
-              <Box className="border w-[40%]  md:block hidden  border-x-0 border-t-0"></Box>
+              <Box className="border w-[30%]  md:block hidden  border-x-0 border-t-0"></Box>
             </Box>
             <Box className="w-[100%] space-y-4  items-center  flex flex-col">
               <Button
