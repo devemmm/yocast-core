@@ -17,12 +17,17 @@ import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 import Navbar from "../../components/global/Navbar";
 import Form from "../../components/aut/Form";
+import { Link } from "react-router-dom";
 
 function Signup() {
   return (
     <Box className="h-screen">
-      <Box className="h-[7%] flex items-center w-[100%] nav">
-        <Navbar />
+      <Box className="h-[7%] flex items-center w-[100%] ">
+        <Box>
+          <Link to="/">
+            <Button>Back home</Button>
+          </Link>
+        </Box>
       </Box>
       <Box className="h-[80%]   flex items-center flex-col justify-center ">
         <Box className="h-[100%]  w-[100%]">
@@ -47,7 +52,7 @@ function Signup() {
                     </p>
                   </Box>
                   <Box className="w-[100%] flex justify-center items-center ">
-                    <button className="bg-[#FEB543] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%]   w-[50%] md:w-[50%]   text-white font-poppins font-sans  font-bold rounded-full p-3 text-[0.70rem]" >
+                    <button className="bg-[#FEB543] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%]   w-[50%] md:w-[50%]   text-white font-poppins font-sans  font-bold rounded-full p-3 text-[0.70rem]">
                       Read More
                     </button>
                   </Box>

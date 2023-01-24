@@ -77,7 +77,7 @@ const Home = () => {
         </Box>
       </Box>
       {/* services */}
-      <Box className="w-[100%]  md:h-[120vh] service_section ">
+      <Box className="w-[100%] mt-2  md:h-[120vh] service_section ">
         <Box className="w-[100%]  h-[100%] space-y-20 flex-col text-center flex justify-center">
           <Box className="flex w-[100%] items-end text-[#FBB543] md:text-white sm:text-white lg:text-white xl:text-white justify-end sm:justify-center sm:items-center">
             <Typography

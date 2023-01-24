@@ -25,6 +25,7 @@ import { useSelector } from "react-redux";
 import { setShowAlert } from "../../features/pageSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Loader from "../Loader";
 function Form() {
   const [values, setValues] = useState({
     fullName: "",
@@ -62,6 +63,7 @@ function Form() {
       setMessage("Your names are  is required");
       actionAfterResponse();
     } else {
+      setIsLoading(true);
       axios({
         method: "POST",
         url: baseUrl + "/signup",
@@ -85,6 +87,7 @@ function Form() {
             setMessage("Account created successfull");
             actionAfterResponse();
             navigate("/dashboard");
+            setIsLoading(false);
             return;
           }
           setMessage("Some thing went wrong");
@@ -93,6 +96,7 @@ function Form() {
           setTimeout(() => {
             dispatch(setShowAlert(false));
           }, 500);
+          setIsLoading(false);
         })
         .catch((error) => {
           console.log(error.response.data.error);
@@ -102,6 +106,7 @@ function Form() {
             setTimeout(() => {
               dispatch(setShowAlert(false));
             }, 6000);
+            setIsLoading(false);
             return;
           }
           setMessage(error.response.data.error.message);
@@ -109,6 +114,7 @@ function Form() {
           setTimeout(() => {
             dispatch(setShowAlert(false));
           }, 6000);
+          setIsLoading(false);
         });
     }
   };
@@ -125,7 +131,7 @@ function Form() {
     }
   };
   return (
-    <Box className="md:w-[45%] bg-white border border-x-0 border-b-0  w-[97%] flex items-center  h-[100%]   ">
+    <Box className="md:w-[45%] bg-white  w-[97%] flex items-center  h-[100%]   ">
       <Box className="h-[96%] pt-4 w-[100%] md:w-[80%] mx-auto  shadow-2xl">
         <Box className="w-[100%] h-[18%] flex flex-col justfy-center items-center">
           <Typography
@@ -203,9 +209,9 @@ function Form() {
             <Box className="h-[5vh]">
               <button
                 type="submit"
-                className="text-center w-[100%] bg-[#1F60F0] text-white h-[100%] font-bold"
+                className="text-center flex items-center justify-center w-[100%] bg-[#1F60F0] text-white h-[100%] font-bold"
               >
-                Signup
+                {isLoading ? <Loader /> : "Sign up"}
               </button>
             </Box>
             <Box className="w-[100%] mt-4 items-center text-center  flex space-y-4">
@@ -243,7 +249,9 @@ function Form() {
               </Button>
             </Box>
             <Box className="flex  items-center  flex-row space-x-3">
-              <Typography variant="p">Already have an account</Typography>
+              <Typography fontSize="0.8rem" variant="p">
+                Already have an account
+              </Typography>
               <Link to="/auth/login">
                 <span className="text-sm text-[#1F60F0] hover:underline">
                   Login
