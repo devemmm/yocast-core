@@ -2,40 +2,41 @@ import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-import {useEffect,useState} from 'react'
+import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import LineChart from "../../components/LineChart";
 import StatBox from "../../components/StatBox";
 import React from "preact/compat";
-
+import { Link } from "react-router-dom";
+import Side from "../global/Side";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
-  const [statistics, setStatics] = useState({temperature:0,humidity:0,soilmoisture:0})
+  const [statistics, setStatics] = useState({
+    temperature: 0,
+    humidity: 0,
+    soilmoisture: 0,
+  });
+
+  // const podcasts = useSelector((store) => store.podca);
   useEffect(() => {
     fetch("http://10.10.109.85:5000/api/v1/latest")
-    .then(response => response.json())
-    .then(result => {
-      // console.log(result["temperature"]) 
-    console.log(result);
-    console.log()
-    setStatics({...result})
-
-    }
-      )
-
-  }, [])
- 
+      .then((response) => response.json())
+      .then((result) => {
+        // console.log(result["temperature"])
+        console.log(result);
+        console.log();
+        setStatics({ ...result });
+      });
+  }, []);
 
   useEffect(() => {
     // console.log("@£$%^&*********************")
-    console.log(statistics)
-
-     
-
-  }, [statistics])
+    console.log(statistics);
+  }, [statistics]);
 
   // {"jan":"23.40","feb":"70.30","marc":"5"}
- 
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -43,20 +44,26 @@ const Dashboard = () => {
     <Box m="20px">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="Yocast" subtitle="Welcome to Harvest Prediction Dashboard" />
+        <Header
+          title="Yocast"
+          subtitle="Welcome to Harvest Prediction Dashboard"
+        />
+        <Side />
         <Box>
-          <Button
-            sx={{
-              backgroundColor: colors.blueAccent[700],
-              color: colors.grey[100],
-              fontSize: "14px",
-              fontWeight: "bold",
-              padding: "10px 20px",
-            }}
-          >
-            <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-            Download Reports
-          </Button>
+          <Link to="/create">
+            <Button
+              sx={{
+                backgroundColor: colors.blueAccent[700],
+                color: colors.grey[100],
+                fontSize: "14px",
+                fontWeight: "bold",
+                padding: "10px 20px",
+              }}
+            >
+              <DownloadOutlinedIcon sx={{ mr: "10px" }} />
+              Add a Podcast
+            </Button>
+          </Link>
         </Box>
       </Box>
 
@@ -76,11 +83,10 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title={statistics.temperature+"°C"}
+            title={statistics.temperature + "°C"}
             subtitle="Temperature"
             progress="0.75"
             increase="+1.5%"
-        
           />
         </Box>
         <Box
@@ -91,11 +97,10 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title={statistics.humidity+" %RH"}
+            title={statistics.humidity + " %RH"}
             subtitle="Humidity"
             progress="0.50"
             increase="+21%"
-            
           />
         </Box>
         <Box
@@ -110,7 +115,6 @@ const Dashboard = () => {
             subtitle="RainFall"
             progress="0.30"
             increase="+5%"
-           
           />
         </Box>
         <Box
@@ -121,11 +125,10 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title={statistics.soilmoisture+"%"}
+            title={statistics.soilmoisture + "%"}
             subtitle="Soil moisture"
             progress="0.80"
             increase="-3%"
-           
           />
         </Box>
 
@@ -156,7 +159,7 @@ const Dashboard = () => {
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-               103135 tons
+                103135 tons
               </Typography>
             </Box>
             <Box>
@@ -176,8 +179,7 @@ const Dashboard = () => {
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           overflow="auto"
-          
-          >
+        >
           <Box
             display="flex"
             justifyContent="space-between"
@@ -187,7 +189,7 @@ const Dashboard = () => {
             p="15px"
           >
             <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
-              Up Coming Predictions
+              Recent Podcasts
             </Typography>
           </Box>
           {mockTransactions.map((transaction, i) => (
@@ -224,9 +226,6 @@ const Dashboard = () => {
         </Box>
 
         {/* ROW 3 */}
-       
-        
-        
       </Box>
     </Box>
   );

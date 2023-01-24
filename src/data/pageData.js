@@ -7,6 +7,8 @@ import simile from "../asstes/images/smiley.png";
 import house from "../asstes/images/multiple-users-silhouette.png";
 import chart from "../asstes/images/bar-chart.png";
 
+
+
 export const navlinks = [
   {
     name: "HOME",

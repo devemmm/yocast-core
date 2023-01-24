@@ -6,12 +6,13 @@ import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettin
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
+import Side from "../global/Side";
 
 const USER = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.2, },
+    { field: "id", headerName: "ID", flex: 0.2 },
     {
       field: "names",
       headerName: "names",
@@ -119,6 +120,7 @@ const USER = () => {
           },
         }}
       >
+        <Side />
         <DataGrid checkboxSelection rows={mockUsers} columns={columns} />
       </Box>
     </Box>

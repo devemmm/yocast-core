@@ -9,6 +9,7 @@ import { baseUrl } from "../../data/authData";
 import axios from "axios";
 import { useState } from "react";
 import { subscriptionColumns } from "../../data/mockData";
+import Side from "../global/Side";
 
 const USER = () => {
   const theme = useTheme();
@@ -38,6 +39,7 @@ const USER = () => {
         title="Subscriptions"
         subtitle="Manage all yocast Subscriptions here ..."
       />
+      <Side />
       <Box
         m="40px 0 0 0"
         height="75vh"
