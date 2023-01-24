@@ -24,10 +24,6 @@ export const navlinks = [
     name: "CONTACT",
     link: "/contact",
   },
-  {
-    name: "LOGIN",
-    link: "/auth/login",
-  },
 ];
 export const loginInputs = [
   {

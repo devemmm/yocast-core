@@ -16,12 +16,15 @@ import { padding } from "@mui/system";
 import Footer from "../../components/home/Footer";
 import { sliddingDivs } from "../../data/pageData";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 function Slidding() {
   const slideRef = useRef(null);
 
   const next = () => {
-    const slidder = document.getElementById("main")
-    document.getElementById("main").classList.add(`translate-x-[${slidder.offsetWidth}px]`);
+    const slidder = document.getElementById("main");
+    document
+      .getElementById("main")
+      .classList.add(`translate-x-[${slidder.offsetWidth}px]`);
   };
   return (
     <Box className="h-[91%]   text-white   flex  relative z-100">
@@ -42,9 +45,11 @@ function Slidding() {
             {sliddingDivs[0].subtitle}
           </Typography>
           <Box className=" flex  sm:w-[] justify-center md:justify-start w-[100%]  h-[20%]">
-            <button className="bg-[#FEB543]  md:w-[83%] max-[234px]:w-[100%]  sm:w-[40%] w-[50%] lg:w-[75%]  transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] w-[50%]  font-poppins font-sans  font-bold rounded-full p-3">
-              Read More
-            </button>
+            <Link className="w-[70%]" to="/auth/login">
+              <button className="bg-[#FEB543]  md:w-[80%] max-[234px]:w-[100%]  sm:w-[40%] w-[50%] lg:w-[80%]  transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] w-[50%]  font-poppins font-sans  font-bold rounded-full p-3">
+                Login
+              </button>
+            </Link>
           </Box>
         </Box>
         <Box className=" w-[96%] md:max-[991px]:w-[60%] md:w-[70%] slider-img-box  flex items-center justify-center ">
