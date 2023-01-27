@@ -13,6 +13,8 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import WaterDamageIcon from "@mui/icons-material/WaterDamage";
 import PodcastsIcon from "@mui/icons-material/Podcasts";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -37,6 +39,8 @@ const Sidebar = () => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
+
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
   return (
     <Box
@@ -98,7 +102,7 @@ const Sidebar = () => {
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={`../../assets/about1.png`}
+                  src={user.avatar}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
@@ -109,10 +113,10 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Emmanuel NT
+                  {user.names.split(" ")[0]}
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Super Admin
+                  {user.type == "admin" ? " Super Admin" : "User"}
                 </Typography>
               </Box>
             </Box>
@@ -160,9 +164,22 @@ const Sidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Data Visualisation
+              Other actions
             </Typography>
             <Item
+              title="Settings"
+              icon={<SettingsOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Logout"
+              icon={<LogoutIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            {/* <Item
               title="RainFall Data"
               to="/bar"
               icon={<BarChartOutlinedIcon />}
@@ -189,7 +206,7 @@ const Sidebar = () => {
               icon={<MapOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
           </Box>
         </Menu>
       </ProSidebar>

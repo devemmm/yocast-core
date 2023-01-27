@@ -17,6 +17,7 @@ import SuccessAlert from "../../components/helpers/SuccessAlert";
 import { setSelected } from "../../features/podcastSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Side from "../global/Side";
 
 const USER = () => {
   const theme = useTheme();
@@ -132,6 +133,7 @@ const USER = () => {
           <Typography>
             Are you sure do you want to delete this podcast?
           </Typography>
+          <Side />
           <Box className="flex flex-row  space-x-3 text-white ">
             <Button
               onClick={() => setShowDeleteAlert(false)}

@@ -22,10 +22,14 @@ import { headers } from "../../data/authData";
 import Loader from "../../components/Loader";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { useRef } from "react";
 import { useDispatch } from "react-redux";
+import Side from "../../screen/global/Side";
 const UpdateForm = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const inputRef = useRef();
+  const podcastCover = useRef();
   const [showAlert, setShowAlert] = useState(false);
   const [status, setStatus] = useState("error");
   const [message, setMessage] = useState("");
@@ -123,7 +127,6 @@ const UpdateForm = () => {
         setTimeout(() => {
           setShowAlert(false);
         }, 3000);
-        
       });
   };
   const setValue = (value, index) => {
@@ -147,6 +150,16 @@ const UpdateForm = () => {
       return 4;
     }
   };
+
+  const draggedOver = (e) => {
+    e.preventDefault();
+    console.log("dragged");
+    console.log(e.dataTransfer.files);
+  };
+  const handleDrop = (e) => {
+    e.preventDefault();
+    console.log(e.dataTransfer.files);
+  };
   return (
     <Box className="h-[93%]">
       <Box className="flex h-[20%] justify-between w-[90%] mx-auto items-center">
@@ -160,19 +173,33 @@ const UpdateForm = () => {
           </Alert>
         ) : null}
       </Box>
+      <Box className="relative">
+        <Side />
+      </Box>
       <Container className="items-center  md:flex-row flex-col flex h-[80%]">
         <Box className="h-[100%] shadow-3xl border border-x-0 border-b-0 p-2 ">
           <Typography className="text-center  h-[10%] p-4">
             Update your podcast
+            {/* <Sidebar /> */}
           </Typography>
           <FormControl
             onSubmit={(e) => e.preventDefault()}
             className="w-[95%]  mx-auto  h-[100%]"
           >
             <Box className="w-[100%]  h-[100%] md:max-[1074px]:flex-col flex-col md:space-y-0 space-y-5 flex md:flex-row justify-between ">
-              <Box classNAme="md:w-[50%]  w-[95%] flex flex-col h-[100%]">
-                <Box className="md:w-[24vw] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh] w-[100%] border-[3.6px] border-[#212529]  border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto">
+              <Box
+                onClick={() => podcastCover.current.Click()}
+                classNAme="md:w-[50%]  w-[95%] flex flex-col h-[100%]"
+              >
+                <Box
+                  onDragOver={draggedOver}
+                  onDrop={(e) => {
+                    setValues({ ...values, podcast: e.dataTransfer.files[0] });
+                  }}
+                  className="md:w-[24vw] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh] w-[100%] border-[3.6px] border-[#212529]  border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                >
                   <input
+                    ref={podcastCover}
                     onChange={(e) =>
                       setValues({ ...values, podcast: e.target.files[0] })
                     }
@@ -189,6 +216,7 @@ const UpdateForm = () => {
                 </Box>
                 <Box className=" w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[3.6px] border-[#212529] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto">
                   <input
+                    ref={inputRef}
                     onChange={(e) =>
                       setValues({ ...values, cover: e.target.files[0] })
                     }
@@ -203,11 +231,12 @@ const UpdateForm = () => {
                     <CloudUploadIcon className="text-center " />
                   </Box>
                 </Box>
-                {/* <Box className="p-4">
-                  <p>sdfsdf</p>
-                </Box> */}
               </Box>
-              <Box className=" md:max-[1074px]:w-[70%]  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[50%] flex mx-auto flex-col space-y-4 h-[100%]">
+              <Box
+                onDragOver={() => draggedOver()}
+                onDrop={() => handleDrop()}
+                className=" md:max-[1074px]:w-[70%]  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[50%] flex mx-auto flex-col space-y-4 h-[100%]"
+              >
                 {podcastFields.map((field, index) => (
                   <Box key={index}>
                     {field.name === "Category" ? (

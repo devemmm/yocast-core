@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import { navlinks } from "../../data/pageData";
 function Navbar() {
   return (
-    <Box className="flex   justify-between w-[95%] mx-auto h-[9%] items-center ">
+    <Box className="flex p-4  justify-between w-[95%] mx-auto h-[9%] items-center ">
       <Box className="text-white flex items-center  flex-row space-x-6">
         <Typography
           sx={{ font: "bold", fontWeight: "bold" }}
@@ -37,6 +37,16 @@ function Navbar() {
           ))}
         </ul>
         <SearchIcon />
+      </Box>
+      <Box className="">
+        <Link to="/auth/signup">
+          <Button
+            className="shadow-lg rounded transition hover:bg-white in-in-in text-[0.40rem] duration-300 delay-3 t  font-bold fontpoppins font-sans"
+            sx={{ fontWeight: "bold", backgroundColor: "white " }}
+          >
+            Get started
+          </Button>
+        </Link>
       </Box>
       <Box className="md:hidden ">
         <MenuIcon className="text-white hidden  font-bold text-3xl" />

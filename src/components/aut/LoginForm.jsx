@@ -28,6 +28,7 @@ import { useSelector } from "react-redux";
 import { setShowAlert } from "../../features/pageSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Loader from "../Loader";
 function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -58,6 +59,7 @@ function LoginForm() {
         dispatch(setShowAlert(false));
       }, 100);
     } else {
+      setIsLoading(true);
       axios({
         method: "POST",
         url: baseUrl + "/signin",
@@ -80,6 +82,7 @@ function LoginForm() {
               dispatch(setShowAlert(false));
             }, 500);
             navigate("/dashboard");
+            setIsLoading(false);
             return;
           }
           setMessage("Some thing went wrong");
@@ -87,7 +90,8 @@ function LoginForm() {
           setLoggedInSuccessfully(true);
           setTimeout(() => {
             dispatch(setShowAlert(false));
-          }, 500);
+          }, 5000);
+          setIsLoading(false);
         })
         .catch((error) => {
           console.log(error.response.data.error);
@@ -96,14 +100,16 @@ function LoginForm() {
             dispatch(setShowAlert(true));
             setTimeout(() => {
               dispatch(setShowAlert(false));
-            }, 100);
+            }, 5000);
+            setIsLoading(false);
             return;
           }
           setMessage("Invalid email or password");
           dispatch(setShowAlert(true));
           setTimeout(() => {
             dispatch(setShowAlert(false));
-          }, 100);
+          }, 5000);
+          setIsLoading(false);
         });
     }
   };
@@ -116,7 +122,7 @@ function LoginForm() {
     }
   };
   return (
-    <Box className="md:w-[60%]  md:border-0  bg-white border border-x-0 border-b-0   w-[97%] flex items-center  h-[100%]   ">
+    <Box className="md:w-[45%]  md:border-0  bg-white border border-x-0 border-b-0   w-[97%] flex items-center  h-[100%]   ">
       <Box className="h-[100%] pt-4 w-[100%] md:w-[80%] mx-auto  shadow-2xl">
         <Box className="w-[100%]  h-[18%] flex flex-col justfy-center items-center">
           <Typography
@@ -171,9 +177,9 @@ function LoginForm() {
             <Box className="h-[5vh] ">
               <button
                 type="submit"
-                className="text-center hover:bg-[#1F60F0]  w-[100%] bg-[#1F60F0] h-[100%] font-bold font-poppins text-white rounded font-sans"
+                className="text-center flex items-center justify-center hover:bg-[#1F60F0]  w-[100%] bg-[#1F60F0] h-[100%] font-bold font-poppins text-white rounded font-sans"
               >
-                Login
+                {isLoading ? <Loader /> : "Login"}
               </button>
             </Box>
             <Box className="w-[100%]   mt-4 items-center text-center  flex space-y-4">
@@ -212,10 +218,12 @@ function LoginForm() {
               </Button>
             </Box>
             <Box className="flex justify-center  items-center  flex-row space-x-3">
-              <Typography variant="p">Don't you have an account ?</Typography>
+              <Typography fontSize="0.8rem" variant="p">
+                Don't you have an account ?
+              </Typography>
               <Link to="/auth/signup">
                 <span className="text-sm text-[#1F60F0] hover:underline">
-                  Register
+                  {isLoading ? "Register" : "Register"}
                 </span>
               </Link>
             </Box>

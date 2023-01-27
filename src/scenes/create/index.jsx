@@ -21,6 +21,7 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { headers } from "../../data/authData";
 import Loader from "../../components/Loader";
 import axios from "axios";
+import Side from "../../screen/global/Side";
 const Create = () => {
   const [coverPreview, setCoverPreview] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -130,6 +131,7 @@ const Create = () => {
         />
         {showAlert ? <Alert severity={alertStatus}>{message}</Alert> : null}
       </Box>
+      <Side />
       <Container className="items-center  md:flex-row flex-col flex h-[80%]">
         <Box className="h-[100%] shadow-3xl border border-x-0 border-b-0 p-2 ">
           <Typography className="text-center  h-[10%] p-4">

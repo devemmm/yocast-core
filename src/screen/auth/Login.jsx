@@ -17,11 +17,16 @@ import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 import LoginForm from "../../components/aut/LoginForm";
+import { Link } from "react-router-dom";
 function Login() {
   return (
     <Box className="h-screen">
-      <Box className="h-[7%]   flex items-center w-[100%] nav">
-        <Navbar />
+      <Box className="h-[7%]   flex items-center w-[100%] ">
+        <Box>
+          <Link to="/">
+            <Button>Back home</Button>
+          </Link>
+        </Box>
       </Box>
       <Box className="h-[80%]  flex items-center flex-col justify-center ">
         <Box className="h-[90%] w-[100%]">
