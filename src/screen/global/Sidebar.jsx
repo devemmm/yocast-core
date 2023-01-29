@@ -41,7 +41,6 @@ const Sidebar = () => {
   const [selected, setSelected] = useState("Dashboard");
 
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
-
   return (
     <Box
       className="hidden md:block  bottom-0"

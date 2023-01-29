@@ -51,7 +51,7 @@ const Topbar = () => {
         </IconButton>
         <Box className="md:hidden">
           <IconButton>
-            <MenuIcon onClick={dispatch(setShowSidebar(false))} />
+            <MenuIcon onClick={() => dispatch(setShowSidebar(true))} />
           </IconButton>
         </Box>
       </Box>

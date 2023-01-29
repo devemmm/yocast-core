@@ -122,10 +122,10 @@ function LoginForm() {
     }
   };
   return (
-    <Box className="md:w-[45%]  md:border-0  bg-white border border-x-0 border-b-0   w-[97%] flex items-center  h-[100%]   ">
-      <Box className="h-[100%] pt-4 w-[100%] md:w-[80%] mx-auto  shadow-2xl">
+    <Box className="md:w-[35%]  md:border-0  bg-white border border-x-0 border-b-0   w-[97%] flex items-center  h-[100%]   ">
+      <Box className="h-[100%] pt-4 w-[100%] md:w-[100%]  ng-black mx-auto  shadow-2xl">
         <Box className="w-[100%]  h-[18%] flex flex-col justfy-center items-center">
-          <Typography
+          {/* <Typography
             variant="h6"
             className="text-[0.80rem] font-poppins"
             sx={{
@@ -135,11 +135,11 @@ function LoginForm() {
             }}
           >
             YOCAST
-          </Typography>
+          </Typography> */}
           <Typography>Wellcome back!</Typography>
           {!showAlerts ? (
-            <p className="text-[0.80rem] font-poppins font-sans">
-              Sign in to your account and manage your podcasts
+            <p className="text-[0.70rem] font-poppins font-sans">
+              Sign in to your account
             </p>
           ) : loggedInSuccessfully ? (
             <SuccessAlert

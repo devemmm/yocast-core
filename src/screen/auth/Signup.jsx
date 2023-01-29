@@ -31,11 +31,8 @@ function Signup() {
       </Box>
       <Box className="h-[80%]   flex items-center flex-col justify-center ">
         <Box className="h-[100%]  w-[100%]">
-          {/* <Typography sx={{ textAlign: "center" }}>
-            Login or create account on yocast
-          </Typography> */}
-          <Box className="flex mt-3 flex-row  h-[100%] justify-between   w-[95%]  md:w-[80%] mx-auto">
-            <Box className="W-[40%] md:block hidden h-[100%]">
+          <Box className="flex mt-3 flex-row  h-[100%] justify-between   w-[95%]   md:w-[78%] mx-auto">
+            <Box className="W-[55%] md:block hidden h-[100%]">
               <Box className="h-[70vh]">
                 <Box className=" items-center mt-6 flex flex-col space-y-10 w-[90%] md:w-[50%] mx-auto ">
                   <h1 className="text-center border border-[#feb543]  w-[100%] border-x-0 border-t-0 font-bold text-3xl">
@@ -52,7 +49,7 @@ function Signup() {
                     </p>
                   </Box>
                   <Box className="w-[100%] flex justify-center items-center ">
-                    <button className="bg-[#FEB543] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%]   w-[50%] md:w-[50%]   text-white font-poppins font-sans  font-bold rounded-full p-3 text-[0.70rem]">
+                    <button className="bg-[#FEB543] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%]   w-[50%] md:w-[30%]   text-white font-poppins font-sans  font-bold rounded-full p-3 text-[0.70rem]">
                       Read More
                     </button>
                   </Box>

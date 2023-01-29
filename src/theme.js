@@ -20,6 +20,7 @@ export const tokens = (mode) => ({
           100: "#d0d1d5",
           200: "#a1a4ab",
           300: "#727681",
+          //background color
           400: "#1F2A40",
           500: "#141b2d",
           600: "#101624",

@@ -17,6 +17,7 @@ import Footer from "../../components/home/Footer";
 import { sliddingDivs } from "../../data/pageData";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
 function Slidding() {
   const slideRef = useRef(null);
 
@@ -26,10 +27,17 @@ function Slidding() {
       .getElementById("main")
       .classList.add(`translate-x-[${slidder.offsetWidth}px]`);
   };
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
     <Box className="h-[91%]   text-white   flex  relative z-100">
       <Box
-        ref={slideRef}
         id="main"
         className="md:w-[60%]  w-[100%] md:-translate-y-[10%] flex md:space-y-0 space-y-20  md:justify-between flex-col items-center     md:flex-row   mx-auto"
       >

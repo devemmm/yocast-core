@@ -131,24 +131,13 @@ function Form() {
     }
   };
   return (
-    <Box className="md:w-[45%] bg-white  w-[97%] flex items-center  h-[100%]   ">
-      <Box className="h-[96%] pt-4 w-[100%] md:w-[80%] mx-auto  shadow-2xl">
+    <Box className="md:w-[35%]  bg-white  w-[97%] flex items-center  h-[100%]   ">
+      <Box className="h-[96%] pt-4 w-[100%] md:w-[100%] mx-auto    shadow-2xl">
         <Box className="w-[100%] h-[18%] flex flex-col justfy-center items-center">
-          <Typography
-            variant="h6"
-            className="text-[0.80rem] font-poppins"
-            sx={{
-              textAlign: "center",
-              fontWeight: "bold",
-              font: "poppins",
-            }}
-          >
-            YOCAST
-          </Typography>
           <Typography>Wellcome back!</Typography>
           {!showAlerts ? (
-            <p className="text-[0.80rem] font-poppins font-sans">
-              Create your account and manage your podcasts
+            <p className="text-[0.70rem]  font-poppins font-sans">
+              Create your account
             </p>
           ) : loggedInSuccessfully ? (
             <SuccessAlert
