@@ -17,7 +17,11 @@ import twiter from "../../asstes/images/twitter.png";
 import facebook from "../../asstes/images/fb.png";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import Navbar from "../../components/global/Navbar";
-
+import "swiper/css";
+import "swiper/css/autoplay";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useSwiper } from "swiper/react";
+import { Autoplay } from "swiper";
 
 const navlinks = ["Home", "About", "SERVICES", "CONTACT", "LOGIN"];
 const Home = () => {
@@ -38,8 +42,7 @@ const Home = () => {
         <Box className="h-[95%] header">
           {/* Navigation bar */}
           <Box>
-          <Navbar />
-
+            <Navbar />
           </Box>
           {/* slidding component */}
           <Slidding />
@@ -210,18 +213,20 @@ const Home = () => {
               >
                 <ArrowBack className="rounded-full" />
               </Box>
-              <Box className="w-[80%]  flex items-center flex-col justify-center p-3 h-[100%] border">
-                <img
-                  className="w-24 h-24 rounded-full mb-4"
-                  src={problem}
-                  alt=""
-                />
-                <Typography sx={{ font: "poppins", font: "sans" }}>
-                  psum dolor sit amet, consectetur adipiscing elit, sed do
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                </Typography>
-              </Box>
+          
+                  <Box className="w-[80%]  flex items-center flex-col justify-center p-3 h-[100%] border">
+                    <img
+                      className="w-24 h-24 rounded-full mb-4"
+                      src={problem}
+                      alt=""
+                    />
+                    <Typography sx={{ font: "poppins", font: "sans" }}>
+                      psum dolor sit amet, consectetur adipiscing elit, sed do
+                      laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                      irure dolor in reprehenderit in voluptate velit esse
+                      cillum
+                    </Typography>
+                  </Box>
               <Box className="w-[8%] rounded flex items-center justify-center text-white font-bold text-4xl hover:bg-[#FEB545] bg-[#383a90] h-[50%]">
                 <ArrowForward
                   className="rounded-full h-[100%]"

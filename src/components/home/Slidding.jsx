@@ -71,7 +71,7 @@ function Slidding() {
       <Box className="bottom-0 w-[70%] mx-auto flex justify-start  absolute">
         <Box className="w-[80%] translate-y-5 flex  space-x-4 mx-auto">
           <button
-            className="rounded-full md:w-[10%] lg:w-[5%]  sm:w-[10%]  bg-[#383A90] w-[20%] md:w-[4%] p-2 font-bold h-[100%]"
+            className="rounded-full hover:bg-[#FEB545] md:w-[10%] lg:w-[5%]  sm:w-[10%]  bg-[#383A90] w-[20%] md:w-[4%] p-2 font-bold h-[100%]"
             onClick={() => ref1.current.click()}
           >
             {" "}
@@ -81,7 +81,7 @@ function Slidding() {
             />
           </button>
           <button
-            className="rounded-full bg-[#383A90]  lg:w-[5%]  w-[20%]  md:w-[4%] sm:w-[10%] p-2 font-bold h-[100%]"
+            className="rounded-full bg-[#383A90] hover:bg-[#FEB545]  lg:w-[5%]  w-[20%]  md:w-[4%] sm:w-[10%] p-2 font-bold h-[100%]"
             onClick={() => ref2.current?.click()}
           >
             <ArrowForwardIcon className="text-white " />
