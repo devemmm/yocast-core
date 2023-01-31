@@ -18,43 +18,37 @@ const Dashboard = () => {
     soilmoisture: 0,
   });
 
-  // const podcasts = useSelector((store) => store.podca);
-  useEffect(() => {
-    fetch("http://10.10.109.85:5000/api/v1/latest")
-      .then((response) => response.json())
-      .then((result) => {
-        // console.log(result["temperature"])
-        console.log(result);
-        console.log();
-        setStatics({ ...result });
-      });
-  }, []);
-
-  useEffect(() => {
-    // console.log("@£$%^&*********************")
-    console.log(statistics);
-  }, [statistics]);
-
-  // {"jan":"23.40","feb":"70.30","marc":"5"}
+  // useEffect(() => {
+  //   // fetch("http://10.10.109.85:5000/api/v1/latest")
+  //     .then((response) => response.json())
+  //     .then((result) => {
+  //       setStatics({ ...result });
+  //     });
+  // }, []);
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   return (
-    <Box m="20px">
+    <Box m="20px" className="flex flex-col md:space-y-0 space-y-10">
       {/* HEADER */}
-      <Box display="flex" justifyContent="space-between" alignItems="center">
+      <Box
+        className="flex  md:flex-row flex-col"
+        justifyContent="space-between"
+        alignItems="center"
+      >
         <Header
           title="Yocast"
           subtitle="Welcome to Harvest Prediction Dashboard"
         />
         <Side />
-        <Box>
-          <Link to="/create">
+        <Box className="w-[95%] md:w-[17%]">
+          <Link to="/create" className="w-[100%] mb-8">
             <Button
               sx={{
                 backgroundColor: colors.blueAccent[700],
                 color: colors.grey[100],
+                width: "100%",
                 fontSize: "14px",
                 fontWeight: "bold",
                 padding: "10px 20px",
@@ -68,72 +62,73 @@ const Dashboard = () => {
       </Box>
 
       {/* GRID & CHARTS */}
-      <Box
-        display="grid"
-        gridTemplateColumns="repeat(12, 1fr)"
-        gridAutoRows="140px"
-        gap="20px"
-      >
+      <Box className="flex  flex-col space-y-6">
         {/* ROW 1 */}
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <StatBox
-            title={statistics.temperature + "°C"}
-            subtitle="Temperature"
-            progress="0.75"
-            increase="+1.5%"
-          />
-        </Box>
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <StatBox
-            title={statistics.humidity + " %RH"}
-            subtitle="Humidity"
-            progress="0.50"
-            increase="+21%"
-          />
-        </Box>
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <StatBox
-            title="10mm"
-            subtitle="RainFall"
-            progress="0.30"
-            increase="+5%"
-          />
-        </Box>
-        <Box
-          gridColumn="span 3"
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <StatBox
-            title={statistics.soilmoisture + "%"}
-            subtitle="Soil moisture"
-            progress="0.80"
-            increase="-3%"
-          />
+        <Box className="flex  h-[60vh] md:h-[20vh] flex-col md:flex-row w-[95%] mx-auto md:w-[95%] justify-between">
+          <Box
+            className=" w-[100%] md:w-[23%] md:h-[90%] h-[20%] duration-200  delay-150  ease-in-out rounded-lg hover:-translate-y-1 transition "
+            backgroundColor={colors.primary[400]}
+            display="flex"
+            alignItems="center"
+            justifyContent="between"
+          >
+            <StatBox
+              title={statistics.temperature + "k"}
+              subtitle="Podcasts"
+              progress="0.75"
+              increase="+1.5%"
+            />
+          </Box>
+          <Box
+            className="md:w-[22%] w-[100%] md:h-[90%] h-[20%] duration-200  delay-150  ease-in-out rounded-lg hover:-translate-y-1 transition "
+            gridColumn="span 3"
+            backgroundColor={colors.primary[400]}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <StatBox
+              title={statistics.humidity + "k"}
+              subtitle="Subscriptions"
+              progress="0.50"
+              increase="+21%"
+            />
+          </Box>
+          <Box
+            className="md:w-[22%] w-[100%] md:h-[90%] h-[20%] duration-200  delay-150  ease-in-out rounded-lg hover:-translate-y-1 transition "
+            gridColumn="span 3"
+            backgroundColor={colors.primary[400]}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <StatBox
+              title="$1,023"
+              subtitle="My balance"
+              progress="0.30"
+              increase="+5%"
+            />
+          </Box>
+          <Box
+            gridColumn="span 3"
+            className="md:w-[25%] w-[100%] md:h-[90%] h-[20%] duration-200  delay-150  ease-in-out rounded-lg hover:-translate-y-1 transition "
+            backgroundColor={colors.primary[400]}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <StatBox
+              title={54334 + "M"}
+              subtitle="Users"
+              progress="0.80"
+              increase="59%"
+            />
+          </Box>
         </Box>
 
         {/* ROW 2 */}
         <Box
+          className="md:w-[100%] md:p-0 md:h-[90%] h-[20%] p-4 w-[100%] duration-200  delay-150  ease-in-out rounded-lg hover:-translate-y-1 transition "
           gridColumn="span 8"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -152,14 +147,14 @@ const Dashboard = () => {
                 fontWeight="600"
                 color={colors.grey[100]}
               >
-                Current Harvest prediction
+                Current Subscriptions prediction
               </Typography>
               <Typography
                 variant="h3"
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                103135 tons
+                103,135 M
               </Typography>
             </Box>
             <Box>

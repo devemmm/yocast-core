@@ -1,7 +1,7 @@
 export const baseUrl = "https://api.yocast.rw";
 const user = JSON.parse(localStorage.getItem("loggedInUser"));
 export const headers = {
-  Authorization: `Bearer ${user.token.token}`,
+  Authorization: `Bearer ${user == null ? "" : user.token.token}`,
   "Content-Type": "multipart/form-data",
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",

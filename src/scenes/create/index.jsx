@@ -22,6 +22,7 @@ import { headers } from "../../data/authData";
 import Loader from "../../components/Loader";
 import axios from "axios";
 import Side from "../../screen/global/Side";
+import { useNavigate } from "react-router-dom";
 const Create = () => {
   const [coverPreview, setCoverPreview] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -29,6 +30,7 @@ const Create = () => {
   const [message, setMessage] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [previewCoverImage, setPreviewCoverImage] = useState();
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     title: "",
     description: "",
@@ -85,6 +87,7 @@ const Create = () => {
       headers: headers,
     })
       .then((response) => {
+        setLoading(false);
         console.log(response.data);
         if (
           response.data.statusCode === 200 ||
@@ -95,15 +98,14 @@ const Create = () => {
           setShowAlert(true);
           setTimeout(() => {
             setShowAlert(false);
+            navigate("/podcast");
           }, 3000);
           return;
         }
-        console.log(response);
-        setLoading(false);
         setShowAlert(true);
+        setLoading(false);
       })
       .catch((error) => {
-        console.log(error);
         setLoading(false);
         setMessage("Some thing went wrong please try again");
         setAlertStatus("error");
@@ -113,6 +115,7 @@ const Create = () => {
         }, 3000);
       });
   };
+
   const setValue = (value, index) => {
     if (index === 0) {
       setValues({ ...values, title: value });
@@ -214,7 +217,7 @@ const Create = () => {
                 <Box className="md:w-[80%]  md:max-[1074px]:w-[100%] md:max-[1074px]:w-[99.5%] w-[99.5%] mx-auto flex justify-end">
                   <button
                     onClick={submit}
-                    className="float-left   bg-[#4CCEAC] h-[5vh] rounded font-bold  md:max-[1074px]:w-[100%]  w-[100%] md:w-[30%]"
+                    className="float-left  text-center flex items-center justify-center    bg-[#4CCEAC] h-[5vh] rounded font-bold  md:max-[1074px]:w-[100%]  w-[100%] md:w-[30%]"
                   >
                     {isLoading ? <Loader /> : "Create Podcast"}
                   </button>

@@ -47,12 +47,11 @@ const Side = () => {
   const showSidebar = useSelector((store) => store.page.showSidebar);
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
-  return showSidebar == true
-    ? null
-    : ReactDOM.createPortal(
-        <div className="fixed h-[100%]   top-0 border">
+  return showSidebar
+    ? ReactDOM.createPortal(
+        <div className="fixed h-[100%] max-[321px]:w-[100%]    top-0 border">
           <Box
-            className="md:hidden   bg-[#d0d1d5] h-[100%] "
+            className="md:hidden max-[321px]:w-[100%]    bg-[#d0d1d5] h-[100%] "
             sx={{
               "& .pro-sidebar-inner": {
                 background: `${colors.primary[400]} !important`,
@@ -133,10 +132,11 @@ const Side = () => {
                     </Box>
                   </Box>
                 )}
-
-                <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+                <Box
+                  onClick={() => dispatch(setShowSidebar(false))}
+                  paddingLeft={isCollapsed ? undefined : "10%"}
+                >
                   <Item
-                    onClick={dispatch(setShowSidebar(true))}
                     title="Dashboard"
                     to="/dashboard"
                     icon={<HomeOutlinedIcon />}
@@ -144,7 +144,6 @@ const Side = () => {
                     setSelected={setSelected}
                   />
                   <Item
-                    onClick={dispatch(setShowSidebar(true))}
                     title="Manage Users"
                     to="/USER"
                     icon={<PeopleOutlinedIcon />}
@@ -152,7 +151,6 @@ const Side = () => {
                     setSelected={setSelected}
                   />
                   <Item
-                    onClick={dispatch(setShowSidebar(true))}
                     title="Subscription"
                     to="/subscription"
                     icon={<WaterDamageIcon />}
@@ -160,7 +158,6 @@ const Side = () => {
                     setSelected={setSelected}
                   />
                   <Item
-                    onClick={dispatch(setShowSidebar(false))}
                     title="Podcast"
                     to="/podcast"
                     icon={<PodcastsIcon />}
@@ -168,7 +165,6 @@ const Side = () => {
                     setSelected={setSelected}
                   />
                   <Item
-                    onClick={dispatch(setShowSidebar(true))}
                     title="Create Podcast"
                     to="/create"
                     icon={<PodcastsIcon />}
@@ -230,7 +226,8 @@ const Side = () => {
           </Box>
         </div>,
         document.getElementById("sideRoot")
-      );
+      )
+    : null;
 };
 
 export default Side;

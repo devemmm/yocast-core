@@ -123,7 +123,7 @@ const USER = () => {
         }}
       >
         <Backdrop
-          className="h-[10%] p-2 rounded flex flex-col  w-[20%] mx-auto flex items-center"
+          className=" h-[10%] p-2 rounded flex flex-col  w-[20%] mx-auto flex items-center"
           open={showDeleteAlert}
           sx={{
             top: "10%",
@@ -150,23 +150,23 @@ const USER = () => {
           </Box>
         </Backdrop>
         <Backdrop
-          className="h-[11%] flex items-center justify-center"
+          className=" h-[15%] md:h-[11%] md:flex-row flex-col md:space-y-0 space-y-4 flex items-center justify-center"
           open={showBackdrop}
           sx={{
             zIndex: (theme) => theme.zIndex.drawer + 1,
           }}
         >
-          <Box className="h-[100%] flex flex-row   -translate-y-4 flex  flex-row justify-between  items-center  w-[90%] mx-auto">
-            <Box className="w-[50%]">
+          <Box className="h-[100%] flex md:flex-row flex-col md:space-y-0 space-y-1   items-center -translate-y-4 flex  flex-row justify-between  items-center  w-[100%] md:w-[90%] mx-auto">
+            <Box className=" w-[100%]   md:w-[50%]">
               <p className="w-[100%] text-white">{selectedPodcast.name}</p>
             </Box>
             <ReactAudioPlayer
-              className="w-[30%]  h-[100%]"
+              className="md:w-[30%] w-[90%] h-[100%]"
               RxCross1
               src={selectedPodcast.url}
               controls
             />
-            <Box className="flex w-[20%] justify-end translate-y-2  flex-col items-center justify-center">
+            <Box className="flex w-[100%] md:w-[20%] justify-end translate-y-2  flex-col items-center justify-center">
               <Box className="flex flex-row space-x-3 font-sans text-[0.9rem]">
                 <BiPencil
                   onClick={() => edit()}

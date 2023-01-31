@@ -3,12 +3,9 @@ import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
 import { mockLineData as data } from "../data/mockData";
 import { mocDataU as dt } from "../data/mockData";
-
 const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  console.log("This is the data to render");
-console.log(dt);
   return (
     <ResponsiveLine
       data={data}
