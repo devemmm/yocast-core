@@ -40,12 +40,15 @@ function Navbar() {
       </Box>
       <Box className="">
         <Link to="/auth/signup">
-          <Button
-            className="shadow-lg rounded transition hover:bg-white in-in-in text-[0.40rem] duration-300 delay-3 t  font-bold fontpoppins font-sans"
-            sx={{ fontWeight: "bold", backgroundColor: "white " }}
-          >
-            Get started
-          </Button>
+          <button className="min-[316px]:hidden font-bold bg-white ">Get started</button>
+          <Box className="max-[316px]:hidden">
+            <Button
+              className="shadow-lg rounded transition hover:bg-white in-in-in text-[0.40rem] duration-300 delay-3 t  font-bold fontpoppins font-sans"
+              sx={{ fontWeight: "bold", backgroundColor: "white " }}
+            >
+              Get started
+            </Button>
+          </Box>
         </Link>
       </Box>
       <Box className="md:hidden ">

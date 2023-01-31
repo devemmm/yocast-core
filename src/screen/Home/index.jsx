@@ -93,7 +93,7 @@ const Home = () => {
           </Box>
           <Box className="flex  sm:space-x-5 h-[70%]   justify-center items-center sm:justify-between   flex-col space-y-4 md:space-y-0  md:flex-row md:w-[67%] sm:w-[100%] w-[95%]  mx-auto">
             {services.map((service, index) => (
-              <Box className="">
+              <Box key={index} className="">
                 <img className="rounded-xl" src={service.image} />
                 <Box className="text-center w-[95%] md:w-[70%] mt-3 mx-auto">
                   <Typography
@@ -166,7 +166,10 @@ const Home = () => {
               </p>
               <Box className="w-[90%]   md:flex-nowrap space-x-3 flex  flex-wrap justify-between items-center  mx-auto">
                 {statistics.map((stat, index) => (
-                  <Box className="flex flex-row space-x-2 items-center">
+                  <Box
+                    key={index}
+                    className="flex flex-row space-x-2 items-center"
+                  >
                     <Box>
                       <img src={stat.image} alt="" />
                     </Box>
@@ -213,20 +216,19 @@ const Home = () => {
               >
                 <ArrowBack className="rounded-full" />
               </Box>
-          
-                  <Box className="w-[80%]  flex items-center flex-col justify-center p-3 h-[100%] border">
-                    <img
-                      className="w-24 h-24 rounded-full mb-4"
-                      src={problem}
-                      alt=""
-                    />
-                    <Typography sx={{ font: "poppins", font: "sans" }}>
-                      psum dolor sit amet, consectetur adipiscing elit, sed do
-                      laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                      irure dolor in reprehenderit in voluptate velit esse
-                      cillum
-                    </Typography>
-                  </Box>
+
+              <Box className="w-[80%]  flex items-center flex-col justify-center p-3 h-[100%] border">
+                <img
+                  className="w-24 h-24 rounded-full mb-4"
+                  src={problem}
+                  alt=""
+                />
+                <Typography sx={{ font: "poppins", font: "sans" }}>
+                  psum dolor sit amet, consectetur adipiscing elit, sed do
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                </Typography>
+              </Box>
               <Box className="w-[8%] rounded flex items-center justify-center text-white font-bold text-4xl hover:bg-[#FEB545] bg-[#383a90] h-[50%]">
                 <ArrowForward
                   className="rounded-full h-[100%]"
@@ -257,7 +259,10 @@ const Home = () => {
                 <Box className="flex  h-[100%] w-[100%] items-center justify-between flex-col md:flex-row">
                   <Box className="w-full md:w-[48%] flex flex-col space-y-2  h-[100%]">
                     {constacts.slice(0, 2).map((contact, index) => (
-                      <Box className="flex w-full h-[40%] flex-col space-y-3">
+                      <Box
+                        key={index}
+                        className="flex w-full h-[40%] flex-col space-y-3"
+                      >
                         <label htmlFor={contact.name}>{contact.name}</label>
                         <input
                           placeholder={contact.name}
@@ -270,7 +275,10 @@ const Home = () => {
                   </Box>
                   <Box className="w-full md:w-[50%] flex flex-col space-y-2  h-[100%]">
                     {constacts.slice(2, 4).map((contact, index) => (
-                      <Box className="flex  h-[40%] flex-col space-y-3">
+                      <Box
+                        key={index}
+                        className="flex  h-[40%] flex-col space-y-3"
+                      >
                         <label htmlFor={contact.name}>{contact.name}</label>
                         <input
                           className="h-12 pl-3 focus:outline-0 bg-[#f2f3f4]"

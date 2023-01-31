@@ -101,7 +101,7 @@ const Sidebar = () => {
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={user.avatar}
+                  src={user == null ? "" : user.avatar}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
@@ -112,10 +112,14 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  {user.names.split(" ")[0]}
+                  {user == null ? "" : user.names.split(" ")[0]}
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  {user.type == "admin" ? " Super Admin" : "User"}
+                  {user == null
+                    ? ""
+                    : user.type == "admin"
+                    ? " Super Admin"
+                    : "User"}
                 </Typography>
               </Box>
             </Box>
