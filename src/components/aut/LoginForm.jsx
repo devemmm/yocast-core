@@ -29,6 +29,7 @@ import { setShowAlert } from "../../features/pageSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Loader from "../Loader";
+import { setShowLogoutBackDrop } from "../../features/pageSlice";
 function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -69,7 +70,7 @@ function LoginForm() {
         },
       })
         .then((response) => {
-          console.log(response.data);
+          dispatch(setShowLogoutBackDrop(false));
           localStorage.setItem(
             "loggedInUser",
             JSON.stringify(response.data.user)
@@ -94,7 +95,6 @@ function LoginForm() {
           setIsLoading(false);
         })
         .catch((error) => {
-          console.log(error.response.data.error);
           if (error.response.data.error === 500) {
             setMessage("Some thing went wrong! try again please");
             dispatch(setShowAlert(true));

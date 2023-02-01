@@ -22,12 +22,17 @@ import "swiper/css/autoplay";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useSwiper } from "swiper/react";
 import { Autoplay } from "swiper";
+import { useSelector } from "react-redux";
+import Backdrop from "@mui/material/Backdrop";
+import OptionsBackdrop from "../global/OptionsBackdrop";
 
 const navlinks = ["Home", "About", "SERVICES", "CONTACT", "LOGIN"];
 const Home = () => {
   const year = new Date().getFullYear();
   const images = [facebook, twiter, linkedin, instagram];
-
+  const showLogoutBackDrop = useSelector(
+    (store) => store.page.showLogoutBackDrop
+  );
   const next = () => {
     const slidder = document.getElementById("hello").offsetWidth;
     console.log(slidder);
@@ -49,7 +54,7 @@ const Home = () => {
           {/* wellcome screen */}
         </Box>
       </Box>
-
+      <OptionsBackdrop />
       {/* wellcome  */}
       <Box className="h-[70vh]">
         <Box className=" items-center mt-6 flex flex-col space-y-10 w-[90%] md:w-[50%] mx-auto ">
@@ -79,6 +84,7 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
+
       {/* services */}
       <Box className="w-[100%] mt-2  md:h-[120vh] service_section ">
         <Box className="w-[100%]  h-[100%] space-y-20 flex-col text-center flex justify-center">

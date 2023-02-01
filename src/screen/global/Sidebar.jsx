@@ -15,7 +15,11 @@ import WaterDamageIcon from "@mui/icons-material/WaterDamage";
 import PodcastsIcon from "@mui/icons-material/Podcasts";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
-
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { baseUrl, headers } from "../../data/authData";
+import { useDispatch } from "react-redux";
+import { setShowLogoutBackDrop } from "../../features/pageSlice";
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -36,10 +40,11 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 
 const Sidebar = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
-
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
   return (
     <Box
@@ -169,18 +174,22 @@ const Sidebar = () => {
             >
               Other actions
             </Typography>
-            <Item
-              title="Settings"
-              icon={<SettingsOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Logout"
-              icon={<LogoutIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+            <Box >
+              <Item
+                title="Settings"
+                icon={<SettingsOutlinedIcon />}
+                selected={selected}
+                setSelected={setSelected}
+              />
+            </Box>
+            <Box onClick={() => dispatch(setShowLogoutBackDrop(true))}>
+              <Item
+                title="Logout"
+                icon={<LogoutIcon />}
+                selected={selected}
+                setSelected={setSelected}
+              />
+            </Box>
 
             {/* <Item
               title="RainFall Data"

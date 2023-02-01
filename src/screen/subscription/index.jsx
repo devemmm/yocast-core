@@ -10,6 +10,7 @@ import axios from "axios";
 import { useState } from "react";
 import { subscriptionColumns } from "../../data/mockData";
 import Side from "../global/Side";
+import OptionsBackdrop from "../global/OptionsBackdrop";
 
 const USER = () => {
   const theme = useTheme();
@@ -69,6 +70,7 @@ const USER = () => {
           },
         }}
       >
+        <OptionsBackdrop />
         <DataGrid
           checkboxSelection
           loading={isLoading}
