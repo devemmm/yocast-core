@@ -18,6 +18,7 @@ import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 import LoginForm from "../../components/aut/LoginForm";
 import { Link } from "react-router-dom";
+import Services from "../Services";
 import { setShowLogoutBackDrop } from "../../features/pageSlice";
 function Login() {
   return (
@@ -56,6 +57,8 @@ function Login() {
                 </Box>
               </Box>
             </Box>
+
+
             <LoginForm />
           </Box>
         </Box>

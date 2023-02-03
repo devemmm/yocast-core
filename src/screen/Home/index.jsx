@@ -25,6 +25,7 @@ import { Autoplay } from "swiper";
 import { useSelector } from "react-redux";
 import Backdrop from "@mui/material/Backdrop";
 import OptionsBackdrop from "../global/OptionsBackdrop";
+import { Slide } from "react-reveal";
 
 const navlinks = ["Home", "About", "SERVICES", "CONTACT", "LOGIN"];
 const Home = () => {
@@ -129,7 +130,9 @@ const Home = () => {
           Do you have any business problem ?
         </h1>
         <Box className="w-[100%] flex items-center justify-center ">
-          <img className="w-[70%]" src={problem} alt="" />
+          <Slide up>
+            <img className="w-[70%]" src={problem} alt="" />
+          </Slide>
         </Box>
         <Box className="w-[100%]">
           <Typography
@@ -145,9 +148,11 @@ const Home = () => {
           </Typography>
         </Box>
         <Box className="w-[100%] flex justify-center items-center ">
-          <button className="bg-[#FEB543] max-[234px]:w-[90%] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] md:w-[40%]  sm:w-[30%] w-[50%] lg:w-[24%]  text-white font-poppins font-sans  font-bold rounded-full p-3">
-            Read More
-          </button>
+          <Slide up>
+            <button className="bg-[#FEB543] max-[234px]:w-[90%] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] md:w-[40%]  sm:w-[30%] w-[50%] lg:w-[24%]  text-white font-poppins font-sans  font-bold rounded-full p-3">
+              Read More
+            </button>
+          </Slide>
         </Box>
       </Box>
 
@@ -172,27 +177,31 @@ const Home = () => {
               </p>
               <Box className="w-[90%]   md:flex-nowrap space-x-3 flex  flex-wrap justify-between items-center  mx-auto">
                 {statistics.map((stat, index) => (
-                  <Box
-                    key={index}
-                    className="flex flex-row space-x-2 items-center"
-                  >
-                    <Box>
-                      <img src={stat.image} alt="" />
+                  <Slide up>
+                    <Box
+                      key={index}
+                      className="flex flex-row space-x-2 items-center"
+                    >
+                      <Box>
+                        <img src={stat.image} alt="" />
+                      </Box>
+                      <Box>
+                        <Typography
+                          className="font-sans font-poppins"
+                          sx={{
+                            font: "poppins",
+                            fontStyle: "sans-serif",
+                            fontSize: "2em",
+                          }}
+                        >
+                          {index === 0 ? stat.number + "%" : stat.number + "+"}
+                        </Typography>
+                        <Typography className="text-3xl">
+                          {stat.title}
+                        </Typography>
+                      </Box>
                     </Box>
-                    <Box>
-                      <Typography
-                        className="font-sans font-poppins"
-                        sx={{
-                          font: "poppins",
-                          fontStyle: "sans-serif",
-                          fontSize: "2em",
-                        }}
-                      >
-                        {index === 0 ? stat.number + "%" : stat.number + "+"}
-                      </Typography>
-                      <Typography className="text-3xl">{stat.title}</Typography>
-                    </Box>
-                  </Box>
+                  </Slide>
                 ))}
               </Box>
             </Box>
