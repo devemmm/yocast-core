@@ -1,4 +1,4 @@
-import React, { useEffect , lazy, Suspense} from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import Header from "../../components/Header";
 import {
   Box,
@@ -35,6 +35,7 @@ import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
 const UpdateForm = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const inputRef = useRef();
   const podcastCover = useRef();
   const redirect = useNavigate();
@@ -44,6 +45,8 @@ const UpdateForm = () => {
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [showBackdrop, setShowBackkDrop] = useState(false);
   const [podcasts, setPodcasts] = useState([]);
+  const [isDraggedOver1, setIsDraggedOver1] = useState(false);
+  const [isDraggedOver2, setIsDraggedOver2] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [showEditFirst, setShowEditFirst] = useState(true);
 
@@ -143,6 +146,7 @@ const UpdateForm = () => {
           setShowAlert(true);
           setTimeout(() => {
             setShowAlert(false);
+            navigate("/podcast");
           }, 3000);
           setLoading(false);
           return;
@@ -182,11 +186,40 @@ const UpdateForm = () => {
     }
   };
 
-  const draggedOver = (e) => {
-    e.preventDefault();
+  const handleDrop2 = (event, file) => {
+    event.preventDefault();
+    const extensions = ["jpg", "jpeg", "png", "web"];
+    console.log(extensions);
+    let i = 0;
+    console.log(extensions[i]);
+    if (!extensions.includes(file.name.split(".")[1])) {
+      alert("The  cover photo is required", "error");
+      return;
+    }
+
+    setValues({ ...values, cover: file });
+    setIsDraggedOver2(false);
   };
-  const handleDrop = (e) => {
+
+  const handleDrop1 = (event, file) => {
+    event.preventDefault();
+    console.log(file);
+    if (file.name.split(".")[1] != "mp3") {
+      alert("The podcast file should be .mp3 type", "error");
+      return;
+    }
+    setValues({ ...values, podcast: file });
+    event.preventDefault();
+    setIsDraggedOver1(false);
+  };
+
+  const draggedOver1 = (e) => {
     e.preventDefault();
+    setIsDraggedOver1(true);
+  };
+  const draggedOver2 = (e) => {
+    e.preventDefault();
+    setIsDraggedOver2(true);
   };
   return (
     <Box className="h-[85%]">
@@ -205,6 +238,8 @@ const UpdateForm = () => {
         <Side />
       </Box>
       <Backdrop
+        onDragOver={(e) => draggedOver2(e)}
+        onDrop={(e) => e.preventDefault()}
         className=" h-[90%]  mt-[14%]  md:h-[60%] p-2 rounded  flex flex-col  rounded  w-[95%] md:w-[60%] mx-auto flex items-center"
         open={showEditFirst}
         sx={{
@@ -239,11 +274,15 @@ const UpdateForm = () => {
                 classNAme="md:w-[65%]  w-[95%] flex flex-col h-[100%]"
               >
                 <Box
-                  onDragOver={draggedOver}
-                  onDrop={(e) => {
-                    setValues({ ...values, podcast: e.dataTransfer.files[0] });
-                  }}
-                  className="md:w-[24vw] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh] w-[100%] border-[3.6px] border-[#212529]  border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                  onDragOver={(e) => draggedOver1(e)}
+                  onDrop={(e) =>
+                    handleDrop1(e, e.nativeEvent.dataTransfer.files[0])
+                  }
+                  className={
+                    isDraggedOver1
+                      ? " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[5.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                      : " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[3.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                  }
                 >
                   <input
                     ref={podcastCover}
@@ -255,13 +294,29 @@ const UpdateForm = () => {
                     type="file"
                   />
                   <Box className="flex flex justify-center items-center flex-col">
-                    <label htmlFor="podcast">
-                      Please drag/drop here a podcast .mp3 file
+                    <label>
+                      {values.podcast == null
+                        ? "Please drag/drop here a podcast .mp3 file"
+                        : values.podcast.name.length >
+                          "what_a_friend_we_have_in_jesus_mp3_71462".length
+                        ? values.podcast.name
+                        : values.podcast.name + "yes"}
                     </label>
                     <CloudUploadIcon className="text-center " />
                   </Box>
                 </Box>
-                <Box className=" w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[3.6px] border-[#212529] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto">
+
+                <Box
+                  onDragOver={(e) => draggedOver2(e)}
+                  onDrop={(e) =>
+                    handleDrop2(e, e.nativeEvent.dataTransfer.files[0])
+                  }
+                  className={
+                    isDraggedOver2
+                      ? " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[5.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                      : " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[3.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                  }
+                >
                   <input
                     ref={inputRef}
                     onChange={(e) =>
@@ -273,15 +328,15 @@ const UpdateForm = () => {
                   />
                   <Box className="flex justify-center items-center flex-col">
                     <label htmlFor="main">
-                      Please drag/drop here a podcast cover photo
+                      {values.cover == null
+                        ? "Please drag/drop here a podcast cover photo"
+                        : values.cover.name}
                     </label>
                     <CloudUploadIcon className="text-center " />
                   </Box>
                 </Box>
               </Box>
-              <Box
-                className=" md:max-[1074px]:w-[70%]  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[35%] rounded flex mx-auto flex-col space-y-4 h-[100%]"
-              >
+              <Box className=" md:max-[1074px]:w-[70%]  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[35%] rounded flex mx-auto flex-col space-y-4 h-[100%]">
                 <Box
                   className="w-[100%] h-[70%] md:h-[50%]"
                   component="img"
@@ -352,11 +407,7 @@ const UpdateForm = () => {
                 </Box>
               )}
 
-              <Box
-                onDragOver={() => draggedOver()}
-                onDrop={() => handleDrop()}
-                className=" md:max-[1074px]:w-[70%]  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[50%] flex mx-auto flex-col space-y-4 h-[100%]"
-              >
+              <Box className=" md:max-[1074px]:w-[70%]  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[50%] flex mx-auto flex-col space-y-4 h-[100%]">
                 {podcastFields.map((field, index) => (
                   <Box key={index}>
                     {field.name === "Category" ? null : (
@@ -377,7 +428,7 @@ const UpdateForm = () => {
                 <Box className="md:w-[80%]  md:max-[1074px]:w-[100%] md:max-[1074px]:w-[99.5%] w-[99.5%] mx-auto flex justify-end">
                   <button
                     onClick={submit}
-                    className="float-left   bg-[#4CCEAC] h-[5vh] rounded font-bold  md:max-[1074px]:w-[100%]  w-[100%] md:w-[30%]"
+                    className="float-left  flex items-center justify-center  bg-[#4CCEAC] h-[5vh] rounded font-bold  md:max-[1074px]:w-[100%]  w-[100%] md:w-[30%]"
                   >
                     {isLoading ? <Loader /> : "Update Podcast"}
                   </button>

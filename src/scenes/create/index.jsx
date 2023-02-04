@@ -28,6 +28,7 @@ import OptionsBackdrop from "../../screen/global/OptionsBackdrop";
 import { useSelector } from "react-redux";
 import CreatePodcastSelect from "../../components/global/CreatePodcastSelect";
 const Create = () => {
+  
   const [coverPreview, setCoverPreview] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [alertStatus, setAlertStatus] = useState("success");
@@ -143,18 +144,19 @@ const Create = () => {
       setValues({ ...values, description: value });
     }
   };
+
   const handleDrop2 = (event, file) => {
     event.preventDefault();
     const extensions = ["jpg", "jpeg", "png", "web"];
-    for (let i = 0; i < extensions.length(); i++) {
-      if (file.name.split(".")[1] != extensions[i]) {
-        alert("The  cover photo is required", "error");
-        return;
-      }
-      i++;
+    console.log(extensions);
+    let i = 0;
+    console.log(extensions[i]);
+    if (!extensions.includes(file.name.split(".")[1])) {
+      alert("The  cover photo is required", "error");
+      return;
     }
+
     setValues({ ...values, cover: file });
-    console.log(file);
     setIsDraggedOver2(false);
   };
 
@@ -260,9 +262,6 @@ const Create = () => {
                     <CloudUploadIcon className="text-center " />
                   </Box>
                 </Box>
-                {/* <Box className="p-4">
-                  <p>sdfsdf</p>
-                </Box> */}
               </Box>
               <Box className=" md:max-[1074px]:w-[70%]  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[50%] flex mx-auto flex-col space-y-4 h-[100%]">
                 {podcastFields.map((field, index) => (

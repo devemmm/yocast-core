@@ -52,7 +52,12 @@ export default function CreatePodcastSelect() {
           MenuProps={MenuProps}
         >
           {categories.map((category, index) => (
-            <MenuItem key={index} value={category}>
+            <MenuItem
+              sx={{ backgroundColor: "bg-[#1F2A40]" }}
+              className="bg-[#1F2A40]"
+              key={index}
+              value={category}
+            >
               <Checkbox checked={categ.indexOf(category) > -1} />
               <ListItemText primary={category} />
             </MenuItem>
