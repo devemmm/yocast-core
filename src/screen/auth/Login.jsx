@@ -33,17 +33,17 @@ function Login() {
       <Box className="h-[80%]   flex items-center flex-col justify-center ">
         <Box className="h-[90%] w-[100%]">
           <Box className="flex mt-3 flex-row  h-[100%] justify-between   w-[95%]  md:w-[78%] mx-auto">
-            <Box className="W-[55%] md:block hidden h-[100%]">
+            <Box className="W-[65%] md:block hidden h-[100%]">
               <Box className="h-[70vh]">
                 <Box className=" items-center mt-6 flex flex-col space-y-10 w-[90%] md:w-[50%] mx-auto ">
                   <h1 className="text-center border border-[#feb543]  border-x-0 border-t-0 font-bold text-3xl">
-                    Welcome To Yocast Business LTD
+                    Welcome To Yocast Business
                   </h1>
                   <Box className="w-[100%] flex items-center justify-center ">
                     <img className="w-[70%]" src={wellcomeImage} alt="" />
                   </Box>
                   <Box className="w-[100%]">
-                    <p className="text-center font-poopins text-[0.70rem] font-sans text-[1rem] tetx-black  w-[100%]  ">
+                    <p className="text-center font-poopins text-[0.66rem] font-sans text-[1rem] tetx-black  w-[100%]  ">
                       We started Arches Audio with one goal in mind: to empower
                       individuals and businesses to use audio to connect with
                       their audience and tell their stories in an impactful way
@@ -57,8 +57,6 @@ function Login() {
                 </Box>
               </Box>
             </Box>
-
-
             <LoginForm />
           </Box>
         </Box>

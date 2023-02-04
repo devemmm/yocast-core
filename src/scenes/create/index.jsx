@@ -25,6 +25,8 @@ import Side from "../../screen/global/Side";
 import { useNavigate } from "react-router-dom";
 import { setShowLogoutBackDrop } from "../../features/pageSlice";
 import OptionsBackdrop from "../../screen/global/OptionsBackdrop";
+import { useSelector } from "react-redux";
+import CreatePodcastSelect from "../../components/global/CreatePodcastSelect";
 const Create = () => {
   const [coverPreview, setCoverPreview] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -35,11 +37,12 @@ const Create = () => {
   const [isDraggedOver2, setIsDraggedOver2] = useState(false);
   const [previewCoverImage, setPreviewCoverImage] = useState();
   const navigate = useNavigate();
+  const category = useSelector((store) => store.podcast.category);
   const [values, setValues] = useState({
     title: "",
     description: "",
     price: "",
-    category: "",
+    category: category,
     cover: null,
     podcast: null,
   });
@@ -120,6 +123,7 @@ const Create = () => {
         setLoading(false);
       })
       .catch((error) => {
+        console.log(error);
         setLoading(false);
         setMessage("Some thing went wrong please try again");
         setAlertStatus("error");
@@ -157,7 +161,7 @@ const Create = () => {
   const handleDrop1 = (event, file) => {
     event.preventDefault();
     console.log(file);
-    if (file.name.split("")[1] != "mp3") {
+    if (file.name.split(".")[1] != "mp3") {
       alert("The podcast file should be .mp3 type", "error");
       return;
     }
@@ -263,26 +267,7 @@ const Create = () => {
               <Box className=" md:max-[1074px]:w-[70%]  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[50%] flex mx-auto flex-col space-y-4 h-[100%]">
                 {podcastFields.map((field, index) => (
                   <Box key={index}>
-                    {field.name === "Category" ? (
-                      <Box>
-                        <Select
-                          value={values.category}
-                          onChange={(e) =>
-                            setValues({ ...values, category: e.target.value })
-                          }
-                          className="md:w-[90%] md:max-[1074px]:w-[100%] w-[99.5%]  border mx-auto"
-                        >
-                          {field.options.map((option, index) => (
-                            <MenuItem
-                              value={option}
-                              className="bg-black w-[100%]"
-                            >
-                              {option}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </Box>
-                    ) : (
+                    {field.name === "Category" ? null : (
                       <TextField
                         onChange={(e) => setValue(e.target.value, index)}
                         variant="outlined"
@@ -292,6 +277,9 @@ const Create = () => {
                     )}
                   </Box>
                 ))}
+                <Box className="w-[88%]">
+                  <CreatePodcastSelect />
+                </Box>
                 <Box className="md:w-[80%]  md:max-[1074px]:w-[100%] md:max-[1074px]:w-[99.5%] w-[99.5%] mx-auto flex justify-end">
                   <button
                     onClick={submit}

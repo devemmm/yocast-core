@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../../components/Header";
 import {
   Box,
@@ -8,28 +8,36 @@ import {
   useTheme,
   Alert,
   Container,
+  Backdrop,
 } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { SelectChangeEvent } from "@mui/material/Select";
 import { podcastFields } from "../../data/authData";
 import { useState } from "react";
 import { baseUrl } from "../../data/authData";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { headers } from "../../data/authData";
 import Loader from "../../components/Loader";
+import ReactAudioPlayer from "react-audio-player";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import Side from "../../screen/global/Side";
+import SelectCategory from "../../components/global/Select";
+import LogoutIcon from "@mui/icons-material/Logout";
+import EditIcon from "@mui/icons-material/Edit";
+import { useNavigate } from "react-router-dom";
+import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
 const UpdateForm = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const inputRef = useRef();
   const podcastCover = useRef();
+  const redirect = useNavigate();
   const [showAlert, setShowAlert] = useState(false);
   const [status, setStatus] = useState("error");
   const [message, setMessage] = useState("");
@@ -37,40 +45,60 @@ const UpdateForm = () => {
   const [showBackdrop, setShowBackkDrop] = useState(false);
   const [podcasts, setPodcasts] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const [showEditFirst, setShowEditFirst] = useState(true);
 
   const [coverPreview, setCoverPreview] = useState("");
   const [previewCoverImage, setPreviewCoverImage] = useState();
+
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  const selectedPodcast = useSelector((store) => store.podcast.selectedPodcast);
+  const category = useSelector((store) => store.podcast.category);
   const [values, setValues] = useState({
-    title: "",
-    description: "",
-    price: "",
-    category: "",
+    title: selectedPodcast.name,
+    description: selectedPodcast.description,
+    price: selectedPodcast.price,
+    category: selectedPodcast.category,
     cover: null,
     podcast: null,
   });
 
-  const selectedPodcast = useSelector((store) => store.podcast.selectedPodcast);
-  console.log(selectedPodcast);
+  useEffect(() => {
+    if (
+      user == null ||
+      !user ||
+      !user.token.token ||
+      user.token.token == "" ||
+      user.token.token == null
+    ) {
+      redirect("/auth/login");
+    } else if (
+      selectedPodcast == null ||
+      selectedPodcast == "" ||
+      selectedPodcast.cover == ""
+    ) {
+      redirect("/podcast");
+    }
+  }, []);
   const submit = () => {
-    if (values.cover === null) {
-      setMessage("Cover photo for the podcast is required");
-      setShowAlert(true);
-      setStatus("error");
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 3000);
-      return;
-    }
-    if (values.podcast === null) {
-      setMessage(".mp3 file for the podcast is required");
-      setShowAlert(true);
-      setStatus("error");
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 3000);
+    // if (values.cover === null) {
+    //   setMessage("Cover photo for the podcast is required");
+    //   setShowAlert(true);
+    //   setStatus("error");
+    //   setTimeout(() => {
+    //     setShowAlert(false);
+    //   }, 3000);
+    //   return;
+    // }
+    // if (values.podcast === null) {
+    //   setMessage(".mp3 file for the podcast is required");
+    //   setShowAlert(true);
+    //   setStatus("error");
+    //   setTimeout(() => {
+    //     setShowAlert(false);
+    //   }, 3000);
 
-      return;
-    }
+    //   return;
+    // }
     if (
       values.title === "" ||
       values.description === "" ||
@@ -87,10 +115,16 @@ const UpdateForm = () => {
     setLoading(true);
     const formData = new FormData();
     formData.append("name", values.name);
-    formData.append("podcast", values.podcast);
-    formData.append("cover", values.cover);
+    formData.append(
+      "podcast",
+      values.podcast == null ? selectedPodcast.podcast : values.podcast
+    );
+    formData.append(
+      "cover",
+      values.cover == null ? selectedPodcast.cover : values.cover
+    );
     formData.append("description", values.description);
-    formData.append("category", values.category);
+    formData.append("category", category);
     formData.append("price", values.price);
 
     axios({
@@ -100,7 +134,6 @@ const UpdateForm = () => {
       headers: headers,
     })
       .then((response) => {
-        console.log(response.data);
         if (
           response.data.statusCode === 200 ||
           response.data.statusCode === 201
@@ -114,12 +147,10 @@ const UpdateForm = () => {
           setLoading(false);
           return;
         }
-        console.log(response);
         setLoading(false);
         setShowAlert(true);
       })
       .catch((error) => {
-        console.log(error);
         setLoading(false);
         setMessage("Some thing went wrong please try again");
         setStatus("error");
@@ -153,15 +184,12 @@ const UpdateForm = () => {
 
   const draggedOver = (e) => {
     e.preventDefault();
-    console.log("dragged");
-    console.log(e.dataTransfer.files);
   };
   const handleDrop = (e) => {
     e.preventDefault();
-    console.log(e.dataTransfer.files);
   };
   return (
-    <Box className="h-[93%]">
+    <Box className="h-[85%]">
       <Box className="flex h-[20%] justify-between w-[90%] mx-auto items-center">
         <Header
           title={"Update Podcast"}
@@ -176,20 +204,39 @@ const UpdateForm = () => {
       <Box className="relative">
         <Side />
       </Box>
-      <Container className="items-center  md:flex-row flex-col flex h-[80%]">
-        <Box className="h-[100%] shadow-3xl border border-x-0 border-b-0 p-2 ">
-          <Typography className="text-center  h-[10%] p-4">
-            Update your podcast
-            {/* <Sidebar /> */}
-          </Typography>
+      <Backdrop
+        className=" h-[90%]  md:h-[60%] p-2 rounded  flex flex-col  rounded  w-[95%] md:w-[60%] mx-auto flex items-center"
+        open={showEditFirst}
+        sx={{
+          top: "25%",
+          zIndex: (theme) => theme.zIndex.drawer + 10,
+        }}
+      >
+        <Box className="h-[85%] shadow-3xl w-[100%] p-2 ">
+          <Box className="p-2">
+            <Box className="flex justify-end">
+              <LogoutIcon
+                onClick={() => setShowEditFirst(false)}
+                className="bounce hover:font-bold hover:cursor-pointer"
+              />
+            </Box>
+            <Typography sx={{ textAlign: "center" }} variant="h4">
+              Would you like to edit podcast and it cover photo?
+            </Typography>
+
+            <Typography className="text-center ">
+              Update your podcast
+              {/* <Sidebar /> */}
+            </Typography>
+          </Box>
           <FormControl
             onSubmit={(e) => e.preventDefault()}
-            className="w-[95%]  mx-auto  h-[100%]"
+            className="w-[100%]   mx-auto  h-[100%]"
           >
             <Box className="w-[100%]  h-[100%] md:max-[1074px]:flex-col flex-col md:space-y-0 space-y-5 flex md:flex-row justify-between ">
               <Box
                 onClick={() => podcastCover.current.Click()}
-                classNAme="md:w-[50%]  w-[95%] flex flex-col h-[100%]"
+                classNAme="md:w-[65%]  w-[95%] flex flex-col h-[100%]"
               >
                 <Box
                   onDragOver={draggedOver}
@@ -233,33 +280,86 @@ const UpdateForm = () => {
                 </Box>
               </Box>
               <Box
+                className=" md:max-[1074px]:w-[70%]  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[35%] rounded flex mx-auto flex-col space-y-4 h-[100%]"
+              >
+                <Box
+                  className="w-[100%] h-[50%]"
+                  component="img"
+                  src={selectedPodcast.cover}
+                  alt="podcast cover image"
+                ></Box>
+                <Box className="w-[100%] h-[50%] flex items-center">
+                  <ReactAudioPlayer
+                    className="md:w-[100%] w-[90%] h-[30%]"
+                    RxCross1
+                    src={selectedPodcast.url}
+                    controls
+                  />
+                </Box>
+              </Box>
+            </Box>
+          </FormControl>
+        </Box>
+      </Backdrop>
+      <Container className="items-center   md:flex-row flex-col flex h-[80%]">
+        <Box className="h-[100%] shadow-3xl border border-x-0 border-b-0 p-2 ">
+          <Typography className="text-center  h-[10%] p-4">
+            Update your podcast details
+            {/* <Sidebar /> */}
+          </Typography>
+          <FormControl
+            onSubmit={(e) => e.preventDefault()}
+            className={
+              showEditFirst
+                ? "w-[95%]  mx-auto  invisible h-[100%]"
+                : "w-[95%]  mx-auto  h-[100%]"
+            }
+          >
+            <Box className="w-[100%]  h-[100%] md:max-[1074px]:flex-col flex-col md:space-y-0 space-y-5 flex md:flex-row justify-between ">
+              {selectedPodcast.category == "" ? (
+                <Box className="text-center flex flex-col items-center h-[60%] justify-center">
+                  <Typography>No podcast selected </Typography>
+                  <HourglassEmptyIcon className="animate-ping" />
+                </Box>
+              ) : (
+                <Box
+                  className={
+                    showEditFirst
+                      ? " md:max-[1074px]:w-[70%] invisible  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[35%] rounded flex mx-auto flex-col space-y-4 h-[70%]"
+                      : " md:max-[1074px]:w-[70%]  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[35%] rounded flex mx-auto flex-col space-y-4 h-[70%]"
+                  }
+                >
+                  <Box>
+                    <EditIcon
+                      onClick={() => setShowEditFirst(true)}
+                      className="bounce   hover:font-bold hover:cursor-pointer"
+                    />
+                  </Box>
+                  <Box
+                    className="w-[100%] h-[50%]"
+                    component="img"
+                    src={selectedPodcast.cover}
+                    alt="podcast cover image"
+                  ></Box>
+                  <Box className="w-[100%] h-[50%] flex items-center">
+                    <ReactAudioPlayer
+                      className="md:w-[100%] w-[90%] h-[30%]"
+                      RxCross1
+                      src={selectedPodcast.url}
+                      controls
+                    />
+                  </Box>
+                </Box>
+              )}
+
+              <Box
                 onDragOver={() => draggedOver()}
                 onDrop={() => handleDrop()}
                 className=" md:max-[1074px]:w-[70%]  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[50%] flex mx-auto flex-col space-y-4 h-[100%]"
               >
                 {podcastFields.map((field, index) => (
                   <Box key={index}>
-                    {field.name === "Category" ? (
-                      <Box>
-                        <Select
-                          defaultValue={selectedPodcast.category}
-                          value={values.category}
-                          onChange={(e) =>
-                            setValues({ ...values, category: e.target.value })
-                          }
-                          className="md:w-[90%] md:max-[1074px]:w-[100%] w-[99.5%]  border mx-auto"
-                        >
-                          {field.options.map((option, index) => (
-                            <MenuItem
-                              value={option}
-                              className="bg-black w-[100%]"
-                            >
-                              {option}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </Box>
-                    ) : (
+                    {field.name === "Category" ? null : (
                       <TextField
                         key={index}
                         defaultValue={getValue(index)}
@@ -271,6 +371,9 @@ const UpdateForm = () => {
                     )}
                   </Box>
                 ))}
+                <Box className="w-[88%]">
+                  <SelectCategory />
+                </Box>
                 <Box className="md:w-[80%]  md:max-[1074px]:w-[100%] md:max-[1074px]:w-[99.5%] w-[99.5%] mx-auto flex justify-end">
                   <button
                     onClick={submit}

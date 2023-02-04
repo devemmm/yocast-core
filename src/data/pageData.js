@@ -9,6 +9,11 @@ import chart from "../asstes/images/bar-chart.png";
 
 
 
+
+
+export const categories =  ["Business", "Arts", "Geographical", "Religous", "Polytical"];
+
+
 export const navlinks = [
   {
     name: "HOME",

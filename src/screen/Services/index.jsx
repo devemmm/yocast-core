@@ -12,7 +12,7 @@ import Navbar from "../../components/global/Navbar";
 import Footer from "../../components/home/Footer";
 import wellcomeImage from "../../asstes/images/welcome.png";
 import { Slide } from "react-reveal";
-
+import { services } from "../../data/pageData";
 const Services = () => {
   return (
     <Slide right className="h-screen">
@@ -21,33 +21,40 @@ const Services = () => {
           <Navbar />
         </Box>
         <Box className="h-[79%] flex items-center justify-centerI">
-          <Box className="W-[55%]  h-[95%]">
-            <Box className="h-[70vh]">
-              <Box className=" items-center mt-6 flex flex-col space-y-10 w-[90%] md:w-[50%] mx-auto ">
-                <h1 className="text-center border border-[#feb543]  border-x-0 border-t-0 font-bold text-3xl">
-                  Welcome To Yocast Business LTD
-                </h1>
-                <Box className="w-[100%] flex items-center justify-center ">
-                  <img
-                    className=" w-[90%]  max-[243px]:w-[100%] md:w-[70%]"
-                    src={wellcomeImage}
-                    alt=""
-                  />
-                </Box>
-                <Box className="w-[100%]">
-                  <p className="text-center font-poopins text-[0.70rem] font-sans text-[1rem] tetx-black  w-[100%]  ">
-                    Yocast is the online platform for podacasting different
-                    categories of podcasts to all peaples arround the world. We
-                    started Arches Audio with one goal in mind: to empower
-                    individuals and businesses to use audio to connect with
-                    their audience and tell their stories in an impactful way
-                  </p>
-                </Box>
-                <Box className="w-[100%] flex justify-center items-center ">
-                  <button className="bg-[#FEB543] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%]   w-[50%] md:w-[20%]   text-white font-poppins font-sans  font-bold rounded-full p-3 text-[0.70rem]">
-                    Read More
-                  </button>
-                </Box>
+          <Box className="w-[100%] mt-2  md:h-[120vh] service_section ">
+            <Box className="w-[100%]  h-[100%] space-y-20 flex-col text-center flex justify-center">
+              <Box className="flex w-[100%] items-end text-[#FBB543] md:text-white sm:text-white lg:text-white xl:text-white justify-end sm:justify-center sm:items-center">
+                <Typography
+                  variant="h4"
+                  className="  underline  mx-auto "
+                  sx={{ fontWeight: "bold", textAlign: "center" }}
+                >
+                  Our Services
+                </Typography>
+              </Box>
+              <Box className="flex  sm:space-x-5 h-[70%]   justify-center items-center sm:justify-between   flex-col space-y-4 md:space-y-0  md:flex-row md:w-[67%] sm:w-[100%] w-[95%]  mx-auto">
+                {services.map((service, index) => (
+                  <Box key={index} className="">
+                    <img className="rounded-xl" src={service.image} />
+                    <Box className="text-center w-[95%] md:w-[70%] mt-3 mx-auto">
+                      <Typography
+                        className="w-[100%] mx-auto text-center "
+                        sx={{ fontWeight: "bold", textAlign: "center" }}
+                        variant="h4"
+                      >
+                        {service.title}
+                      </Typography>
+                      <Typography className="w-[100%]" variant="p">
+                        {service.description}
+                      </Typography>
+                    </Box>
+                  </Box>
+                ))}
+              </Box>
+              <Box className="w-[100%] flex justify-center items-center ">
+                <button className="bg-[#FEB543] max-[234px]:w-[90%] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] md:w-[25%]  sm:w-[30%] w-[50%] lg:w-[12%]   text-white font-poppins font-sans  font-bold rounded-full p-3">
+                  Read More
+                </button>
               </Box>
             </Box>
           </Box>

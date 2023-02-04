@@ -131,10 +131,10 @@ function Form() {
     }
   };
   return (
-    <Box className="md:w-[35%]  bg-white  w-[97%] flex items-center  h-[100%]   ">
+    <Box className="md:w-[31%]   bg-white  w-[97%] flex items-center  h-[100%]   ">
       <Box className="h-[96%] pt-4 w-[100%] md:w-[100%] mx-auto    shadow-2xl">
         <Box className="w-[100%] h-[18%] flex flex-col justfy-center items-center">
-          <Typography>Wellcome back!</Typography>
+          <Typography>Yocast!</Typography>
           {!showAlerts ? (
             <p className="text-[0.70rem]  font-poppins font-sans">
               Create your account

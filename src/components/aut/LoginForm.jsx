@@ -122,7 +122,7 @@ function LoginForm() {
     }
   };
   return (
-    <Box className="md:w-[35%]  md:border-0  bg-white border border-x-0 border-b-0   w-[97%] flex items-center  h-[100%]   ">
+    <Box className="md:w-[30%]  md:border-0  bg-white border border-x-0 border-b-0   w-[97%] flex items-center  h-[100%]   ">
       <Box className="h-[100%] pt-4 w-[100%] md:w-[100%]  ng-black mx-auto  shadow-2xl">
         <Box className="w-[100%]  h-[18%] flex flex-col justfy-center items-center">
           {/* <Typography
@@ -136,7 +136,7 @@ function LoginForm() {
           >
             YOCAST
           </Typography> */}
-          <Typography>Wellcome back!</Typography>
+          <Typography>Yocast!</Typography>
           {!showAlerts ? (
             <p className="text-[0.70rem] font-poppins font-sans">
               Sign in to your account
