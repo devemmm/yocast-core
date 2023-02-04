@@ -51,14 +51,14 @@ function LoginForm() {
       setLoggedInSuccessfully(true);
       setTimeout(() => {
         dispatch(setShowAlert(false));
-      }, 100);
+      }, 4000);
     } else if (values.password == "") {
       setMessage("Password is required");
       dispatch(setShowAlert(true));
       setLoggedInSuccessfully(true);
       setTimeout(() => {
         dispatch(setShowAlert(false));
-      }, 100);
+      }, 4000);
     } else {
       setIsLoading(true);
       axios({
@@ -81,7 +81,7 @@ function LoginForm() {
             setLoggedInSuccessfully(true);
             setTimeout(() => {
               dispatch(setShowAlert(false));
-            }, 500);
+            }, 5000);
             navigate("/dashboard");
             setIsLoading(false);
             return;

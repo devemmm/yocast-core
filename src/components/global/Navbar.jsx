@@ -12,6 +12,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 import { navlinks } from "../../data/pageData";
+import HowToRegIcon from "@mui/icons-material/HowToReg";
 function Navbar() {
   return (
     <Box className="flex p-4  justify-between w-[95%] mx-auto h-[9%] items-center ">
@@ -40,8 +41,11 @@ function Navbar() {
       </Box>
       <Box className="">
         <Link to="/auth/signup">
-          <button className="min-[316px]:hidden font-bold bg-white ">Get started</button>
-          <Box className="max-[316px]:hidden">
+          <HowToRegIcon className="text-white sm:hidden hidden md:block  text-3xl hover:cursor-pointer" />
+          <button className="min-[316px]:hidden  max-[317px]:hidden font-bold bg-white ">
+            Get started
+          </button>
+          <Box className="max-[316px]:hidden max-[317px]:hidden">
             <Button
               className="shadow-lg rounded transition hover:bg-white in-in-in text-[0.40rem] duration-300 delay-3 t  font-bold fontpoppins font-sans"
               sx={{ fontWeight: "bold", backgroundColor: "white " }}
