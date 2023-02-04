@@ -196,7 +196,7 @@ const UpdateForm = () => {
           subtitle="Update Podcast  for your users"
         />
         {showAlert ? (
-          <Alert className="w-[60%] mx-auto" severity={status}>
+          <Alert className="w-[100%] md:w-[60%] mx-auto" severity={status}>
             {message}
           </Alert>
         ) : null}
@@ -205,10 +205,10 @@ const UpdateForm = () => {
         <Side />
       </Box>
       <Backdrop
-        className=" h-[90%]  md:h-[60%] p-2 rounded  flex flex-col  rounded  w-[95%] md:w-[60%] mx-auto flex items-center"
+        className=" h-[90%]  mt-[14%]  md:h-[60%] p-2 rounded  flex flex-col  rounded  w-[95%] md:w-[60%] mx-auto flex items-center"
         open={showEditFirst}
         sx={{
-          top: "25%",
+          // top: "25%",
           zIndex: (theme) => theme.zIndex.drawer + 10,
         }}
       >
@@ -283,14 +283,14 @@ const UpdateForm = () => {
                 className=" md:max-[1074px]:w-[70%]  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[35%] rounded flex mx-auto flex-col space-y-4 h-[100%]"
               >
                 <Box
-                  className="w-[100%] h-[50%]"
+                  className="w-[100%] h-[70%] md:h-[50%]"
                   component="img"
                   src={selectedPodcast.cover}
                   alt="podcast cover image"
                 ></Box>
-                <Box className="w-[100%] h-[50%] flex items-center">
+                <Box className="w-[100%] h-[30%] md:h-[50%] flex items-center">
                   <ReactAudioPlayer
-                    className="md:w-[100%] w-[90%] h-[30%]"
+                    className="md:w-[100%]  w-[90%] h-[100%]   md:h-[30%]"
                     RxCross1
                     src={selectedPodcast.url}
                     controls
@@ -336,14 +336,14 @@ const UpdateForm = () => {
                     />
                   </Box>
                   <Box
-                    className="w-[100%] h-[50%]"
+                    className="w-[100%]  h-[70%] md:h-[50%]"
                     component="img"
                     src={selectedPodcast.cover}
                     alt="podcast cover image"
                   ></Box>
-                  <Box className="w-[100%] h-[50%] flex items-center">
+                  <Box className="w-[100%] md:h-[50%]  h-[30%] flex items-center">
                     <ReactAudioPlayer
-                      className="md:w-[100%] w-[90%] h-[30%]"
+                      className="md:w-[100%] w-[100%] md:w-[90%] h-[100%] md:h-[30%]"
                       RxCross1
                       src={selectedPodcast.url}
                       controls

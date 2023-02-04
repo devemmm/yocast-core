@@ -128,13 +128,15 @@ body,
   right: 0;
 }
 
+@media (max-width: 804px) {
+  .header::before {
+    display: none;
+  }
+}
+
 @media (max-width: 990px) {
   .custom_nav-container .nav_search-btn {
     background-position: center;
-  }
-
-  .header::before {
-    display: none;
   }
 
   .service_section {

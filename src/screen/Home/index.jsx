@@ -26,6 +26,7 @@ import { useSelector } from "react-redux";
 import Backdrop from "@mui/material/Backdrop";
 import OptionsBackdrop from "../global/OptionsBackdrop";
 import { Slide } from "react-reveal";
+import { Fade } from "react-reveal";
 
 const navlinks = ["Home", "About", "SERVICES", "CONTACT", "LOGIN"];
 const Home = () => {
@@ -63,7 +64,9 @@ const Home = () => {
             Welcome To Yocast Business LTD
           </h1>
           <Box className="w-[100%] flex items-center justify-center ">
-            <img className="w-[70%]" src={wellcomeImage} alt="" />
+            <Slide up>
+              <img className="w-[70%]" src={wellcomeImage} alt="" />
+            </Slide>
           </Box>
           <Box className="w-[100%]">
             <p
@@ -85,7 +88,6 @@ const Home = () => {
           </Box>
         </Box>
       </Box>
-
       {/* services */}
       <Box className="w-[100%] mt-2  md:h-[120vh] service_section ">
         <Box className="w-[100%]  h-[100%] space-y-20 flex-col text-center flex justify-center">
@@ -101,26 +103,32 @@ const Home = () => {
           <Box className="flex  sm:space-x-5 h-[70%]   justify-center items-center sm:justify-between   flex-col space-y-4 md:space-y-0  md:flex-row md:w-[67%] sm:w-[100%] w-[95%]  mx-auto">
             {services.map((service, index) => (
               <Box key={index} className="">
-                <img className="rounded-xl" src={service.image} />
-                <Box className="text-center w-[95%] md:w-[70%] mt-3 mx-auto">
-                  <Typography
-                    className="w-[100%] mx-auto text-center "
-                    sx={{ fontWeight: "bold", textAlign: "center" }}
-                    variant="h4"
-                  >
-                    {service.title}
-                  </Typography>
-                  <Typography className="w-[100%]" variant="p">
-                    {service.description}
-                  </Typography>
-                </Box>
+                <Fade>
+                  <img className="rounded-xl" src={service.image} />
+                </Fade>
+                <Slide up>
+                  <Box className="text-center w-[95%] md:w-[70%] mt-3 mx-auto">
+                    <Typography
+                      className="w-[100%] mx-auto text-center "
+                      sx={{ fontWeight: "bold", textAlign: "center" }}
+                      variant="h4"
+                    >
+                      {service.title}
+                    </Typography>
+                    <Typography className="w-[100%]" variant="p">
+                      {service.description}
+                    </Typography>
+                  </Box>
+                </Slide>
               </Box>
             ))}
           </Box>
           <Box className="w-[100%] flex justify-center items-center ">
-            <button className="bg-[#FEB543] max-[234px]:w-[90%] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] md:w-[25%]  sm:w-[30%] w-[50%] lg:w-[12%]   text-white font-poppins font-sans  font-bold rounded-full p-3">
-              Read More
-            </button>
+            <Slide up>
+              <button className="bg-[#FEB543] max-[234px]:w-[90%] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] md:w-[25%]  sm:w-[30%] w-[50%] lg:w-[12%]   text-white font-poppins font-sans  font-bold rounded-full p-3">
+                Read More
+              </button>
+            </Slide>
           </Box>
         </Box>
       </Box>
@@ -135,14 +143,16 @@ const Home = () => {
           </Slide>
         </Box>
         <Box className="w-[100%]">
-          <Typography
-            className="text-center text-[1rem] tetx-black  w-[100%]  "
-            variant="p"
-          >
-            We started Arches Audio with one goal in mind: to empower
-            individuals and businesses to use audio to connect with their
-            audience and tell
-          </Typography>
+          <Fade>
+            <Typography
+              className="text-center text-[1rem] tetx-black  w-[100%]  "
+              variant="p"
+            >
+              We started Arches Audio with one goal in mind: to empower
+              individuals and businesses to use audio to connect with their
+              audience and tell
+            </Typography>
+          </Fade>
           <Typography className="text-center font-poppins font-sans">
             their stories in an impactful way
           </Typography>
@@ -175,7 +185,7 @@ const Home = () => {
                 aliqua. Ut enim ad minim veniam, quis aliqua. Ut enim ad minim
                 veniam, quis
               </p>
-              <Box className="w-[90%]   md:flex-nowrap space-x-3 flex  flex-wrap justify-between items-center  mx-auto">
+              <Box className="w-[90%]   md:flex-nowrap space-x-0  md:space-x-3  flex  flex-wrap space-y-4 md:space-y-0  justify-between items-center  mx-auto">
                 {statistics.map((stat, index) => (
                   <Slide up>
                     <Box
@@ -222,35 +232,36 @@ const Home = () => {
             >
               What Our Clients Says
             </Typography>
+            <Fade>
+              <Box className="flex h-[80%] items-center justify-between flex-row items-center">
+                <Box
+                  id="hello"
+                  onClick={next}
+                  className="w-[8%] rounded flex items-center justify-center text-white  hover:bg-[#FEB545] bg-[#383a90] h-[25%]"
+                >
+                  <ArrowBack className="rounded-full" />
+                </Box>
 
-            <Box className="flex h-[80%] items-center justify-between flex-row items-center">
-              <Box
-                id="hello"
-                onClick={next}
-                className="w-[8%] rounded flex items-center justify-center text-white  hover:bg-[#FEB545] bg-[#383a90] h-[25%]"
-              >
-                <ArrowBack className="rounded-full" />
+                <Box className="w-[80%]  flex items-center flex-col justify-center p-3 h-[100%] border">
+                  <img
+                    className="w-24 h-24 rounded-full mb-4"
+                    src={problem}
+                    alt=""
+                  />
+                  <Typography sx={{ font: "poppins", font: "sans" }}>
+                    psum dolor sit amet, consectetur adipiscing elit, sed do
+                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit esse cillum
+                  </Typography>
+                </Box>
+                <Box className="w-[8%] rounded flex items-center justify-center text-white font-bold text-4xl hover:bg-[#FEB545] bg-[#383a90] h-[50%]">
+                  <ArrowForward
+                    className="rounded-full h-[100%]"
+                    sx={{ font: "bold" }}
+                  />
+                </Box>
               </Box>
-
-              <Box className="w-[80%]  flex items-center flex-col justify-center p-3 h-[100%] border">
-                <img
-                  className="w-24 h-24 rounded-full mb-4"
-                  src={problem}
-                  alt=""
-                />
-                <Typography sx={{ font: "poppins", font: "sans" }}>
-                  psum dolor sit amet, consectetur adipiscing elit, sed do
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                </Typography>
-              </Box>
-              <Box className="w-[8%] rounded flex items-center justify-center text-white font-bold text-4xl hover:bg-[#FEB545] bg-[#383a90] h-[50%]">
-                <ArrowForward
-                  className="rounded-full h-[100%]"
-                  sx={{ font: "bold" }}
-                />
-              </Box>
-            </Box>
+            </Fade>
           </Box>
           {/* contact  */}
 
@@ -270,57 +281,59 @@ const Home = () => {
               tempor
             </p>
             <Box className="w-[70%]  h-[90%]  mx-auto">
-              <form className="flex w-[100%] flex-col h-[100%]">
-                <Box className="flex  h-[100%] w-[100%] items-center justify-between flex-col md:flex-row">
-                  <Box className="w-full md:w-[48%] flex flex-col space-y-2  h-[100%]">
-                    {constacts.slice(0, 2).map((contact, index) => (
-                      <Box
-                        key={index}
-                        className="flex w-full h-[40%] flex-col space-y-3"
-                      >
-                        <label htmlFor={contact.name}>{contact.name}</label>
-                        <input
-                          placeholder={contact.name}
-                          className="h-12 pl-3 focus:outline-0 bg-[#f2f3f4]"
-                          id={contact.name}
-                          type={contact.type}
-                        />
-                      </Box>
-                    ))}
+              <Fade>
+                <form className="flex w-[100%] flex-col h-[100%]">
+                  <Box className="flex  h-[100%] w-[100%] items-center justify-between flex-col md:flex-row">
+                    <Box className="w-full md:w-[48%] flex flex-col space-y-2  h-[100%]">
+                      {constacts.slice(0, 2).map((contact, index) => (
+                        <Box
+                          key={index}
+                          className="flex w-full h-[40%] flex-col space-y-3"
+                        >
+                          <label htmlFor={contact.name}>{contact.name}</label>
+                          <input
+                            placeholder={contact.name}
+                            className="h-12 pl-3 focus:outline-0 bg-[#f2f3f4]"
+                            id={contact.name}
+                            type={contact.type}
+                          />
+                        </Box>
+                      ))}
+                    </Box>
+                    <Box className="w-full md:w-[50%] flex flex-col space-y-2  h-[100%]">
+                      {constacts.slice(2, 4).map((contact, index) => (
+                        <Box
+                          key={index}
+                          className="flex  h-[40%] flex-col space-y-3"
+                        >
+                          <label htmlFor={contact.name}>{contact.name}</label>
+                          <input
+                            className="h-12 pl-3 focus:outline-0 bg-[#f2f3f4]"
+                            placeholder={contact.name}
+                            id={contact.name}
+                            type={contact.type}
+                          />
+                        </Box>
+                      ))}
+                    </Box>
                   </Box>
-                  <Box className="w-full md:w-[50%] flex flex-col space-y-2  h-[100%]">
-                    {constacts.slice(2, 4).map((contact, index) => (
-                      <Box
-                        key={index}
-                        className="flex  h-[40%] flex-col space-y-3"
-                      >
-                        <label htmlFor={contact.name}>{contact.name}</label>
-                        <input
-                          className="h-12 pl-3 focus:outline-0 bg-[#f2f3f4]"
-                          placeholder={contact.name}
-                          id={contact.name}
-                          type={contact.type}
-                        />
-                      </Box>
-                    ))}
+                  <Box className="w-[100%] flex flex-col space-y-2 mt-4 h-[41%]">
+                    <textarea
+                      placeholder="Enter the message here"
+                      className="bg-[#f2f3f4] docus:outline-0  p-2 focus:outline-0"
+                      name=""
+                      id=""
+                      cols="30"
+                      rows="7"
+                    ></textarea>
+                    <Box className="flex items-center justify-center">
+                      <button className="bg-[#a053f9] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] w-[50%] md:w-[12%]  mt-5 text-white font-poppins font-sans  font-bold rounded p-3">
+                        Send
+                      </button>
+                    </Box>
                   </Box>
-                </Box>
-                <Box className="w-[100%] flex flex-col space-y-2 mt-4 h-[41%]">
-                  <textarea
-                    placeholder="Enter the message here"
-                    className="bg-[#f2f3f4] docus:outline-0  p-2 focus:outline-0"
-                    name=""
-                    id=""
-                    cols="30"
-                    rows="7"
-                  ></textarea>
-                  <Box className="flex items-center justify-center">
-                    <button className="bg-[#a053f9] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%] w-[50%] md:w-[12%]  mt-5 text-white font-poppins font-sans  font-bold rounded p-3">
-                      Send
-                    </button>
-                  </Box>
-                </Box>
-              </form>
+                </form>
+              </Fade>
             </Box>
           </Box>
           {/* footer */}
