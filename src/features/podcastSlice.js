@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  selectedPodcast: {},
+  selectedPodcast: {
+    category: "",
+  },
 };
 const podcastSlice = createSlice({
   name: "podcast",
@@ -10,8 +12,11 @@ const podcastSlice = createSlice({
     setSelected: (state, action) => {
       state.selectedPodcast = action.payload;
     },
+    setCategory: (state, action) => {
+      state.category = action.payload;
+    },
   },
 });
 
-export const { setSelected } = podcastSlice.actions;
+export const { setSelected, setCategory } = podcastSlice.actions;
 export const podcastReducer = podcastSlice.reducer;

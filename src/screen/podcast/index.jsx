@@ -15,8 +15,14 @@ import { RxCross1 } from "react-icons/rx";
 import { setMessage } from "../../features/pageSlice";
 import SuccessAlert from "../../components/helpers/SuccessAlert";
 import { setSelected } from "../../features/podcastSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import PodcastsIcon from "@mui/icons-material/Podcasts";
+import {
+  setIsLoggedOut,
+  setShowLogoutBackDrop,
+} from "../../features/pageSlice";
+import OptionsBackdrop from "../global/OptionsBackdrop";
 import Side from "../global/Side";
 
 const USER = () => {
@@ -31,9 +37,17 @@ const USER = () => {
   const [selectedPodcast, setSelectedPodcast] = useState({});
   const [podcasts, setPodcasts] = useState([]);
   const [isLoading, setLoading] = useState(true);
-
+  const user = localStorage.getItem("loggedInUser");
   const colors = tokens(theme.palette.mode);
+
+  const isLoggedOut = useSelector((store) => store.page.isLoggedOut);
+  const showLogoutBackDrop = useSelector(
+    (store) => store.page.showLogoutBackDrop
+  );
   useEffect(() => {
+    if (user == null || !user) {
+      navigate("/auth/login");
+    }
     axios({
       method: "GET",
       url: baseUrl + "/podcasts",
@@ -48,7 +62,6 @@ const USER = () => {
         setLoading(false);
       });
   }, [podcasts]);
-
   const deletePodcast = () => {
     axios({
       method: "DELETE",
@@ -75,6 +88,35 @@ const USER = () => {
         }, 1000);
       });
   };
+
+  const logout = () => {
+    axios({
+      method: "POST",
+      url: baseUrl + "/user/signout",
+      headers: headers,
+    })
+      .then((response) => {
+        dispatch(setIsLoggedOut(true));
+        console.log("loggout");
+        localStorage.removeItem("loggedInUser");
+        navigate("/auth/login");
+        dispatch(setShowLogoutBackDrop(false));
+      })
+      .catch((error) => {
+        if (error.response.data.error.statusCode == 500) {
+          dispatch(setIsLoggedOut(true));
+          setLoading(false);
+          navigate("/dashboard");
+          dispatch(setShowLogoutBackDrop(false));
+          return;
+        } else if (error.response.data.error.statusCode == 401) {
+          navigate("/auth/login");
+          return;
+        }
+        navigate("/auth/login");
+        dispatch(setShowLogoutBackDrop(false));
+      });
+  };
   const edit = () => {
     dispatch(setSelected(selectedPodcast));
     navigate("/update");
@@ -82,6 +124,7 @@ const USER = () => {
 
   return (
     <Box m="20px">
+      <OptionsBackdrop />
       <Header
         podcast={false}
         title="Podcast"
@@ -92,7 +135,6 @@ const USER = () => {
           {message}
         </Alert>
       ) : null}
-
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -158,7 +200,8 @@ const USER = () => {
         >
           <Box className="h-[100%] flex md:flex-row flex-col md:space-y-0 space-y-1   items-center -translate-y-4 flex  flex-row justify-between  items-center  w-[100%] md:w-[90%] mx-auto">
             <Box className=" w-[100%]   md:w-[50%]">
-              <p className="w-[100%] text-white">{selectedPodcast.name}</p>
+              <p className="w-[100%] text-white font-bold text-2xl font-poppins font-sans">{selectedPodcast.name}</p>
+              <p className="w-[100%] text-white">{selectedPodcast.category}</p>
             </Box>
             <ReactAudioPlayer
               className="md:w-[30%] w-[90%] h-[100%]"

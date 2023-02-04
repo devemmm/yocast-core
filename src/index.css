@@ -74,6 +74,17 @@ body,
   );
   background: linear-gradient(to right, #864ddf, #203376);
 }
+.head {
+  /* position: relative; */
+  background-color: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#864ddf),
+    to(#203376)
+  );
+  background: linear-gradient(to right, #864ddf, #203376);
+}
 .nav {
   background-color: -webkit-gradient(
     linear,

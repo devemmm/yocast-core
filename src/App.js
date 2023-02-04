@@ -22,6 +22,9 @@ import { Store } from "./store";
 import Login from "./screen/auth/Login";
 import Signup from "./screen/auth/Signup";
 import UpdateForm from "./scenes/update";
+import About from "./screen/global/About";
+import Services from "./screen/Services";
+import Contact from "./screen/contact";
 function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
@@ -32,11 +35,19 @@ function App() {
   });
   return (
     <Provider store={Store}>
-      {route === "/auth/login" || route === "/auth/signup" || route === "/" ? (
+      {route === "/auth/login" ||
+      route === "/auth/signup" ||
+      route === "/" ||
+      route === "/contact"||
+      route === "/services" ||
+      route === "/about" ? (
         <Routes>
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/signup" element={<Signup />} />
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       ) : (
         <ColorModeContext.Provider value={colorMode}>
@@ -49,7 +60,6 @@ function App() {
                 <Routes>
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/USER" element={<USER />} />
-                  <Route path="/USER" element={<USER />} />
                   <Route path="/bar" element={<Bar />} />
                   <Route path="/pie" element={<Pie />} />
                   <Route path="/line" element={<Line />} />
@@ -58,7 +68,7 @@ function App() {
                   <Route path="/podcast" element={<Podcast />} />
                   <Route path="/subscription" element={<Subscription />} />
                   <Route path="/geography" element={<Geography />} />
-                  <Route  path="/update/" element={<UpdateForm />}/>
+                  <Route path="/update/" element={<UpdateForm />} />
                 </Routes>
               </main>
             </div>

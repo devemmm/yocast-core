@@ -18,6 +18,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowSidebar } from "../../features/pageSlice";
+import { setShowLogoutBackDrop } from "../../features/pageSlice";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -36,6 +37,11 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
       <Link to={to} />
     </MenuItem>
   );
+};
+
+const logout = () => {
+  console.log("loggout");
+  localStorage.removeItem("loggedInUser");
 };
 
 const Side = () => {
@@ -185,12 +191,14 @@ const Side = () => {
                     selected={selected}
                     setSelected={setSelected}
                   />
-                  <Item
-                    title="Logout"
-                    icon={<LogoutIcon />}
-                    selected={selected}
-                    setSelected={setSelected}
-                  />
+                  <Box onClick={() => dispatch(setShowLogoutBackDrop(true))}>
+                    <Item
+                      title="Logout"
+                      icon={<LogoutIcon />}
+                      selected={selected}
+                      setSelected={setSelected}
+                    />
+                  </Box>
 
                   {/* <Item
               title="RainFall Data"

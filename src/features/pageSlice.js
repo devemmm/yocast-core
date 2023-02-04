@@ -4,6 +4,8 @@ const initialState = {
   showAlert: false,
   message: "",
   showSidebar: false,
+  showLogoutBackDrop: false,
+  isLoggedOut: false,
 };
 const pageSlice = createSlice({
   name: "page",
@@ -26,8 +28,28 @@ const pageSlice = createSlice({
         state.showSidebar = false;
       }
     },
+    setShowLogoutBackDrop: (state, action) => {
+      if (action.payload == true) {
+        state.showLogoutBackDrop = true;
+      } else {
+        state.showLogoutBackDrop = false;
+      }
+    },
+    setIsLoggedOut: (state, action) => {
+      if (action.payload == true) {
+        state.isLoggedOut = true;
+      } else {
+        state.isLoggedOut = false;
+      }
+    },
   },
 });
 
-export const { setShowAlert, setMessage, setShowSidebar } = pageSlice.actions;
+export const {
+  setShowAlert,
+  setMessage,
+  setShowLogoutBackDrop,
+  setShowSidebar,
+  setIsLoggedOut,
+} = pageSlice.actions;
 export const pageReducer = pageSlice.reducer;

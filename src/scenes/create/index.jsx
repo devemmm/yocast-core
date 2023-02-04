@@ -23,24 +23,41 @@ import Loader from "../../components/Loader";
 import axios from "axios";
 import Side from "../../screen/global/Side";
 import { useNavigate } from "react-router-dom";
+import { setShowLogoutBackDrop } from "../../features/pageSlice";
+import OptionsBackdrop from "../../screen/global/OptionsBackdrop";
+import { useSelector } from "react-redux";
+import CreatePodcastSelect from "../../components/global/CreatePodcastSelect";
 const Create = () => {
   const [coverPreview, setCoverPreview] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [alertStatus, setAlertStatus] = useState("success");
   const [message, setMessage] = useState("");
   const [showAlert, setShowAlert] = useState(false);
+  const [isDraggedOver1, setIsDraggedOver1] = useState(false);
+  const [isDraggedOver2, setIsDraggedOver2] = useState(false);
   const [previewCoverImage, setPreviewCoverImage] = useState();
   const navigate = useNavigate();
+  const category = useSelector((store) => store.podcast.category);
   const [values, setValues] = useState({
     title: "",
     description: "",
     price: "",
-    category: "",
+    category: category,
     cover: null,
     podcast: null,
   });
 
+  const alert = (message, status) => {
+    setMessage(message);
+    setShowAlert(true);
+    setAlertStatus(status);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 3000);
+  };
+
   const submit = () => {
+    console.log(values);
     if (values.cover === null) {
       setMessage("Cover photo for the podcast is required");
       setShowAlert(true);
@@ -106,6 +123,7 @@ const Create = () => {
         setLoading(false);
       })
       .catch((error) => {
+        console.log(error);
         setLoading(false);
         setMessage("Some thing went wrong please try again");
         setAlertStatus("error");
@@ -125,6 +143,41 @@ const Create = () => {
       setValues({ ...values, description: value });
     }
   };
+  const handleDrop2 = (event, file) => {
+    event.preventDefault();
+    const extensions = ["jpg", "jpeg", "png", "web"];
+    for (let i = 0; i < extensions.length(); i++) {
+      if (file.name.split(".")[1] != extensions[i]) {
+        alert("The  cover photo is required", "error");
+        return;
+      }
+      i++;
+    }
+    setValues({ ...values, cover: file });
+    console.log(file);
+    setIsDraggedOver2(false);
+  };
+
+  const handleDrop1 = (event, file) => {
+    event.preventDefault();
+    console.log(file);
+    if (file.name.split(".")[1] != "mp3") {
+      alert("The podcast file should be .mp3 type", "error");
+      return;
+    }
+    setValues({ ...values, podcast: file });
+    event.preventDefault();
+    setIsDraggedOver1(false);
+  };
+
+  const draggedOver1 = (e) => {
+    e.preventDefault();
+    setIsDraggedOver1(true);
+  };
+  const draggedOver2 = (e) => {
+    e.preventDefault();
+    setIsDraggedOver2(true);
+  };
   return (
     <Box className="h-[93%]">
       <Box className="flex h-[20%] justify-between w-[90%] mx-auto items-center">
@@ -135,6 +188,8 @@ const Create = () => {
         {showAlert ? <Alert severity={alertStatus}>{message}</Alert> : null}
       </Box>
       <Side />
+      <OptionsBackdrop />
+      <setShowLogoutBackDrop />
       <Container className="items-center  md:flex-row flex-col flex h-[80%]">
         <Box className="h-[100%] shadow-3xl border border-x-0 border-b-0 p-2 ">
           <Typography className="text-center  h-[10%] p-4">
@@ -146,7 +201,17 @@ const Create = () => {
           >
             <Box className="w-[100%]  h-[100%] md:max-[1074px]:flex-col flex-col md:space-y-0 space-y-5 flex md:flex-row justify-between ">
               <Box classNAme="md:w-[50%]  w-[95%] flex flex-col h-[100%]">
-                <Box className="md:w-[24vw] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh] w-[100%] border-[3.6px] border-[#212529]  border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto">
+                <Box
+                  onDragOver={(e) => draggedOver1(e)}
+                  onDrop={(e) =>
+                    handleDrop1(e, e.nativeEvent.dataTransfer.files[0])
+                  }
+                  className={
+                    isDraggedOver1
+                      ? " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[5.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                      : " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[3.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                  }
+                >
                   <input
                     onChange={(e) =>
                       setValues({ ...values, podcast: e.target.files[0] })
@@ -157,12 +222,27 @@ const Create = () => {
                   />
                   <Box className="flex flex justify-center items-center flex-col">
                     <label htmlFor="podcast">
-                      Please drag/drop here a podcast .mp3 file
+                      {values.podcast == null
+                        ? "Please drag/drop here a podcast .mp3 file"
+                        : values.podcast.name.length >
+                          "what_a_friend_we_have_in_jesus_mp3_71462".length
+                        ? values.podcast.name
+                        : values.podcast.name + "yes"}
                     </label>
                     <CloudUploadIcon className="text-center " />
                   </Box>
                 </Box>
-                <Box className=" w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[3.6px] border-[#212529] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto">
+                <Box
+                  onDragOver={(e) => draggedOver2(e)}
+                  onDrop={(e) =>
+                    handleDrop2(e, e.nativeEvent.dataTransfer.files[0])
+                  }
+                  className={
+                    isDraggedOver2
+                      ? " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[5.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                      : " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[3.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                  }
+                >
                   <input
                     onChange={(e) =>
                       setValues({ ...values, cover: e.target.files[0] })
@@ -173,7 +253,9 @@ const Create = () => {
                   />
                   <Box className="flex justify-center items-center flex-col">
                     <label htmlFor="main">
-                      Please drag/drop here a podcast cover photo
+                      {values.cover == null
+                        ? "Please drag/drop here a podcast cover photo"
+                        : values.cover.name}
                     </label>
                     <CloudUploadIcon className="text-center " />
                   </Box>
@@ -185,26 +267,7 @@ const Create = () => {
               <Box className=" md:max-[1074px]:w-[70%]  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[50%] flex mx-auto flex-col space-y-4 h-[100%]">
                 {podcastFields.map((field, index) => (
                   <Box key={index}>
-                    {field.name === "Category" ? (
-                      <Box>
-                        <Select
-                          value={values.category}
-                          onChange={(e) =>
-                            setValues({ ...values, category: e.target.value })
-                          }
-                          className="md:w-[90%] md:max-[1074px]:w-[100%] w-[99.5%]  border mx-auto"
-                        >
-                          {field.options.map((option, index) => (
-                            <MenuItem
-                              value={option}
-                              className="bg-black w-[100%]"
-                            >
-                              {option}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </Box>
-                    ) : (
+                    {field.name === "Category" ? null : (
                       <TextField
                         onChange={(e) => setValue(e.target.value, index)}
                         variant="outlined"
@@ -214,6 +277,9 @@ const Create = () => {
                     )}
                   </Box>
                 ))}
+                <Box className="w-[88%]">
+                  <CreatePodcastSelect />
+                </Box>
                 <Box className="md:w-[80%]  md:max-[1074px]:w-[100%] md:max-[1074px]:w-[99.5%] w-[99.5%] mx-auto flex justify-end">
                   <button
                     onClick={submit}
