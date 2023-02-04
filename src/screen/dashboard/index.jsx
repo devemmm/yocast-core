@@ -10,21 +10,36 @@ import React from "preact/compat";
 import { Link } from "react-router-dom";
 import Side from "../global/Side";
 import { useSelector } from "react-redux";
+import { initializeStatisticsCards } from "../../features/pageSlice";
+import { useDispatch } from "react-redux";
 
 const Dashboard = () => {
+  const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
+  const statisticsCards = useSelector((store) => store.page.statisticsCards);
+
   const [statistics, setStatics] = useState({
     temperature: 0,
     humidity: 0,
     soilmoisture: 0,
   });
 
-  // useEffect(() => {
-  //   // fetch("http://10.10.109.85:5000/api/v1/latest")
-  //     .then((response) => response.json())
-  //     .then((result) => {
-  //       setStatics({ ...result });
-  //     });
-  // }, []);
+  //variable to check if for all cards count = title
+  let areEqual = 1;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(initializeStatisticsCards());
+      setCount(count + 1);
+    }, 1);
+    for (let i = 0; i < statisticsCards.length; i++) {
+      if (statisticsCards[i].count != statisticsCards[i].title) {
+        areEqual = 0;
+      }
+    }
+    if (areEqual == 1) {
+      clearTimeout(timer);
+    }
+  }, [count]);
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -65,65 +80,23 @@ const Dashboard = () => {
       <Box className="flex  flex-col space-y-6">
         {/* ROW 1 */}
         <Box className="flex  h-[60vh] md:h-[20vh] flex-col md:flex-row w-[95%] mx-auto md:w-[95%] justify-between">
-          <Box
-            className=" w-[100%] md:w-[23%] md:h-[90%] h-[20%] duration-200  delay-150  ease-in-out rounded-lg hover:-translate-y-1 transition "
-            backgroundColor={colors.primary[400]}
-            display="flex"
-            alignItems="center"
-            justifyContent="between"
-          >
-            <StatBox
-              title={statistics.temperature + "k"}
-              subtitle="Podcasts"
-              progress="0.75"
-              increase="+1.5%"
-            />
-          </Box>
-          <Box
-            className="md:w-[22%] w-[100%] md:h-[90%] h-[20%] duration-200  delay-150  ease-in-out rounded-lg hover:-translate-y-1 transition "
-            gridColumn="span 3"
-            backgroundColor={colors.primary[400]}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <StatBox
-              title={statistics.humidity + "k"}
-              subtitle="Subscriptions"
-              progress="0.50"
-              increase="+21%"
-            />
-          </Box>
-          <Box
-            className="md:w-[22%] w-[100%] md:h-[90%] h-[20%] duration-200  delay-150  ease-in-out rounded-lg hover:-translate-y-1 transition "
-            gridColumn="span 3"
-            backgroundColor={colors.primary[400]}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <StatBox
-              title="$1,023"
-              subtitle="My balance"
-              progress="0.30"
-              increase="+5%"
-            />
-          </Box>
-          <Box
-            gridColumn="span 3"
-            className="md:w-[25%] w-[100%] md:h-[90%] h-[20%] duration-200  delay-150  ease-in-out rounded-lg hover:-translate-y-1 transition "
-            backgroundColor={colors.primary[400]}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <StatBox
-              title={54334 + "M"}
-              subtitle="Users"
-              progress="0.80"
-              increase="59%"
-            />
-          </Box>
+          {statisticsCards.map((stat, index) => (
+            <Box
+              key={index}
+              className=" w-[100%] md:w-[23%] md:h-[90%] h-[20%] duration-200  delay-150  ease-in-out rounded-lg hover:-translate-y-1 transition "
+              backgroundColor={colors.primary[400]}
+              display="flex"
+              alignItems="center"
+              justifyContent="between"
+            >
+              <StatBox
+                title={stat.title + "k"}
+                subtitle={stat.subtitle}
+                progress={stat.progress}
+                increase={stat.increase + "%"}
+              />
+            </Box>
+          ))}
         </Box>
 
         {/* ROW 2 */}

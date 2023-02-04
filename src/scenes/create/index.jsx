@@ -181,7 +181,7 @@ const Create = () => {
     setIsDraggedOver2(true);
   };
   return (
-    <Box className="h-[93%]">
+    <Box className="h-[85%]">
       <Box className="flex h-[20%] justify-between w-[90%] mx-auto items-center">
         <Header
           title={"Create Podcast"}
