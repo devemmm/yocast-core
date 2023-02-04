@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect , lazy, Suspense} from "react";
 import Header from "../../components/Header";
 import {
   Box,
