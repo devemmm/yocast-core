@@ -174,7 +174,7 @@ const Sidebar = () => {
             >
               Other actions
             </Typography>
-            <Box >
+            {/* <Box >
               <Item
                 title="Settings"
                 icon={<SettingsOutlinedIcon />}
@@ -189,9 +189,9 @@ const Sidebar = () => {
                 selected={selected}
                 setSelected={setSelected}
               />
-            </Box>
+            </Box> */}
 
-            {/* <Item
+            <Item
               title="RainFall Data"
               to="/bar"
               icon={<BarChartOutlinedIcon />}
@@ -218,7 +218,7 @@ const Sidebar = () => {
               icon={<MapOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            /> */}
+            />
           </Box>
         </Menu>
       </ProSidebar>
