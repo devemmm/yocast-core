@@ -18,6 +18,7 @@ import { setSelected } from "../../features/podcastSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import PodcastsIcon from "@mui/icons-material/Podcasts";
+import { setPodcastss } from "../../features/podcastSlice";
 import {
   setIsLoggedOut,
   setShowLogoutBackDrop,
@@ -54,6 +55,7 @@ const USER = () => {
       headers: headers,
     })
       .then((response) => {
+        dispatch(setPodcastss(response.data.podcast));
         setPodcasts(response.data.podcast);
         setLoading(false);
       })
@@ -200,7 +202,9 @@ const USER = () => {
         >
           <Box className="h-[100%] flex md:flex-row flex-col md:space-y-0 space-y-1   items-center -translate-y-4 flex  flex-row justify-between  items-center  w-[100%] md:w-[90%] mx-auto">
             <Box className=" w-[100%]   md:w-[50%]">
-              <p className="w-[100%] text-white font-bold text-2xl font-poppins font-sans">{selectedPodcast.name}</p>
+              <p className="w-[100%] text-white font-bold text-2xl font-poppins font-sans">
+                {selectedPodcast.name}
+              </p>
               <p className="w-[100%] text-white">{selectedPodcast.category}</p>
             </Box>
             <ReactAudioPlayer

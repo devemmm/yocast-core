@@ -186,6 +186,7 @@ const Side = () => {
                     Other actions
                   </Typography>
                   <Item
+                    to="/admin/settings"
                     title="Settings"
                     icon={<SettingsOutlinedIcon />}
                     selected={selected}

@@ -174,8 +174,9 @@ const Sidebar = () => {
             >
               Other actions
             </Typography>
-            <Box >
+            <Box>
               <Item
+                to="/admin/settings"
                 title="Settings"
                 icon={<SettingsOutlinedIcon />}
                 selected={selected}

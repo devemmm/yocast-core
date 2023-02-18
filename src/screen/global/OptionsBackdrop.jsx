@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { setSelected } from "../../features/podcastSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";

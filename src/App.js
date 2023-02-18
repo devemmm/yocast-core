@@ -27,6 +27,7 @@ const Contact = lazy(() => import("./screen/contact"));
 const Services = lazy(() => import("./screen/Services"));
 const About = lazy(() => import("./screen/global/About"));
 const UpdateForm = lazy(() => import("./scenes/update"));
+const Settings = lazy(() => import("./screen/settings/index"));
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -75,6 +76,7 @@ function App() {
                     <Route path="/subscription" element={<Subscription />} />
                     <Route path="/geography" element={<Geography />} />
                     <Route path="/update/" element={<UpdateForm />} />
+                    <Route path="/admin/settings" element={<Settings />} />
                   </Routes>
                 </Suspense>
               </main>

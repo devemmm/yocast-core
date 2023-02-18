@@ -95,6 +95,7 @@ function LoginForm() {
           setIsLoading(false);
         })
         .catch((error) => {
+          console.log(error);
           if (error.response.data.error === 500) {
             setMessage("Some thing went wrong! try again please");
             dispatch(setShowAlert(true));
