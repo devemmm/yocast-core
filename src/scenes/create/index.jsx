@@ -22,13 +22,13 @@ import { headers } from "../../data/authData";
 import Loader from "../../components/Loader";
 import axios from "axios";
 import Side from "../../screen/global/Side";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { setShowLogoutBackDrop } from "../../features/pageSlice";
 import OptionsBackdrop from "../../screen/global/OptionsBackdrop";
 import { useSelector } from "react-redux";
 import CreatePodcastSelect from "../../components/global/CreatePodcastSelect";
 const Create = () => {
-  
   const [coverPreview, setCoverPreview] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [alertStatus, setAlertStatus] = useState("success");
@@ -46,6 +46,14 @@ const Create = () => {
     category: category,
     cover: null,
     podcast: null,
+  });
+  const user = localStorage.getItem("loggedInUser");
+  useEffect(() => {
+    if (
+      !user || user == null
+    ) {
+      navigate("/auth/login");
+    }
   });
 
   const alert = (message, status) => {

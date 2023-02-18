@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   showAlert: false,
   message: "",
+  showFormPortal: false,
   showSidebar: false,
   showLogoutBackDrop: false,
   isLoggedOut: false,
@@ -19,7 +20,7 @@ const initialState = {
       title: 0,
       subtitle: "Subscription",
       progress: 0.5,
-      progressCount:1.5,
+      progressCount: 1.5,
       increase: 0,
     },
     {
@@ -27,13 +28,13 @@ const initialState = {
       title: 0,
       subtitle: "My balance",
       progress: 0,
-      progresCount:0.6,
+      progresCount: 0.6,
       increase: 5,
     },
     {
       count: 534,
       title: 0,
-      progressCount:0.8,
+      progressCount: 0.8,
       subtitle: "Users",
       progress: 0,
       increase: 59,
@@ -76,12 +77,18 @@ const pageSlice = createSlice({
       }
     },
     initializeStatisticsCards: (state, action) => {
-      console.log("hello")
       const cards = state.statisticsCards;
       cards.forEach((card) => {
         card.title = card.title < card.count ? card.title + 1 : card.title;
       });
       state.statisticsCards = cards;
+    },
+    setShowFormPortal: (state, action) => {
+      if (action.payload == true) {
+        state.showFormPortal = true;
+      } else {
+        state.showFormPortal = false;
+      }
     },
   },
 });
@@ -93,5 +100,6 @@ export const {
   setShowLogoutBackDrop,
   setShowSidebar,
   setIsLoggedOut,
+  setShowFormPortal,
 } = pageSlice.actions;
 export const pageReducer = pageSlice.reducer;
