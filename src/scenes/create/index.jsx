@@ -29,14 +29,14 @@ import OptionsBackdrop from "../../screen/global/OptionsBackdrop";
 import { useSelector } from "react-redux";
 import CreatePodcastSelect from "../../components/global/CreatePodcastSelect";
 const Create = () => {
-  const [coverPreview, setCoverPreview] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [alertStatus, setAlertStatus] = useState("success");
+  const isDarkMode = useSelector((store) => store.page.isDarkMode);
   const [message, setMessage] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [isDraggedOver1, setIsDraggedOver1] = useState(false);
   const [isDraggedOver2, setIsDraggedOver2] = useState(false);
-  const [previewCoverImage, setPreviewCoverImage] = useState();
+
   const navigate = useNavigate();
   const category = useSelector((store) => store.podcast.category);
   const [values, setValues] = useState({
@@ -49,9 +49,7 @@ const Create = () => {
   });
   const user = localStorage.getItem("loggedInUser");
   useEffect(() => {
-    if (
-      !user || user == null
-    ) {
+    if (!user || user == null) {
       navigate("/auth/login");
     }
   });
@@ -278,13 +276,17 @@ const Create = () => {
                       <TextField
                         onChange={(e) => setValue(e.target.value, index)}
                         variant="outlined"
-                        className="border  md:max-[1074px]:w-[100%]  w-[100%] md:w-[90%] mx-auto bg-[#1F2A40]"
+                        className={
+                          isDarkMode
+                            ? "border  md:max-[1074px]:w-[100%]  w-[100%] md:w-[90%] mx-auto bg-[#1F2A40]"
+                            : "border  md:max-[1074px]:w-[100%]  w-[100%] md:w-[90%] mx-auto bg-[white]"
+                        }
                         label={field.name}
                       />
                     )}
                   </Box>
                 ))}
-                <Box className="w-[88%]">
+                <Box className="w-[90%] -translate-x-1 ">
                   <CreatePodcastSelect />
                 </Box>
                 <Box className="md:w-[80%]  md:max-[1074px]:w-[100%] md:max-[1074px]:w-[99.5%] w-[99.5%] mx-auto flex justify-end">

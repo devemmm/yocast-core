@@ -12,6 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useSelector } from "react-redux";
 import { setShowSidebar } from "../../features/pageSlice";
 import { useDispatch } from "react-redux";
+import { setIsDarkMode } from "../../features/pageSlice";
 
 const Topbar = () => {
   const theme = useTheme();
@@ -38,9 +39,13 @@ const Topbar = () => {
       <Box display="flex">
         <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (
-            <DarkModeOutlinedIcon />
+            <DarkModeOutlinedIcon
+              onClick={() => dispatch(setIsDarkMode(false))}
+            />
           ) : (
-            <LightModeOutlinedIcon />
+            <LightModeOutlinedIcon
+              onClick={() => dispatch(setIsDarkMode(true))}
+            />
           )}
         </IconButton>
         <IconButton>

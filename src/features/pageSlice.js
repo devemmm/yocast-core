@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  isDarkMode: true,
   showAlert: false,
   message: "",
   showFormPortal: false,
   showSidebar: false,
   showLogoutBackDrop: false,
+  showDeleteAlert: false,
   isLoggedOut: false,
   statisticsCards: [
     {
@@ -90,6 +92,20 @@ const pageSlice = createSlice({
         state.showFormPortal = false;
       }
     },
+    setShowDeleteAlert: (state, action) => {
+      if (action.payload == true) {
+        state.showDeleteAlert = true;
+      } else {
+        state.showDeleteAlert = false;
+      }
+    },
+    setIsDarkMode: (state, action) => {
+      if (action.payload == true) {
+        state.isDarkMode = true;
+      } else {
+        state.isDarkMode = false;
+      }
+    },
   },
 });
 
@@ -101,5 +117,7 @@ export const {
   setShowSidebar,
   setIsLoggedOut,
   setShowFormPortal,
+  setShowDeleteAlert,
+  setIsDarkMode,
 } = pageSlice.actions;
 export const pageReducer = pageSlice.reducer;
