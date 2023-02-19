@@ -7,12 +7,14 @@ import simile from "../asstes/images/smiley.png";
 import house from "../asstes/images/multiple-users-silhouette.png";
 import chart from "../asstes/images/bar-chart.png";
 
-
-
-
-
-export const categories =  ["Business", "Arts", "Geographical", "Religous", "Polytical"];
-
+export const categories = [
+  "Business",
+  "rwanda",
+  "Arts",
+  "Geographical",
+  "Religous",
+  "Polytical",
+];
 
 export const navlinks = [
   {
@@ -89,6 +91,7 @@ export const formInputs = [
       "Cayman Islands",
       "Chad",
       "Chile",
+      "rwanda",
       "China",
       "Colombia",
       "Congo",

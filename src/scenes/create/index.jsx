@@ -216,8 +216,8 @@ const Create = () => {
                   }
                   className={
                     isDraggedOver1
-                      ? " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[5.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
-                      : " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[3.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                      ? " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[2.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                      : " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[0.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
                   }
                 >
                   <input
@@ -247,8 +247,8 @@ const Create = () => {
                   }
                   className={
                     isDraggedOver2
-                      ? " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[5.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
-                      : " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[3.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                      ? " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[2.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                      : " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[0.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
                   }
                 >
                   <input

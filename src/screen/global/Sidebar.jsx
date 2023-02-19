@@ -117,7 +117,11 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  {user == null ? "" : user.names.split(" ")[0]}
+                  {user == null
+                    ? ""
+                    : !user.names
+                    ? ""
+                    : user.names.split(" ")[0]}
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
                   {user == null

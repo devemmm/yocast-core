@@ -35,6 +35,7 @@ function OptionsBackdrop() {
         dispatch(setShowLogoutBackDrop(false));
       })
       .catch((error) => {
+        localStorage.removeItem("loggedInUser");
         if (error.response.data.error.statusCode == 500) {
           dispatch(setIsLoggedOut(true));
           navigate("/dashboard");
