@@ -3,24 +3,16 @@ import {
   Typography,
   TextField,
   Select,
-  ListItem,
   Button,
   MenuItem,
 } from "@mui/material";
 import React from "react";
-import Navbar from "../../components/global/Navbar";
-import Footer from "../../components/home/Footer";
-import Welcome from "../../components/home/Welcome";
-import wellcomeImage from "../../asstes/images/welcome.png";
 import { formInputs } from "../../data/pageData";
 import { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { BsFacebook } from "react-icons/bs";
 import { baseUrl, headers } from "../../data/authData";
 import axios from "axios";
 import ErrorAlert from "../helpers/ErrorAlert";
 import SuccessAlert from "../helpers/SuccessAlert";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { setShowAlert, setShowFormPortal } from "../../features/pageSlice";
 import { useDispatch } from "react-redux";
@@ -35,6 +27,7 @@ function Form() {
   const [loggedInSuccessfully, setLoggedInSuccessfully] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState(false);
+  const isDarkMode = useSelector((store) => store.page.isDarkMode);
   const showFormPortal = useSelector((store) => store.page.showFormPortal);
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
   const [values, setValues] = useState({
@@ -79,11 +72,18 @@ function Form() {
         headers: headers,
       })
         .then((response) => {
+          console.log(response.data);
           dispatch(setShowLogoutBackDrop(false));
-          //   localStorage.setItem(
-          //     "loggedInUser",
-          //     JSON.stringify(response.data.user)
-          //   );
+          // const currentUser = response.data.user;
+          const user = localStorage.getItem("loggedInUser");
+          // user.names = currentUser.names;
+          // user.avatar = currentUser.avatar;
+          // user.country = currentUser.country;
+
+          localStorage.setItem(
+            "loggedInUser",
+            JSON.stringify(response.data.user)
+          );
           if (
             response.data.statusCode == 200 ||
             response.data.statusCode == 201
@@ -146,7 +146,13 @@ function Form() {
   return !showFormPortal
     ? null
     : createPortal(
-        <Box className="md:w-[23%] ml-2 md:ml-[40%]  bg-[#1F2A40] rounded  h-[64%]  w-[95%] absolute top-[16%] z-40 flex items-center">
+        <Box
+          className={
+            isDarkMode
+              ? "md:w-[23%] ml-2 md:ml-[40%]  bg-[#1F2A40] rounded  h-[64%]  w-[95%] absolute top-[16%] z-40 flex items-center"
+              : "md:w-[23%] ml-2 md:ml-[40%]  bg-white rounded  h-[64%]  w-[95%] absolute top-[16%] z-40 flex items-center"
+          }
+        >
           <Box className="h-[96%] pt-4 w-[100%] md:w-[100%] mx-auto    shadow-2xl">
             <Box className="flex  w-[95%] mx-auto flex-row justify-end items-center">
               <Typography variant="h3" sx={{ fontWeight: "bold" }}>

@@ -32,8 +32,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 const UpdateForm = () => {
-  const theme = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const inputRef = useRef();
@@ -42,16 +42,11 @@ const UpdateForm = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [status, setStatus] = useState("error");
   const [message, setMessage] = useState("");
-  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
-  const [showBackdrop, setShowBackkDrop] = useState(false);
-  const [podcasts, setPodcasts] = useState([]);
   const [isDraggedOver1, setIsDraggedOver1] = useState(false);
   const [isDraggedOver2, setIsDraggedOver2] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [showEditFirst, setShowEditFirst] = useState(true);
-
-  const [coverPreview, setCoverPreview] = useState("");
-  const [previewCoverImage, setPreviewCoverImage] = useState();
+  const isDarkMode = useSelector((store) => store.page.isDarkMode);
 
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
   const selectedPodcast = useSelector((store) => store.podcast.selectedPodcast);
@@ -212,7 +207,6 @@ const UpdateForm = () => {
     event.preventDefault();
     setIsDraggedOver1(false);
   };
-
   const draggedOver1 = (e) => {
     e.preventDefault();
     setIsDraggedOver1(true);
@@ -237,12 +231,15 @@ const UpdateForm = () => {
       <Box className="relative">
         <Side />
       </Box>
+
       <Backdrop
         onDragOver={(e) => draggedOver2(e)}
         onDrop={(e) => e.preventDefault()}
-        className=" h-[90%]  mt-[14%]  md:h-[60%] p-2 rounded  flex flex-col  rounded  w-[95%] md:w-[60%] mx-auto flex items-center"
+        className=" h-[90%] bg-white shadow-2xl  mt-[14%]  md:h-[60%] p-2 rounded  flex flex-col  rounded  w-[95%] md:w-[60%] mx-auto flex items-center"
         open={showEditFirst}
         sx={{
+          left: "20%",
+          backgroundColor: isDarkMode ? "#1F2A40" : "white",
           // top: "25%",
           zIndex: (theme) => theme.zIndex.drawer + 10,
         }}
@@ -280,8 +277,8 @@ const UpdateForm = () => {
                   }
                   className={
                     isDraggedOver1
-                      ? " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[5.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
-                      : " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[3.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                      ? " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[2.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                      : " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[0.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
                   }
                 >
                   <input
@@ -313,8 +310,8 @@ const UpdateForm = () => {
                   }
                   className={
                     isDraggedOver2
-                      ? " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[5.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
-                      : " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[3.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                      ? " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[2.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                      : " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[0.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
                   }
                 >
                   <input
@@ -416,19 +413,27 @@ const UpdateForm = () => {
                         defaultValue={getValue(index)}
                         onChange={(e) => setValue(e.target.value, index)}
                         variant="outlined"
-                        className="border  md:max-[1074px]:w-[100%]  w-[100%] md:w-[90%] mx-auto bg-[#1F2A40]"
+                        className={
+                          isDarkMode
+                            ? "border  md:max-[1074px]:w-[100%]  w-[100%] md:w-[90%] mx-auto bg-[#1F2A40]"
+                            : "border  md:max-[1074px]:w-[100%]  w-[100%] md:w-[90%] mx-auto bg-[white]"
+                        }
                         label={field.name}
                       />
                     )}
                   </Box>
                 ))}
-                <Box className="w-[88%]">
+                <Box className="w-[90%] -translate-x-1">
                   <SelectCategory />
                 </Box>
                 <Box className="md:w-[80%]  md:max-[1074px]:w-[100%] md:max-[1074px]:w-[99.5%] w-[99.5%] mx-auto flex justify-end">
                   <button
                     onClick={submit}
-                    className="float-left  flex items-center justify-center  bg-[#4CCEAC] h-[5vh] rounded font-bold  md:max-[1074px]:w-[100%]  w-[100%] md:w-[30%]"
+                    className={
+                      isDarkMode
+                        ? "float-left  flex items-center justify-center  bg-[#4CCEAC] h-[5vh] rounded font-bold  md:max-[1074px]:w-[100%]  w-[100%] md:w-[30%]"
+                        : "float-left  flex items-center justify-center  bg-[#4CCEAC] h-[5vh] rounded font-bold  md:max-[white]:w-[100%]  w-[100%] md:w-[30%]"
+                    }
                   >
                     {isLoading ? <Loader /> : "Update Podcast"}
                   </button>

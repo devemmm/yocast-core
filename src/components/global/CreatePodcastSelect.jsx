@@ -25,6 +25,7 @@ export default function CreatePodcastSelect() {
   const [categ, setCateg] = React.useState([]);
 
   const category = useSelector((store) => store.podcast.category);
+  const isDarkMode = useSelector((store) => store.page.isDarkMode);
   const selectedPodcast = useSelector((store) => store.podcast.selectedPodcast);
   const value = [selectedPodcast.category];
 
@@ -41,7 +42,11 @@ export default function CreatePodcastSelect() {
       <FormControl sx={{ m: 1, width: "100%" }}>
         <InputLabel id="demo-multiple-checkbox-label">Category</InputLabel>
         <Select
-          className="bg-[#1F2A40] focus:border-0"
+          className={
+            isDarkMode
+              ? "bg-[#1F2A40] focus:border-0"
+              : "bg-[white] focus:border-0"
+          }
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple

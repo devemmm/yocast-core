@@ -12,6 +12,7 @@ import Side from "../global/Side";
 import { useSelector } from "react-redux";
 import { initializeStatisticsCards } from "../../features/pageSlice";
 import { useDispatch } from "react-redux";
+import OptionsBackdrop from "../global/OptionsBackdrop";
 
 const Dashboard = () => {
   const [count, setCount] = useState(0);
@@ -98,6 +99,7 @@ const Dashboard = () => {
             </Box>
           ))}
         </Box>
+        <OptionsBackdrop />
 
         {/* ROW 2 */}
         <Box
