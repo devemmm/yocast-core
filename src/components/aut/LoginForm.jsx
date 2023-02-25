@@ -123,20 +123,9 @@ function LoginForm() {
     }
   };
   return (
-    <Box className="md:w-[30%]  md:border-0  bg-white border border-x-0 border-b-0   w-[97%] flex items-center  h-[100%]   ">
+    <Box className="md:w-[30%]  md:border-0  bg-white border  border-x-0 border-b-0  w-[97%] flex items-center  h-[100%]   ">
       <Box className="h-[100%] pt-4 w-[100%] md:w-[100%]  ng-black mx-auto  shadow-2xl">
         <Box className="w-[100%]  h-[18%] flex flex-col justfy-center items-center">
-          {/* <Typography
-            variant="h6"
-            className="text-[0.80rem] font-poppins"
-            sx={{
-              textAlign: "center",
-              fontWeight: "bold",
-              font: "poppins",
-            }}
-          >
-            YOCAST
-          </Typography> */}
           <Typography>Yocast!</Typography>
           {!showAlerts ? (
             <p className="text-[0.70rem] font-poppins font-sans">
@@ -178,7 +167,7 @@ function LoginForm() {
             <Box className="h-[5vh] ">
               <button
                 type="submit"
-                className="text-center flex items-center justify-center hover:bg-[#1F60F0]  w-[100%] bg-[#1F60F0] h-[100%] font-bold font-poppins text-white rounded font-sans"
+                className="text-center  flex items-center justify-center hover:bg-[#1F60F0]  w-[100%] bg-[#1F60F0] h-[100%] font-bold font-poppins text-white rounded font-sans"
               >
                 {isLoading ? <Loader /> : "Login"}
               </button>

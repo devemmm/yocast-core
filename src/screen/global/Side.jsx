@@ -19,6 +19,7 @@ import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowSidebar } from "../../features/pageSlice";
 import { setShowLogoutBackDrop } from "../../features/pageSlice";
+import ControlPointDuplicateIcon from "@mui/icons-material/ControlPointDuplicate";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -177,7 +178,7 @@ const Side = () => {
                   <Item
                     title="Create Podcast"
                     to="/create"
-                    icon={<PodcastsIcon />}
+                    icon={<ControlPointDuplicateIcon />}
                     selected={selected}
                     setSelected={setSelected}
                   />

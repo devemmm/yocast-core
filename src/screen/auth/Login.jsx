@@ -1,25 +1,12 @@
 import {
   Box,
-  Typography,
-  TextField,
-  Select,
-  ListItem,
   Button,
-  MenuItem,
 } from "@mui/material";
 import React from "react";
-import Navbar from "../../components/global/Navbar";
 import Footer from "../../components/home/Footer";
-import Welcome from "../../components/home/Welcome";
 import wellcomeImage from "../../asstes/images/welcome.png";
-import { formInputs } from "../../data/pageData";
-import { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { BsFacebook } from "react-icons/bs";
 import LoginForm from "../../components/aut/LoginForm";
 import { Link } from "react-router-dom";
-import Services from "../Services";
-import { setShowLogoutBackDrop } from "../../features/pageSlice";
 function Login() {
   return (
     <Box className="h-screen">

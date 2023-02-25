@@ -20,6 +20,7 @@ import axios from "axios";
 import { baseUrl, headers } from "../../data/authData";
 import { useDispatch } from "react-redux";
 import { setShowLogoutBackDrop } from "../../features/pageSlice";
+import ControlPointDuplicateIcon from "@mui/icons-material/ControlPointDuplicate";
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -48,7 +49,7 @@ const Sidebar = () => {
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
   return (
     <Box
-      className="hidden md:block  bottom-0"
+      className="hidden md:block h-[120vh] text-[0.7rem]  bottom-0"
       sx={{
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
@@ -134,7 +135,10 @@ const Sidebar = () => {
             </Box>
           )}
 
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+          <Box
+            sx={{ fontSize: "0.70rem" }}
+            paddingLeft={isCollapsed ? undefined : "10%"}
+          >
             <Item
               title="Dashboard"
               to="/dashboard"
@@ -166,7 +170,7 @@ const Sidebar = () => {
             <Item
               title="Create Podcast"
               to="/create"
-              icon={<PodcastsIcon />}
+              icon={<ControlPointDuplicateIcon />}
               selected={selected}
               setSelected={setSelected}
             />
