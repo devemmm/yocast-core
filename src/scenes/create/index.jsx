@@ -64,6 +64,7 @@ const Create = () => {
   };
 
   const submit = () => {
+    console.log("Available category " + values.category);
     console.log(values);
     if (values.cover === null) {
       setMessage("Cover photo for the podcast is required");
@@ -98,7 +99,7 @@ const Create = () => {
     }
     setLoading(true);
     const formData = new FormData();
-    formData.append("name", values.name);
+    formData.append("name", values.title);
     formData.append("podcast", values.podcast);
     formData.append("cover", values.cover);
     formData.append("description", values.description);
@@ -216,8 +217,8 @@ const Create = () => {
                   }
                   className={
                     isDraggedOver1
-                      ? " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[5.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
-                      : " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[3.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                      ? " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[2.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                      : " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[0.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
                   }
                 >
                   <input
@@ -247,8 +248,8 @@ const Create = () => {
                   }
                   className={
                     isDraggedOver2
-                      ? " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[5.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
-                      : " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[3.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                      ? " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[2.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
+                      : " w-[100%] md:max-[1074px]:w-[70%] md:max-[1074px]:h-[12vh]  md:w-[24vw] mt-5 border-[0.6px] border-[grey] border-dashed border h-[16vh] md:h-[32%] flex items-center justify-center mx-auto"
                   }
                 >
                   <input
@@ -269,7 +270,7 @@ const Create = () => {
                   </Box>
                 </Box>
               </Box>
-              <Box className=" md:max-[1074px]:w-[70%]  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[50%] flex mx-auto flex-col space-y-4 h-[100%]">
+              <Box className=" md:max-[1074px]:w-[70%]  md:max-[1074px]:mx-auto md:max-[1074px]:justify-center  w-[95%] md:w-[50%] flex mx-auto  flex-col space-y-4 h-[100%]">
                 {podcastFields.map((field, index) => (
                   <Box key={index}>
                     {field.name === "Category" ? null : (
@@ -290,12 +291,23 @@ const Create = () => {
                   <CreatePodcastSelect />
                 </Box>
                 <Box className="md:w-[80%]  md:max-[1074px]:w-[100%] md:max-[1074px]:w-[99.5%] w-[99.5%] mx-auto flex justify-end">
-                  <button
-                    onClick={submit}
-                    className="float-left  text-center flex items-center justify-center    bg-[#4CCEAC] h-[5vh] rounded font-bold  md:max-[1074px]:w-[100%]  w-[100%] md:w-[30%]"
-                  >
-                    {isLoading ? <Loader /> : "Create Podcast"}
-                  </button>
+                  {!isLoading ? (
+                    <button
+                      onClick={submit}
+                      className="float-left  text-center flex items-center justify-center    bg-[#4CCEAC] h-[5vh] rounded font-bold  md:max-[1074px]:w-[100%]  w-[100%] md:w-[30%]"
+                    >
+                      Create Podcast
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={submit}
+                      className="float-left   disabled:opacity-50 text-center flex items-center justify-center    bg-[#4CCEAC] h-[5vh] rounded font-bold  md:max-[1074px]:w-[100%]  w-[100%] md:w-[30%]"
+                      disabled="true"
+                    >
+                      {isLoading ? <Loader /> : "Create Podcast"}
+                    </button>
+                  )}
                 </Box>
               </Box>
             </Box>

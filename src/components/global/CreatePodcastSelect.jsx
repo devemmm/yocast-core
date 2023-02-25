@@ -35,7 +35,6 @@ export default function CreatePodcastSelect() {
     } = event;
     setCateg(typeof value === "string" ? value.split(",") : value);
     dispatch(setCategory(categ.toString()));
-    console.log(category);
   };
   return (
     <div className="w-[100%]">

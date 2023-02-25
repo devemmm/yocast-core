@@ -48,7 +48,6 @@ function Settings() {
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
   useEffect(() => {
-    setHoveredPodcast(podcasts[0]);
     if (!user || user == null) {
       navigate("/auth/login");
     }
@@ -59,6 +58,7 @@ function Settings() {
     })
       .then((response) => {
         setPodcasts(response.data.podcast);
+        // setHoveredPodcast(podcasts[0]);
       })
       .catch((error) => {
         console.log(error);
@@ -94,7 +94,7 @@ function Settings() {
   };
 
   const hovered = (podcast) => {
-    setHoveredPodcast(hoveredPodcast);
+    setHoveredPodcast(podcast);
     setShowDescription(true);
   };
 
@@ -172,16 +172,16 @@ function Settings() {
               {" "}
               Posted podcasts
             </Typography>
-            <Box className="flex gap-5 flex-wrap">
+            <Box className="flex gap-10 flex-wrap">
               {podcasts.length < 0 ? (
                 <Loading />
               ) : (
-                <Box className="flex  relative md:w-[22%] w-[100%]">
-                  {podcasts.slice(0, 8).map((podcast, index) => (
+                <Box className="flex  flex-wrap gap-4 relative md:w-[97%] mx-auto  w-[100%]">
+                  {podcasts.slice(0, 12).map((podcast, index) => (
                     <Box
                       key={index}
                       onMouseEnter={() => hovered(podcast)}
-                      className="flex  relative md:w-[100%] w-[100%]  flex-col"
+                      className="flex  relative md:w-[20%] w-[100%]  flex-col"
                     >
                       <img
                         className={
@@ -192,20 +192,20 @@ function Settings() {
                         src={podcast.cover}
                         alt=""
                       />
-                      <Box
-                        className={
-                          showDescription && hoveredPodcast.id != podcast.id
-                            ? " hidden "
-                            : "h-[100%] hover:cursor-pointer  space-y-5 flex flex-col justify-center  absolute  w-[100%] rounded  z-[20%]"
-                        }
-                      >
+                      <Box className="h-[100%] hover:cursor-pointer  space-y-5 flex flex-col justify-center  absolute  w-[100%] rounded  z-[20%]">
                         <Typography sx={{ paddingLeft: "10%" }}>
                           {podcast.name}
                         </Typography>
-                        <Box className="w-[96%]  mx-auto h-[60%]">
+                        <Box
+                          className={
+                            showDescription && hoveredPodcast.id != podcast.id
+                              ? "w-[96%] hidden  mx-auto h-[60%]"
+                              : "w-[96%]  mx-auto h-[60%]"
+                          }
+                        >
                           <Box className="h-full  flex flex-row    flex-col space-y-4  w-full">
                             <ReactAudioPlayer
-                              className="md:w-[80%] mx-auto  w-[90%] h-[100%]"
+                              className="md:w-[100%] mx-auto  w-[90%] h-[100%]"
                               RxCross1
                               src={podcast.url}
                               controls

@@ -433,22 +433,22 @@ export const mockDataInvoices = [
 
 export const mockTransactions = [
   {
-    txId: "RainFall",
+    txId: "Polytical",
     user: "",
     date: "2023-05-01",
-    cost: "60mm",
+    cost: "60",
   },
   {
-    txId: "Temperature",
+    txId: "Arts",
     user: "",
     date: "2023-05-01",
-    cost: "26 c",
+    cost: "26",
   },
   {
-    txId: "Humidity",
+    txId: "Geographical",
     user: "",
     date: "2023-05-01",
-    cost: "27% RH",
+    cost: "27",
   },
 ];
 

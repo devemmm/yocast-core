@@ -21,6 +21,7 @@ import Loader from "../Loader";
 import { setShowLogoutBackDrop } from "../../features/pageSlice";
 import { createPortal } from "react-dom";
 import { BsChevronRight } from "react-icons/bs";
+import PodcastsIcon from "@mui/icons-material/Podcasts";
 function Form() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -72,18 +73,16 @@ function Form() {
         headers: headers,
       })
         .then((response) => {
-          console.log(response.data);
+          JSON.stringify(response.data.user);
           dispatch(setShowLogoutBackDrop(false));
-          // const currentUser = response.data.user;
-          const user = localStorage.getItem("loggedInUser");
-          // user.names = currentUser.names;
-          // user.avatar = currentUser.avatar;
-          // user.country = currentUser.country;
+          const comingUser = response.data.user;
+          const currentUser = comingUser;
+          const user = JSON.parse(localStorage.getItem("loggedInUser"));
+          user.names = currentUser.names;
+          user.avatar = currentUser.avatar;
+          user.country = currentUser.country;
 
-          localStorage.setItem(
-            "loggedInUser",
-            JSON.stringify(response.data.user)
-          );
+          localStorage.setItem("loggedInUser", JSON.stringify(user));
           if (
             response.data.statusCode == 200 ||
             response.data.statusCode == 201
@@ -103,16 +102,17 @@ function Form() {
           setIsLoading(false);
         })
         .catch((error) => {
-          if (error.response.data.error === 500) {
-            setMessage("Some thing went wrong! try again please");
-            dispatch(setShowAlert(true));
-            setTimeout(() => {
-              dispatch(setShowAlert(false));
-            }, 6000);
-            setIsLoading(false);
-            return;
-          }
-          setMessage(error.response.data.error.message);
+          console.log(error);
+          // if (error.response.data.error === 500) {
+          //   setMessage("Some thing went wrong! try again please");
+          //   dispatch(setShowAlert(true));
+          //   setTimeout(() => {
+          //     dispatch(setShowAlert(false));
+          //   }, 6000);
+          //   setIsLoading(false);
+          //   return;
+          // }
+          // setMessage(error.response.data.error.message);
           dispatch(setShowAlert(true));
           setTimeout(() => {
             dispatch(setShowAlert(false));
@@ -163,6 +163,7 @@ function Form() {
               </Typography>
             </Box>
             <Box className="w-[100%] h-[18%] flex flex-col justfy-center items-center">
+              <PodcastsIcon className="text-[red] text-4xl" />
               <Typography>Yocast!</Typography>
               {!showAlerts ? (
                 <p className="text-[0.70rem]  font-poppins font-sans">

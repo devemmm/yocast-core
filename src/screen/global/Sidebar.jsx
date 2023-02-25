@@ -6,20 +6,15 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
-import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
-import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import WaterDamageIcon from "@mui/icons-material/WaterDamage";
 import PodcastsIcon from "@mui/icons-material/Podcasts";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { baseUrl, headers } from "../../data/authData";
 import { useDispatch } from "react-redux";
 import { setShowLogoutBackDrop } from "../../features/pageSlice";
+import ControlPointDuplicateIcon from "@mui/icons-material/ControlPointDuplicate";
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -48,7 +43,7 @@ const Sidebar = () => {
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
   return (
     <Box
-      className="hidden md:block  bottom-0"
+      className="hidden md:block h-[120vh] text-[0.7rem]  bottom-0"
       sx={{
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
@@ -117,7 +112,11 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  {user == null ? "" : user.names.split(" ")[0]}
+                  {user == null
+                    ? ""
+                    : !user.names
+                    ? ""
+                    : user.names.split(" ")[0]}
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
                   {user == null
@@ -130,7 +129,10 @@ const Sidebar = () => {
             </Box>
           )}
 
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+          <Box
+            sx={{ fontSize: "0.70rem" }}
+            paddingLeft={isCollapsed ? undefined : "10%"}
+          >
             <Item
               title="Dashboard"
               to="/dashboard"
@@ -162,7 +164,7 @@ const Sidebar = () => {
             <Item
               title="Create Podcast"
               to="/create"
-              icon={<PodcastsIcon />}
+              icon={<ControlPointDuplicateIcon />}
               selected={selected}
               setSelected={setSelected}
             />

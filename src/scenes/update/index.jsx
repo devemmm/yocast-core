@@ -33,6 +33,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import OptionsBackdrop from "../../screen/global/OptionsBackdrop";
 const UpdateForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -238,7 +239,7 @@ const UpdateForm = () => {
         className=" h-[90%] bg-white shadow-2xl  mt-[14%]  md:h-[60%] p-2 rounded  flex flex-col  rounded  w-[95%] md:w-[60%] mx-auto flex items-center"
         open={showEditFirst}
         sx={{
-          left: "20%",
+          // left: "20%",
           backgroundColor: isDarkMode ? "#1F2A40" : "white",
           // top: "25%",
           zIndex: (theme) => theme.zIndex.drawer + 10,
@@ -255,7 +256,7 @@ const UpdateForm = () => {
             <Typography sx={{ textAlign: "center" }} variant="h4">
               Would you like to edit podcast and it cover photo?
             </Typography>
-
+            <OptionsBackdrop />
             <Typography className="text-center ">
               Update your podcast
               {/* <Sidebar /> */}
@@ -393,7 +394,7 @@ const UpdateForm = () => {
                     src={selectedPodcast.cover}
                     alt="podcast cover image"
                   ></Box>
-                  <Box className="w-[100%] md:h-[50%]  h-[30%] flex items-center">
+                  <Box className="w-[100%] md:h-[60%]  h-[10vh] flex items-center">
                     <ReactAudioPlayer
                       className="md:w-[100%] w-[100%] md:w-[90%] h-[100%] md:h-[30%]"
                       RxCross1

@@ -19,6 +19,7 @@ import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowSidebar } from "../../features/pageSlice";
 import { setShowLogoutBackDrop } from "../../features/pageSlice";
+import ControlPointDuplicateIcon from "@mui/icons-material/ControlPointDuplicate";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -130,7 +131,11 @@ const Side = () => {
                         fontWeight="bold"
                         sx={{ m: "10px 0 0 0" }}
                       >
-                        {user.names.split(" ")[0]}
+                        {user == null
+                          ? ""
+                          : !user.names
+                          ? ""
+                          : user.names.split(" ")[0]}
                       </Typography>
                       <Typography variant="h5" color={colors.greenAccent[500]}>
                         {user.type == "admin" ? " Super Admin" : "User"}
@@ -173,7 +178,7 @@ const Side = () => {
                   <Item
                     title="Create Podcast"
                     to="/create"
-                    icon={<PodcastsIcon />}
+                    icon={<ControlPointDuplicateIcon />}
                     selected={selected}
                     setSelected={setSelected}
                   />

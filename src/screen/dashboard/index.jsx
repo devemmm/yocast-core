@@ -53,10 +53,7 @@ const Dashboard = () => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Header
-          title="Yocast"
-          subtitle="Welcome to Harvest Prediction Dashboard"
-        />
+        <Header title="Yocast" subtitle="Welcome to Yocast   Dashboard" />
         <Side />
         <Box className="w-[95%] md:w-[17%]">
           <Link to="/create" className="w-[100%] mb-8">
@@ -80,7 +77,7 @@ const Dashboard = () => {
       {/* GRID & CHARTS */}
       <Box className="flex  flex-col space-y-6">
         {/* ROW 1 */}
-        <Box className="flex  h-[60vh] md:h-[20vh] flex-col md:flex-row w-[95%] mx-auto md:w-[95%] justify-between">
+        <Box className="flex  h-[60vh] md:h-[20vh]  flex-col md:flex-row w-[95%] mx-auto md:w-[95%] justify-between">
           {statisticsCards.map((stat, index) => (
             <Box
               key={index}
@@ -149,6 +146,7 @@ const Dashboard = () => {
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           overflow="auto"
+          className="h-[10%] text-[0.89rem]"
         >
           <Box
             display="flex"
