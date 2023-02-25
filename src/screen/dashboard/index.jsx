@@ -53,10 +53,7 @@ const Dashboard = () => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Header
-          title="Yocast"
-          subtitle="Welcome to Harvest Prediction Dashboard"
-        />
+        <Header title="Yocast" subtitle="Welcome to Yocast   Dashboard" />
         <Side />
         <Box className="w-[95%] md:w-[17%]">
           <Link to="/create" className="w-[100%] mb-8">

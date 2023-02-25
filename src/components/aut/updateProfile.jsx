@@ -21,6 +21,7 @@ import Loader from "../Loader";
 import { setShowLogoutBackDrop } from "../../features/pageSlice";
 import { createPortal } from "react-dom";
 import { BsChevronRight } from "react-icons/bs";
+import PodcastsIcon from "@mui/icons-material/Podcasts";
 function Form() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -162,6 +163,7 @@ function Form() {
               </Typography>
             </Box>
             <Box className="w-[100%] h-[18%] flex flex-col justfy-center items-center">
+              <PodcastsIcon className="text-[red] text-4xl" />
               <Typography>Yocast!</Typography>
               {!showAlerts ? (
                 <p className="text-[0.70rem]  font-poppins font-sans">

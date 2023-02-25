@@ -27,6 +27,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Loader from "../Loader";
 import { setShowLogoutBackDrop } from "../../features/pageSlice";
+import PodcastsIcon from "@mui/icons-material/Podcasts";
 function Form() {
   const [values, setValues] = useState({
     fullName: "",
@@ -134,6 +135,7 @@ function Form() {
     <Box className="md:w-[31%]   bg-white  w-[97%] flex items-center  h-[100%]   ">
       <Box className="h-[96%] pt-4 w-[100%] md:w-[100%] mx-auto    shadow-2xl">
         <Box className="w-[100%] h-[18%] flex flex-col justfy-center items-center">
+          <PodcastsIcon className="text-[red] text-4xl" />
           <Typography>Yocast!</Typography>
           {!showAlerts ? (
             <p className="text-[0.70rem]  font-poppins font-sans">

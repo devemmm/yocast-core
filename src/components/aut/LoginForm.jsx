@@ -1,18 +1,5 @@
-import {
-  Box,
-  Typography,
-  TextField,
-  Select,
-  ListItem,
-  Button,
-  MenuItem,
-} from "@mui/material";
+import { Box, Typography, TextField, Button } from "@mui/material";
 import React from "react";
-import Navbar from "../../components/global/Navbar";
-import Footer from "../../components/home/Footer";
-import Welcome from "../../components/home/Welcome";
-import wellcomeImage from "../../asstes/images/welcome.png";
-import { formInputs } from "../../data/pageData";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
@@ -20,7 +7,7 @@ import ios from "../../asstes/images/android.png";
 import android from "../../asstes/images/ios.png";
 import { loginInputs } from "../../data/pageData";
 import { Link } from "react-router-dom";
-import { baseUrl, headers } from "../../data/authData";
+import { baseUrl } from "../../data/authData";
 import axios from "axios";
 import ErrorAlert from "../helpers/ErrorAlert";
 import SuccessAlert from "../helpers/SuccessAlert";
@@ -30,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Loader from "../Loader";
 import { setShowLogoutBackDrop } from "../../features/pageSlice";
+import PodcastsIcon from "@mui/icons-material/Podcasts";
 function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -126,6 +114,7 @@ function LoginForm() {
     <Box className="md:w-[30%]  md:border-0  bg-white border  border-x-0 border-b-0  w-[97%] flex items-center  h-[100%]   ">
       <Box className="h-[100%] pt-4 w-[100%] md:w-[100%]  ng-black mx-auto  shadow-2xl">
         <Box className="w-[100%]  h-[18%] flex flex-col justfy-center items-center">
+          <PodcastsIcon className="text-[red] text-4xl" />
           <Typography>Yocast!</Typography>
           {!showAlerts ? (
             <p className="text-[0.70rem] font-poppins font-sans">
