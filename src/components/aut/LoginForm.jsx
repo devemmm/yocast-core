@@ -17,7 +17,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Loader from "../Loader";
 import { setShowLogoutBackDrop } from "../../features/pageSlice";
-import PodcastsIcon from "@mui/icons-material/Podcasts";
+import YocastLogo from "../helpers/YocastLogo";
+
 function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -114,7 +115,7 @@ function LoginForm() {
     <Box className="md:w-[30%]  md:border-0  bg-white border  border-x-0 border-b-0  w-[97%] flex items-center  h-[100%]   ">
       <Box className="h-[100%] pt-4 w-[100%] md:w-[100%]  ng-black mx-auto  shadow-2xl">
         <Box className="w-[100%]  h-[18%] flex flex-col justfy-center items-center">
-          <PodcastsIcon className="text-[red] text-4xl" />
+        <YocastLogo height={50} width={50}/>
           <Typography>Yocast!</Typography>
           {!showAlerts ? (
             <p className="text-[0.70rem] font-poppins font-sans">
@@ -198,13 +199,13 @@ function LoginForm() {
             </Box>
             <Box className="flex justify-center  items-center  flex-row space-x-3">
               <Typography fontSize="0.8rem" variant="p">
-                Don't you have an account ?
+                you can download the application here:
               </Typography>
-              <Link to="/auth/signup">
+              {/* <Link to="/auth/signup">
                 <span className="text-sm text-[#1F60F0] hover:underline">
                   {isLoading ? "Register" : "Register"}
                 </span>
-              </Link>
+              </Link> */}
             </Box>
             <Box className="flex flex-row space-x-4 mt-4 justify-center">
               <img className="w-[40%] h-[90%]" src={ios} alt="ios image" />

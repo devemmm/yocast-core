@@ -40,7 +40,7 @@ function Navbar() {
         <SearchIcon />
       </Box>
       <Box className="">
-        <Link to="/auth/signup">
+        <Link to="/auth/login">
           <HowToRegIcon className="text-white sm:hidden hidden md:block  text-3xl hover:cursor-pointer" />
           <button className="min-[316px]:hidden  max-[317px]:hidden font-bold bg-white ">
             Get started

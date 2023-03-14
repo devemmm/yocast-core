@@ -22,6 +22,7 @@ import { setShowLogoutBackDrop } from "../../features/pageSlice";
 import { createPortal } from "react-dom";
 import { BsChevronRight } from "react-icons/bs";
 import PodcastsIcon from "@mui/icons-material/Podcasts";
+import YocastLogo from "../helpers/YocastLogo";
 function Form() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -163,7 +164,8 @@ function Form() {
               </Typography>
             </Box>
             <Box className="w-[100%] h-[18%] flex flex-col justfy-center items-center">
-              <PodcastsIcon className="text-[red] text-4xl" />
+              {/* <PodcastsIcon className="text-[red] text-4xl" /> */}
+              <YocastLogo height={50} width = {50}/>
               <Typography>Yocast!</Typography>
               {!showAlerts ? (
                 <p className="text-[0.70rem]  font-poppins font-sans">
