@@ -1,17 +1,28 @@
+import React, { useEffect, useState } from "react";
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import axios from "axios";
 import { tokens } from "../../theme";
 import { mockUsers } from "../../data/mockData";
+import { baseUrl, headers } from "../../data/authData";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
 import Side from "../global/Side";
+import { useNavigate } from "react-router-dom";
 import { setShowLogoutBackDrop } from "../../features/pageSlice";
 import OptionsBackdrop from "../global/OptionsBackdrop";
+import { setPodcastss } from "../../features/podcastSlice";
+
 const USER = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const navigate = useNavigate();
+  const user = localStorage.getItem("loggedInUser");
+  const [users, setUsers] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
   const columns = [
     { field: "id", headerName: "ID", flex: 0.2 },
     {
@@ -89,6 +100,29 @@ const USER = () => {
     // },
   ];
 
+
+  useEffect(() => {
+    if (user == null || !user) {
+      navigate("/auth/login");
+    }
+    axios({
+      method: "GET",
+      url: baseUrl + "/admin/users",
+      headers: headers,
+    })
+      .then((response) => {
+        console.log(response.data.user)
+        // dispatch(setPodcastss(response.data.podcast));
+        setUsers(response.data.user);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
+  }, [users]);
+
+
   return (
     <Box m="20px">
       <Header title="USER" subtitle="Managing the USER Members" />
@@ -123,7 +157,7 @@ const USER = () => {
       >
         <Side />
         <OptionsBackdrop />
-        <DataGrid checkboxSelection rows={mockUsers} columns={columns} />
+        <DataGrid loading={isLoading} checkboxSelection rows={users} columns={columns} getRowId={(row)=> row.createdAt}/>
       </Box>
     </Box>
   );
