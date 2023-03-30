@@ -1,0 +1,1 @@
+ALTER TABLE Users ALTER avatar SET DEFAULT 'https://api.yocast.rw/images/avatar/default-avatar.jpg';
