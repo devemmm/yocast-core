@@ -33,6 +33,10 @@ export const navlinks = [
     name: "CONTACT",
     link: "/contact",
   },
+  {
+    name: "PRIVACY",
+    link: "/privacy",
+  },
 ];
 export const loginInputs = [
   {

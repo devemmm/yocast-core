@@ -61,7 +61,7 @@ const Home = () => {
       <Box className="h-[70vh]">
         <Box className=" items-center mt-6 flex flex-col space-y-10 w-[90%] md:w-[50%] mx-auto ">
           <h1 className="text-center border border-[#feb543]  border-x-0 border-t-0 font-bold text-3xl">
-            Welcome To Yocast Business LTD
+            Welcome To Yocast LTD
           </h1>
           <Box className="w-[100%] flex items-center justify-center ">
             <Slide up>

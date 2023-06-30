@@ -1,19 +1,11 @@
 import React from "react";
-import {
-  Box,
-  Typography,
-  TextField,
-  Select,
-  ListItem,
-  Button,
-  MenuItem,
-} from "@mui/material";
+import { Box } from "@mui/material";
 import Navbar from "../../../components/global/Navbar";
 import Footer from "../../../components/home/Footer";
 import wellcomeImage from "../../../asstes/images/welcome.png";
 import { Slide } from "react-reveal";
 
-const About = () => {
+const TermsAndConditions = () => {
   return (
     <Slide up className="h-screen">
       <Box classNAme='h-[100%]'>
@@ -27,27 +19,28 @@ const About = () => {
                 <h1 className="text-center border border-[#feb543]  border-x-0 border-t-0 font-bold text-3xl">
                   Welcome To Yocast LTD
                 </h1>
-                <Box className="w-[100%] flex items-center justify-center ">
+                {/* <Box className="w-[100%] flex items-center justify-center ">
                   <img
                     className=" w-[90%]  max-[243px]:w-[100%] md:w-[70%]"
                     src={wellcomeImage}
                     alt=""
                   />
-                </Box>
+                </Box> */}
                 <Box className="w-[100%]">
                   <p className="text-center font-poopins text-[0.70rem] font-sans text-[1rem] tetx-black  w-[100%]  ">
-                    Yocast is the online platform for podacasting different
-                    categories of podcasts to all peaples arround the world. We
-                    started Arches Audio with one goal in mind: to empower
-                    individuals and businesses to use audio to connect with
-                    their audience and tell their stories in an impactful way
+                    Any media material uploaded on Yocast, is reserved to the podcast audience.
+                    YoCast Subscribers have their right to the content have chosen to purchase.
+                    Any inquiry from our audience, are immediately submitted to our customer email: info@yocast.rw, or our chat room.
+                    Content consumers information are secured in YoCast server for subscription purpose. All of those information are kept as private.
+                    To access and use YoCast Services, you must register using your names, your names and your mobile number.
+                    Your Full subscription is confirmed by email you received or notification in your mobile app.
                   </p>
                 </Box>
-                <Box className="w-[100%] flex justify-center items-center ">
+                {/* <Box className="w-[100%] flex justify-center items-center ">
                   <button className="bg-[#FEB543] transition ease-in-out duration-300 delay-3 hover:-translate-y-[10%]   w-[50%] md:w-[20%]   text-white font-poppins font-sans  font-bold rounded-full p-3 text-[0.70rem]">
                     Read More
                   </button>
-                </Box>
+                </Box> */}
               </Box>
             </Box>
           </Box>
@@ -60,4 +53,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default TermsAndConditions;

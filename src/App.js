@@ -26,6 +26,7 @@ const Signup = lazy(() => import("./screen/auth/Signup"));
 const Contact = lazy(() => import("./screen/contact"));
 const Services = lazy(() => import("./screen/Services"));
 const About = lazy(() => import("./screen/global/About"));
+const TermsAndConditions = lazy(() => import("./screen/global/Privacy"));
 const UpdateForm = lazy(() => import("./scenes/update"));
 const Settings = lazy(() => import("./screen/settings/index"));
 
@@ -44,6 +45,7 @@ function App() {
       route === "/" ||
       route === "/contact" ||
       route === "/services" ||
+      route === "/privacy" ||
       route === "/about" ? (
         <Suspense fallback={<Loading />}>
           <Routes>
@@ -52,6 +54,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/privacy" element={<TermsAndConditions />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </Suspense>
